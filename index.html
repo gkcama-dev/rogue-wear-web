@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover premium streetwear by Rogue Wear Sri Lanka.">
-    <title>Rogue Wear | Premium Streetwear & Graphic Tees Sri Lanka</title>
-
+    
+    <!-- Theme Toggle Setup (Prevent flash of light theme) -->
     <script>
         try {
             const savedTheme = localStorage.getItem('rogue_theme');
@@ -15,13 +13,46 @@
             } else {
                 document.documentElement.classList.remove('dark');
             }
-        } catch (e) { console.warn('Theme read failed in head:', e); }
+        } catch (e) {
+            console.warn('Theme read failed in head:', e);
+        }
     </script>
-
+    
+    <!-- Remote Debug Script -->
+    <script>
+        window.addEventListener('error', function(e) {
+            console.error("Global Error Caught: ", e.message, "at", e.filename, ":", e.lineno);
+            const debugDiv = document.createElement('div');
+            debugDiv.style.position = 'fixed';
+            debugDiv.style.bottom = '20px';
+            debugDiv.style.left = '20px';
+            debugDiv.style.background = '#FF3B30';
+            debugDiv.style.color = '#FFFFFF';
+            debugDiv.style.padding = '12px 20px';
+            debugDiv.style.zIndex = '999999';
+            debugDiv.style.fontSize = '12px';
+            debugDiv.style.fontFamily = 'monospace';
+            debugDiv.style.borderRadius = '10px';
+            debugDiv.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+            debugDiv.innerHTML = "🚨 <strong>JS Error:</strong> " + e.message + " (" + (e.filename ? e.filename.split('/').pop() : 'inline') + ":" + e.lineno + ")";
+            document.body.appendChild(debugDiv);
+        });
+    </script>
+    
+    <!-- SEO Optimization -->
+    <title>Rogue Wear | Premium Streetwear & Graphic Tees Sri Lanka</title>
+    <meta name="description" content="Discover premium streetwear, heavyweight graphic tees, hoodies, and cargo pants by Rogue Wear Sri Lanka. Elevate your urban look with bold neo-cultural designs.">
+    <meta name="keywords" content="Streetwear Sri Lanka, Graphic Tees Sri Lanka, Oversized Tees Colombo, Rogue Wear, Heavyweight Cotton Tees, Techwear Sri Lanka">
+    <meta name="author" content="Rogue Wear Syndicate">
+    
+    <!-- Tailwind CSS v4 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+    
+    <!-- Custom Style Sheet -->
     <link rel="stylesheet" href="assets/css/style.css?v=1.3">
+    
 
+    <!-- Custom Tailwind Configuration Styles -->
     <style type="text/tailwindcss">
         @theme {
             --font-syne: 'Syne', sans-serif;
@@ -37,101 +68,207 @@
         }
     </style>
 </head>
-
 <body class="bg-brand-light text-brand-dark font-jakarta antialiased selection:bg-brand-pink selection:text-white">
 
-<header class="fixed top-0 inset-x-0 h-20 glass-nav z-40 transition-all duration-300">
+    <!-- 1. NAVIGATION BAR (Glassmorphic & Sticky) -->
+    <header class="fixed top-0 inset-x-0 h-20 glass-nav z-40 transition-all duration-300">
         <div class="max-w-[1536px] mx-auto px-6 h-full flex items-center justify-between gap-4">
+            
+            <!-- Mobile Menu Burger Button -->
             <button id="mobile-menu-btn" class="lg:hidden p-2 text-brand-dark hover:text-brand-pink transition-colors" aria-label="Open Mobile Menu">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
             </button>
 
-            <a href="#" class="font-syne text-2xl font-bold tracking-tight text-brand-dark">
+            <!-- Brand Logo -->
+            <a href="#" class="font-syne text-2xl font-bold tracking-tight text-brand-dark hover:opacity-90 transition-opacity flex items-center">
                 ROGUE<span class="text-brand-pink font-light italic">WEAR</span>
             </a>
 
+            <!-- Center Menu Links -->
             <nav class="hidden lg:flex items-center gap-8 text-sm font-outfit font-medium tracking-wide">
                 <a href="#" class="px-4 py-1.5 bg-black text-white rounded-full">Home</a>
                 <a href="#categories" class="sliding-underline hover:text-brand-pink transition-colors">Categories</a>
                 <a href="#shop" class="sliding-underline hover:text-brand-pink transition-colors">Shop Drops</a>
+                <a href="#discount-banner" class="sliding-underline hover:text-brand-pink transition-colors">Vouchers</a>
                 <a href="#footer" class="sliding-underline hover:text-brand-pink transition-colors">Contact</a>
             </nav>
 
+            <!-- Action Icons & Pill CTA -->
             <div class="flex items-center gap-4 sm:gap-6">
-                <button id="theme-toggle-btn" class="p-2 text-brand-dark hover:text-brand-pink transition-colors cursor-pointer" aria-label="Toggle Theme">🌙</button>
-                <button id="nav-search-btn" class="p-2 text-brand-dark hover:text-brand-pink transition-colors cursor-pointer">🔍</button>
-                <button id="nav-cart-btn" class="p-2 text-brand-dark hover:text-brand-pink relative cursor-pointer">🛍️ <span class="cart-count-badge absolute -top-1 -right-1 bg-black text-white text-[9px] font-bold w-4.5 h-4.5 flex items-center justify-center rounded-full hidden">0</span></button>
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle-btn" class="p-2 text-brand-dark hover:text-brand-pink transition-colors cursor-pointer" aria-label="Toggle Theme">
+                    <!-- Sun Icon (shown in dark mode) -->
+                    <svg id="theme-sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                    <!-- Moon Icon (shown in light mode) -->
+                    <svg id="theme-moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+
+                <!-- Search Button -->
+                <button id="nav-search-btn" class="p-2 text-brand-dark hover:text-brand-pink transition-colors cursor-pointer" aria-label="Search Products">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+
+                <!-- Wishlist Button with badge -->
+                <button id="nav-wishlist-btn" class="p-2 text-brand-dark hover:text-brand-pink relative transition-colors cursor-pointer" aria-label="Wishlist">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    <span class="wishlist-count-badge absolute -top-1 -right-1 bg-brand-pink text-white text-[9px] font-bold w-4.5 h-4.5 flex items-center justify-center rounded-full hidden">0</span>
+                </button>
+
+                <!-- Cart Button with badge -->
+                <button id="nav-cart-btn" class="p-2 text-brand-dark hover:text-brand-pink relative transition-colors cursor-pointer" aria-label="Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-count-badge absolute -top-1 -right-1 bg-black text-white text-[9px] font-bold w-4.5 h-4.5 flex items-center justify-center rounded-full hidden">0</span>
+                </button>
+
+                <!-- CTA Action Button (matching the reference image's pill buttons) -->
+                <a href="#shop" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-black hover:bg-brand-pink text-white text-xs font-syne font-bold uppercase tracking-wider rounded-full transition-all duration-300 hover:shadow-lg shadow-sm">
+                    Shop Drops
+                    <span class="flex items-center justify-center bg-white/20 rounded-full p-1 text-[8px]">&rarr;</span>
+                </a>
             </div>
         </div>
     </header>
 
+    <!-- Scroll Progress Bar -->
     <div id="scroll-progress" class="fixed top-20 left-0 h-1 bg-brand-pink z-50 w-0 transition-all duration-75"></div>
 
-    <div id="drawer-overlay" class="fixed inset-0 bg-black/60 z-40 hidden backdrop-blur-sm"></div>
-
-    <div id="cart-drawer" class="fixed top-0 bottom-0 right-0 max-w-md w-full bg-brand-light border-l border-brand-border z-50 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+    <!-- 2. MOBILE MENU DRAWER -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden backdrop-blur-sm"></div>
+    <div id="mobile-menu-drawer" class="fixed top-0 bottom-0 left-0 max-w-xs w-full bg-brand-light border-r border-brand-border z-50 p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-300">
         <div>
             <div class="flex items-center justify-between pb-6 border-b border-brand-border">
-                <h4 class="font-syne font-bold text-lg text-brand-dark">🛍️ Shopping Cart</h4>
-                <button id="close-cart-btn" class="text-gray-400 hover:text-brand-pink">✕</button>
+                <a href="#" class="font-syne text-xl font-bold tracking-tight text-brand-dark">
+                    ROGUE<span class="text-brand-pink font-light italic">WEAR</span>
+                </a>
+                <button id="close-mobile-menu" class="p-2 text-gray-400 hover:text-brand-pink transition-colors">
+                    ✕
+                </button>
             </div>
-            <div id="cart-items-list" class="overflow-y-auto max-h-[60vh] mt-4">
-                </div>
-        </div>
-        <div id="cart-summary-box" class="border-t border-brand-border pt-6 hidden">
-            <div class="flex justify-between font-bold text-brand-dark mb-4"><span class="font-syne">Total Amount</span><span id="cart-total">LKR 0</span></div>
-            <button onclick="checkoutCart()" class="w-full bg-brand-dark hover:bg-brand-pink text-brand-light font-syne font-bold text-xs uppercase py-4 rounded-xl transition-all cursor-pointer">Proceed to Secure Checkout &rarr;</button>
-        </div>
-    </div>
-
-    <div id="wishlist-drawer" class="fixed top-0 bottom-0 right-0 max-w-md w-full bg-brand-light border-l border-brand-border z-50 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
-        <div>
-            <div class="flex items-center justify-between pb-6 border-b border-brand-border"><h4 class="font-syne font-bold text-lg text-brand-dark">🤍 Saved Wishlist</h4><button id="close-wishlist-btn" class="text-gray-400 hover:text-brand-pink">✕</button></div>
-            <div id="wishlist-items-list" class="overflow-y-auto max-h-[75vh] mt-4 pr-1"></div>
-        </div>
-    </div>
-
-    <div id="search-overlay" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 flex flex-col items-center justify-start pt-28 px-6 hidden">
-        <div class="max-w-xl w-full space-y-6">
-            <div class="flex items-center justify-between"><h4 class="font-syne text-white text-lg font-bold">Search the Syndicate Drops</h4><button id="close-search-btn" class="text-gray-400 hover:text-white">✕ Close</button></div>
-            <div class="relative w-full">
-                <input type="text" id="search-input" placeholder="Type tee, hoodie, cargo..." class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-brand-pink text-sm font-outfit">
+            
+            <!-- Theme Toggle Mobile -->
+            <div class="flex items-center justify-between mt-6 pb-4 border-b border-brand-border">
+                <span class="text-xs font-syne font-bold uppercase tracking-wider text-gray-400">Dark Mode</span>
+                <button id="theme-toggle-btn-mobile" class="w-12 h-6 bg-gray-200 dark:bg-brand-pink rounded-full p-0.5 transition-colors duration-200 focus:outline-none relative cursor-pointer">
+                    <span class="w-5 h-5 bg-white rounded-full shadow-md transform translate-x-0 dark:translate-x-6 transition-transform duration-200 block" id="toggle-dot-mobile"></span>
+                </button>
             </div>
-            <div id="search-results" class="bg-brand-card rounded-custom-lg p-4 max-h-[50vh] overflow-y-auto space-y-2 shadow-2xl"></div>
+            
+            <nav class="flex flex-col gap-5 mt-6 font-syne text-lg font-bold">
+                <a href="#" class="hover:text-brand-pink transition-colors">Home</a>
+                <a href="#categories" class="hover:text-brand-pink transition-colors">Categories</a>
+                <a href="#shop" class="hover:text-brand-pink transition-colors">Shop Drops</a>
+                <a href="#discount-banner" class="hover:text-brand-pink transition-colors">Vouchers</a>
+                <a href="#footer" class="hover:text-brand-pink transition-colors">Contact</a>
+            </nav>
+        </div>
+
+        <div class="border-t border-brand-border pt-6">
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-outfit">Support Colombo</span>
+            <div class="text-xs font-bold text-brand-dark mt-1">📞 +94 77 123 4567</div>
+            <div class="text-xs text-gray-400 mt-1">✉️ syndicate@roguewear.lk</div>
         </div>
     </div>
 
-<section class="relative min-h-screen pt-28 pb-16 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto flex flex-col justify-center">
-        <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-12">
+    <!-- 3. HERO SECTION (Asymmetrical layout like Olixtive Digital) -->
+    <section class="relative min-h-screen pt-28 pb-16 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto flex flex-col justify-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-8">
+            
+            <!-- Left Grid: Bold Typography & CTAs (7 Columns) -->
             <div class="lg:col-span-7 space-y-8 z-10 reveal">
+                <!-- Glowing Badges -->
                 <div class="flex flex-wrap gap-2.5">
-                    <span class="text-[10px] uppercase tracking-[0.2em] text-brand-pink font-bold bg-brand-pink/10 px-4 py-1.5 rounded-full font-syne">/ Streetwear Syndicate Sri Lanka</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-brand-pink font-bold bg-brand-pink/10 px-4 py-1.5 rounded-full font-syne">
+                        / Streetwear Syndicate Sri Lanka
+                    </span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-gray-600 bg-gray-100 px-4 py-1.5 rounded-full font-outfit">
+                        Durable Sticker Prints
+                    </span>
                 </div>
+
+                <!-- Expressive Heading (Syne font with high contrast) -->
                 <h1 class="font-syne text-5xl sm:text-6xl lg:text-[76px] leading-[0.95] tracking-tighter text-brand-dark font-extrabold">
                     Stay ahead of <br class="hidden sm:inline">the street curve. <br>
                     <span class="text-outline-pink font-light italic">rogue fashion</span>
                 </h1>
-                <p class="text-gray-500 text-sm font-light leading-relaxed">
-                    Heavyweight 260GSM tees printed with premium, crack-resistant sticker graphics. Engineered in Sri Lanka.
+
+                <!-- Body Copy (Jakarta Sans) -->
+                <p class="text-gray-500 text-sm sm:text-base max-w-lg font-light leading-relaxed font-jakarta">
+                    Heavyweight 260GSM tees printed with premium, crack-resistant sticker graphics and decals. Engineered in Sri Lanka, combining rich cultural elements with high-end cyberpunk street style.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#shop" class="group px-8 py-3.5 bg-black hover:bg-brand-pink text-white font-syne font-bold text-xs uppercase tracking-wider rounded-full shadow-xl transition-all flex items-center gap-3">Explore Drops <span class="flex items-center justify-center bg-white/20 rounded-full p-1.5 text-[10px]">&rarr;</span></a>
+
+                <!-- Actions (Pill buttons with circles inside) -->
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#shop" class="group px-8 py-3.5 bg-black hover:bg-brand-pink text-white font-syne font-bold text-xs uppercase tracking-wider rounded-full shadow-xl transition-all flex items-center gap-3">
+                        Explore Drops 
+                        <span class="flex items-center justify-center bg-white/20 rounded-full p-1.5 text-[10px] group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </a>
+                    <a href="#categories" class="px-8 py-3.5 border border-gray-200 hover:border-black text-brand-dark font-syne font-bold text-xs uppercase tracking-wider rounded-full transition-all">
+                        Explore Categories
+                    </a>
+                </div>
+
+                <!-- Trust signals/Metrics flat list -->
+                <div class="grid grid-cols-3 gap-6 pt-6 border-t border-gray-100 max-w-md">
+                    <div>
+                        <div class="font-syne text-2xl font-bold text-brand-dark">260+</div>
+                        <div class="text-[9px] text-gray-400 uppercase tracking-widest font-outfit mt-0.5">Heavyweight GSM</div>
+                    </div>
+                    <div>
+                        <div class="font-syne text-2xl font-bold text-brand-dark">100%</div>
+                        <div class="text-[9px] text-gray-400 uppercase tracking-widest font-outfit mt-0.5">Organic Cotton</div>
+                    </div>
+                    <div>
+                        <div class="font-syne text-2xl font-bold text-brand-dark">Colombo</div>
+                        <div class="text-[9px] text-gray-400 uppercase tracking-widest font-outfit mt-0.5">Street Cultured</div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Right Grid: Premium Graphic Tee Display (5 Columns) -->
             <div class="lg:col-span-5 relative flex justify-center lg:justify-end reveal">
-                <div class="relative w-full max-w-sm aspect-[4/5] rounded-custom-xl overflow-hidden shadow-2xl border border-gray-100 animate-float hero-card-glow-hover bg-gray-50">
-                    <img src="assets/images/hero.png" alt="Rogue Wear Model" class="w-full h-full object-cover">
+                <!-- Background decorative glowing circle -->
+                <div class="absolute w-72 h-72 bg-brand-pink/5 rounded-full filter blur-3xl -z-10 -top-8 -left-8 animate-pulse-glow"></div>
+                
+                <!-- Large Round Border Card Image -->
+                <div class="relative w-full max-w-sm sm:max-w-lg aspect-[4/5] rounded-custom-xl overflow-hidden shadow-2xl border border-gray-100 animate-float hero-card-glow-hover bg-gray-50">
+                    <img src="assets/image/hero.png" alt="Rogue Wear Model" class="w-full h-full object-cover">
+                    
+                    <!-- Floating Card Badges -->
+                    <div class="absolute bottom-6 left-6 right-6 p-4 bg-brand-card/75 backdrop-blur-md border border-brand-border rounded-2xl flex items-center justify-between">
+                        <div>
+                            <span class="text-[8px] text-gray-500 font-outfit uppercase tracking-wider">Featured Drop</span>
+                            <h4 class="font-syne text-sm font-bold text-brand-dark mt-0.5">Neo-Yaksha Heavy Tee</h4>
+                        </div>
+                        <span class="bg-brand-dark text-brand-light text-[10px] font-syne font-bold px-3 py-1.5 rounded-xl">LKR 3,800</span>
+                    </div>
                 </div>
             </div>
+
         </div>
     </section>
 
+    <!-- 4. CATEGORY SECTION (Showcase Grid) -->
     <section id="categories" class="py-24 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto border-t border-brand-border">
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
             <div class="space-y-3 max-w-xl reveal">
                 <span class="text-[10px] uppercase tracking-[0.25em] text-brand-pink font-bold bg-brand-pink/10 px-3 py-1 rounded-full">Curated Drops</span>
                 <h2 class="font-syne text-3xl sm:text-4xl lg:text-[46px] leading-none tracking-tight font-extrabold text-brand-dark">Shop by Category</h2>
+                <p class="text-gray-500 text-xs sm:text-sm font-light">Choose your style path. From oversized graphic silhouettes to high-utility tech trousers.</p>
             </div>
+            
+            <!-- Category Tabs (Interactive category filters) -->
             <div class="flex flex-wrap gap-2 reveal font-syne text-xs uppercase font-bold tracking-wider">
                 <button onclick="filterCategory('all', this)" class="category-tab px-5 py-3.5 bg-brand-dark text-brand-light rounded-full transition-all">All Pieces</button>
                 <button onclick="filterCategory('oversized-tees', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Oversized Tees</button>
@@ -139,97 +276,1279 @@
                 <button onclick="filterCategory('cargo-pants', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Utility Cargo</button>
             </div>
         </div>
+
+        <!-- 3-Column Card Layout for Showcase Previews -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border reveal bg-brand-gray-bg"><img src="assets/images/tee_yaksha.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div><div class="absolute bottom-0 inset-x-0 p-8"><h3 class="font-syne text-2xl text-white">Oversized Tees</h3></div></div>
-            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border reveal bg-brand-gray-bg"><img src="assets/images/hoodie.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div><div class="absolute bottom-0 inset-x-0 p-8"><h3 class="font-syne text-2xl text-white">Street Hoodies</h3></div></div>
-            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border reveal bg-brand-gray-bg"><img src="assets/images/cargo.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div><div class="absolute bottom-0 inset-x-0 p-8"><h3 class="font-syne text-2xl text-white">Utility Cargo</h3></div></div>
+            
+            <!-- Showcase 1: Oversized Tees -->
+            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border transition-all duration-500 hover:shadow-xl reveal bg-brand-gray-bg">
+                <img src="assets/image/tee_yaksha.png" alt="Oversized Tees" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                <div class="absolute bottom-0 inset-x-0 p-8 space-y-2">
+                    <span class="text-[9px] text-gray-300 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-wider">260 GSM Heavyweight</span>
+                    <h3 class="font-syne text-2xl text-white pt-2 flex items-center justify-between">Oversized Tees <span class="text-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">&nearr;</span></h3>
+                    <p class="text-xs text-gray-400 font-light font-jakarta">Durable screen & vinyl sticker graphics</p>
+                </div>
+            </div>
+
+            <!-- Showcase 2: Graphic Hoodies -->
+            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border transition-all duration-500 hover:shadow-xl reveal bg-brand-gray-bg">
+                <img src="assets/image/hoodie.png" alt="Street Hoodies" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                <div class="absolute bottom-0 inset-x-0 p-8 space-y-2">
+                    <span class="text-[9px] text-gray-300 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-wider">400 GSM Fleece</span>
+                    <h3 class="font-syne text-2xl text-white pt-2 flex items-center justify-between">Street Hoodies <span class="text-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">&nearr;</span></h3>
+                    <p class="text-xs text-gray-400 font-light font-jakarta">Thick fleece with premium vinyl prints</p>
+                </div>
+            </div>
+
+            <!-- Showcase 3: Cargo Pants -->
+            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border transition-all duration-500 hover:shadow-xl reveal bg-brand-gray-bg">
+                <img src="assets/image/cargo.png" alt="Utility Cargo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                <div class="absolute bottom-0 inset-x-0 p-8 space-y-2">
+                    <span class="text-[9px] text-gray-300 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-wider">Ripstop Techwear</span>
+                    <h3 class="font-syne text-2xl text-white pt-2 flex items-center justify-between">Utility Cargo <span class="text-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">&nearr;</span></h3>
+                    <p class="text-xs text-gray-400 font-light font-jakarta">Utility functional streetwear details</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
+    <!-- 5. DISCOUNT & TIMER VOUCHER SECTION (Rich Deep Purple Banner like Olixtive screenshot) -->
     <section id="discount-banner" class="px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto mb-24 reveal">
         <div class="bg-purple-gradient-animated text-white rounded-custom-xl p-8 sm:p-12 lg:p-16 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl border border-white/5">
+            
+            <!-- Absolute background decorative wavy paths -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,59,151,0.15),transparent_40%)] pointer-events-none"></div>
+            
+            <!-- Left content: Deal information & copy coupon code -->
             <div class="space-y-5 max-w-xl text-center lg:text-left z-10">
-                <span class="text-[10px] bg-brand-pink text-white font-bold font-syne px-4 py-1.5 rounded-full uppercase tracking-wider">% Special Drops Offer</span>
-                <h2 class="font-syne text-3xl sm:text-4xl lg:text-[48px] leading-[1.05] font-extrabold text-white">Unlock Premium Street Style. <br>Get 10% Discount.</h2>
+                <span class="text-[10px] bg-brand-pink text-white font-bold font-syne px-4 py-1.5 rounded-full uppercase tracking-wider">
+                    % Special Drops Offer
+                </span>
+                <h2 class="font-syne text-3xl sm:text-4xl lg:text-[48px] leading-[1.05] font-extrabold text-white">
+                    Unlock Premium Street Style. <br>Get 10% Discount.
+                </h2>
+                <p class="text-gray-400 text-xs sm:text-sm font-light font-jakarta">
+                    Join the syndicate today. Copy the promo code below and apply at checkout. Enjoy free delivery inside Sri Lanka for orders above LKR 15,000.
+                </p>
+                
+                <!-- Interactive Copy Coupon Box -->
                 <div class="flex justify-center lg:justify-start pt-2">
                     <button id="coupon-code-box" class="relative group bg-white/10 hover:bg-white hover:text-black border border-white/10 rounded-2xl px-6 py-4 flex items-center gap-4 transition-all duration-300 cursor-pointer shadow-lg">
                         <div class="text-left">
-                            <div class="text-[8px] uppercase tracking-wider text-brand-pink font-semibold">Voucher Coupon</div>
+                            <div class="text-[8px] uppercase tracking-wider text-brand-pink font-semibold group-hover:text-black/60">Voucher Coupon</div>
                             <div class="font-mono text-lg font-bold tracking-widest">ROGUE10</div>
                         </div>
-                        <span class="text-[10px] font-syne font-bold uppercase text-brand-pink"><span class="check-icon hidden">✓</span> COPY CODE</span>
+                        <div class="h-8 w-[1px] bg-white/20 group-hover:bg-black/10"></div>
+                        <span class="text-[10px] font-syne font-bold uppercase tracking-wider text-brand-pink group-hover:text-black flex items-center gap-1.5">
+                            <span class="check-icon hidden">✓</span> COPY CODE
+                        </span>
                     </button>
                 </div>
             </div>
+
+            <!-- Right content: Large active digital countdown timer blocks -->
             <div class="flex flex-col items-center gap-4 z-10 shrink-0">
                 <span class="text-[9px] uppercase tracking-widest text-gray-400 font-outfit">Voucher Code Expires In</span>
+                
                 <div class="flex gap-4">
-                    <div class="flex flex-col items-center bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl w-16 h-20 justify-center"><span class="text-2xl font-bold font-mono text-white" id="timer-hours">14</span><span class="text-[8px] text-gray-400 uppercase mt-1">Hours</span></div>
-                    <div class="flex flex-col items-center bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl w-16 h-20 justify-center"><span class="text-2xl font-bold font-mono text-white" id="timer-mins">32</span><span class="text-[8px] text-gray-400 uppercase mt-1">Mins</span></div>
-                    <div class="flex flex-col items-center bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl w-16 h-20 justify-center"><span class="text-2xl font-bold font-mono text-brand-pink" id="timer-secs">10</span><span class="text-[8px] text-gray-400 uppercase mt-1">Secs</span></div>
+                    <!-- Hours Block -->
+                    <div class="flex flex-col items-center bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl w-16 h-20 justify-center shadow-lg">
+                        <span class="text-2xl font-bold font-mono text-white" id="timer-hours">14</span>
+                        <span class="text-[8px] text-gray-400 uppercase tracking-widest font-semibold mt-1">Hours</span>
+                    </div>
+                    <span class="text-2xl text-brand-pink font-light pt-5 animate-pulse-glow">:</span>
+                    
+                    <!-- Mins Block -->
+                    <div class="flex flex-col items-center bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl w-16 h-20 justify-center shadow-lg">
+                        <span class="text-2xl font-bold font-mono text-white" id="timer-mins">32</span>
+                        <span class="text-[8px] text-gray-400 uppercase tracking-widest font-semibold mt-1">Mins</span>
+                    </div>
+                    <span class="text-2xl text-brand-pink font-light pt-5 animate-pulse-glow">:</span>
+                    
+                    <!-- Secs Block -->
+                    <div class="flex flex-col items-center bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl w-16 h-20 justify-center shadow-lg">
+                        <span class="text-2xl font-bold font-mono text-brand-pink" id="timer-secs">10</span>
+                        <span class="text-[8px] text-gray-400 uppercase tracking-widest font-semibold mt-1">Secs</span>
+                    </div>
                 </div>
+
+                <a href="#shop" class="mt-4 px-6 py-3 bg-brand-pink hover:bg-white hover:text-black text-white text-[11px] font-syne font-bold uppercase tracking-wider rounded-xl transition-all shadow-xl">
+                    Claim Discount Now
+                </a>
             </div>
+            
         </div>
     </section>
 
+    <!-- 6. TRENDING NEW ARRIVALS SHOP GRID -->
     <section id="shop" class="py-12 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto mb-20">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
             <div class="space-y-2 max-w-md reveal">
                 <span class="text-[10px] text-brand-pink font-bold uppercase tracking-widest font-syne">Highly Demanded</span>
                 <h2 class="font-syne text-3xl sm:text-4xl font-extrabold text-brand-dark">Trending New Arrivals</h2>
+                <p class="text-gray-500 text-xs font-light">Fresh drops selected from our latest catalog collections.</p>
+            </div>
+            <div class="reveal">
+                <a href="#categories" class="text-xs font-syne font-bold text-brand-dark tracking-wider uppercase hover:text-brand-pink transition-colors inline-flex items-center gap-1.5 group">
+                    View Entire Shop <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                </a>
             </div>
         </div>
+
+        <!-- Product Grid (Populated dynamically by JavaScript) -->
         <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="col-span-full text-center py-16"><span class="font-syne text-sm text-gray-400 uppercase animate-pulse">Loading Drops Syndicate...</span></div>
+            <!-- Loader fallback while JS finishes rendering -->
+            <div class="col-span-full text-center py-16">
+                <span class="font-syne text-sm text-gray-400 uppercase animate-pulse">Loading Drops Syndicate...</span>
+            </div>
         </div>
     </section>
 
+    <!-- 7. NEWSLETTER SECTION -->
     <section class="px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto mb-24 reveal">
         <div class="bg-brand-card border border-brand-border rounded-custom-xl p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm">
             <div class="space-y-2 max-w-xl text-center lg:text-left">
                 <h3 class="font-syne text-2xl sm:text-3xl font-extrabold text-brand-dark">Join the Rogue Syndicate</h3>
-                <p class="text-xs text-gray-400 font-light">Get early access alerts to exclusive graphic t-shirt drops.</p>
+                <p class="text-xs sm:text-sm text-gray-400 font-light font-jakarta">Get early access alerts to exclusive graphic t-shirt drops, private discounts, and size restocks before everyone else.</p>
             </div>
             <form id="newsletter-form" class="flex flex-col sm:flex-row w-full lg:max-w-md gap-3">
-                <input type="email" placeholder="Enter your email address" required class="w-full bg-brand-light border border-brand-border rounded-2xl px-5 py-3.5 text-xs focus:outline-none focus:border-brand-pink">
-                <button type="submit" class="bg-black text-white font-syne font-bold text-xs tracking-wider uppercase px-8 py-3.5 rounded-2xl cursor-pointer">Subscribe</button>
+                <input type="email" placeholder="Enter your email address" required class="w-full bg-brand-light border border-brand-border rounded-2xl px-5 py-3.5 text-xs text-brand-dark focus:outline-none focus:border-brand-pink font-outfit" aria-label="Email Address">
+                <button type="submit" class="bg-black hover:bg-brand-pink text-white font-syne font-bold text-xs tracking-wider uppercase px-8 py-3.5 rounded-2xl transition-colors cursor-pointer shadow-lg shrink-0">
+                    Subscribe
+                </button>
             </form>
         </div>
     </section>
 
+    <!-- 8. FOOTER SECTION (Modern design with outline title matching reference) -->
     <footer id="footer" class="bg-brand-card border-t border-brand-border pt-20 pb-8 px-6 sm:px-12 lg:px-20 text-brand-dark relative overflow-hidden">
         <div class="max-w-[1536px] mx-auto space-y-16">
+            
+            <!-- Trust Signals Grid (Premium features) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-16 border-b border-brand-border">
+                <div class="flex gap-4 items-start reveal">
+                    <span class="text-3xl text-brand-pink bg-brand-pink/5 w-14 h-14 rounded-2xl flex items-center justify-center shrink-0">✨</span>
+                    <div>
+                        <h5 class="font-syne text-base font-bold text-brand-dark">Durable Decals & Prints</h5>
+                        <p class="text-xs text-gray-400 font-light pt-1 leading-relaxed">We use premium, high-density sticker vinyl graphics and screen decals that do not crack, peel, or fade, even after 100+ heavy machine washes.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start reveal" style="transition-delay: 100ms;">
+                    <span class="text-3xl text-brand-pink bg-brand-pink/5 w-14 h-14 rounded-2xl flex items-center justify-center shrink-0">🪡</span>
+                    <div>
+                        <h5 class="font-syne text-base font-bold text-brand-dark">Premium Street Fit</h5>
+                        <p class="text-xs text-gray-400 font-light pt-1 leading-relaxed">Every graphic decal is heat-pressed carefully on combed heavyweight organic cotton (260GSM) for that premium boxy fit and durable structure.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start reveal" style="transition-delay: 200ms;">
+                    <span class="text-3xl text-brand-pink bg-brand-pink/5 w-14 h-14 rounded-2xl flex items-center justify-center shrink-0">📦</span>
+                    <div>
+                        <h5 class="font-syne text-base font-bold text-brand-dark">Free Sticker Packs</h5>
+                        <p class="text-xs text-gray-400 font-light pt-1 leading-relaxed">Your orders are delivered in custom matte boxes. Every parcel includes a premium collectible die-cut streetwear sticker pack of our designs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Main Columns -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pt-4">
                 <div class="space-y-4">
                     <h3 class="font-syne text-2xl font-bold">ROGUE<span class="text-brand-pink font-light italic">WEAR</span></h3>
-                    <p class="text-xs text-gray-400 font-light font-jakarta">Premium Sri Lankan Streetwear & Graphic Printed Tees.</p>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-jakarta">Premium Sri Lankan Streetwear & Graphic Printed Tees. Engineered with bold, crack-resistant sticker graphics for rule-breaking minds.</p>
                 </div>
+                
                 <div class="space-y-4">
-                    <h5 class="text-xs font-syne font-bold uppercase text-brand-pink">Explore</h5>
-                    <ul class="text-xs text-gray-500 font-medium space-y-2.5">
-                        <li><a href="#shop" class="hover:text-black">Oversized T-Shirts</a></li>
-                        <li><a href="#shop" class="hover:text-black">Graphic Hoodies</a></li>
+                    <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Explore Collections</h5>
+                    <ul class="text-xs text-gray-500 font-medium space-y-2.5 font-outfit">
+                        <li><a href="#shop" class="hover:text-black transition-colors">Oversized T-Shirts</a></li>
+                        <li><a href="#shop" class="hover:text-black transition-colors">Graphic Hoodies</a></li>
+                        <li><a href="#shop" class="hover:text-black transition-colors">Tech Cargo Pants</a></li>
+                        <li><a href="#shop" class="hover:text-black transition-colors">Limited Drop Series</a></li>
                     </ul>
                 </div>
+                
+                <div class="space-y-4">
+                    <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Syndicate Support</h5>
+                    <ul class="text-xs text-gray-500 font-medium space-y-2.5 font-outfit">
+                        <li><a href="#" class="hover:text-black transition-colors">Shipping & Exchanges</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Care Instructions</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Vouchers Policy</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Privacy Terms</a></li>
+                    </ul>
+                </div>
+                
+                <div class="space-y-4">
+                    <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Syndicate HQ</h5>
+                    <ul class="text-xs text-gray-500 space-y-2.5 font-jakarta font-light">
+                        <li>📍 Colombo 07, Sri Lanka.</li>
+                        <li>📞 +94 77 123 4567</li>
+                        <li>✉️ syndicate@roguewear.lk</li>
+                    </ul>
+                    <div class="flex gap-3 text-sm pt-2 text-gray-400">
+                        <a href="https://instagram.com" target="_blank" class="hover:text-brand-pink transition-colors">📸 Instagram</a>
+                        <a href="https://facebook.com" target="_blank" class="hover:text-brand-pink transition-colors">🌐 Facebook</a>
+                    </div>
+                </div>
             </div>
+
+            <!-- Massive Outline Decorative text matching Footer Branding in Olixtive screenshot -->
             <div class="pt-8 text-center select-none pointer-events-none">
-                <div class="font-syne text-[8vw] font-black tracking-tighter leading-none text-outline uppercase">Rogue Wear</div>
+                <div class="font-syne text-[8vw] font-black tracking-tighter leading-none text-outline uppercase">
+                    Rogue Wear
+                </div>
             </div>
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-gray-100 text-[10px] text-gray-400">
-                <span>© 2026 Rogue Wear Sri Lanka. All rights reserved.</span>
-                <div class="flex gap-2 font-mono text-[9px] font-bold"><span class="bg-gray-50 border border-gray-200 px-2.5 py-1 rounded">VISA</span><span class="bg-gray-50 border border-gray-200 px-2.5 py-1 rounded">COD</span></div>
+
+            <!-- Copyright and Payment badges -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-gray-100 text-[10px] text-gray-400 font-outfit">
+                <span>© 2026 Rogue Wear Sri Lanka. Engineered for Vercel. All rights reserved.</span>
+                <div class="flex gap-2 font-mono text-[9px] font-bold">
+                    <span class="bg-gray-50 border border-gray-200 px-2.5 py-1 rounded">VISA</span>
+                    <span class="bg-gray-50 border border-gray-200 px-2.5 py-1 rounded">MASTERCARD</span>
+                    <span class="bg-gray-50 border border-gray-200 px-2.5 py-1 rounded">KOKO PAY</span>
+                    <span class="bg-gray-50 border border-gray-200 px-2.5 py-1 rounded">COD</span>
+                </div>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/94771234567" target="_blank" class="fixed bottom-6 right-6 bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-35 text-2xl">💬</a>
+    <!-- 9. INTERACTIVE SLIDE-OUT DRAWERS (Wishlist & Cart Panels) -->
+    <!-- Drawer Overlay Backdrop -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/60 z-40 hidden backdrop-blur-sm"></div>
 
-    <script src="assets/js/main.js"></script>
+    <!-- A. Cart Drawer -->
+    <div id="cart-drawer" class="fixed top-0 bottom-0 right-0 max-w-md w-full bg-brand-light border-l border-brand-border z-50 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-brand-border">
+                <h4 class="font-syne font-bold text-lg text-brand-dark flex items-center gap-2">
+                    🛍️ Shopping Cart <span class="cart-count-badge bg-brand-dark text-brand-light text-[10px] px-2 py-0.5 rounded-full">0</span>
+                </h4>
+                <button id="close-cart-btn" class="p-2 text-gray-400 hover:text-brand-pink transition-colors">
+                    ✕
+                </button>
+            </div>
+            <!-- Cart Items List Container -->
+            <div id="cart-items-list" class="overflow-y-auto max-h-[60vh] mt-4 pr-1">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <!-- Checkout / Summary Area -->
+        <div id="cart-summary-box" class="border-t border-brand-border pt-6 space-y-4 hidden">
+            <div class="space-y-1.5 text-xs text-gray-400 font-outfit">
+                <div class="flex justify-between">
+                    <span>Cart Subtotal</span>
+                    <span id="cart-subtotal" class="font-bold text-brand-dark">LKR 0</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Shipping Delivery</span>
+                    <span id="cart-shipping" class="font-bold text-brand-dark">LKR 350</span>
+                </div>
+                <div class="flex justify-between text-base font-bold text-brand-dark pt-1 border-t border-brand-border">
+                    <span class="font-syne">Total Amount</span>
+                    <span id="cart-total" class="font-outfit">LKR 0</span>
+                </div>
+            </div>
+            
+            <button onclick="checkoutCart()" class="w-full bg-brand-dark hover:bg-brand-pink text-brand-light font-syne font-bold text-xs uppercase tracking-wider py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer">
+                Proceed to Secure Checkout &rarr;
+            </button>
+        </div>
+    </div>
+
+    <!-- B. Wishlist Drawer -->
+    <div id="wishlist-drawer" class="fixed top-0 bottom-0 right-0 max-w-md w-full bg-brand-light border-l border-brand-border z-50 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-brand-border">
+                <h4 class="font-syne font-bold text-lg text-brand-dark flex items-center gap-2">
+                    🤍 Saved Wishlist <span class="wishlist-count-badge bg-brand-dark text-brand-light text-[10px] px-2 py-0.5 rounded-full">0</span>
+                </h4>
+                <button id="close-wishlist-btn" class="p-2 text-gray-400 hover:text-brand-pink transition-colors">
+                    ✕
+                </button>
+            </div>
+            <!-- Wishlist Items List Container -->
+            <div id="wishlist-items-list" class="overflow-y-auto max-h-[75vh] mt-4 pr-1">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. INTERACTIVE SEARCH OVERLAY MODAL -->
+    <div id="search-overlay" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 flex flex-col items-center justify-start pt-28 px-6 hidden">
+        <div class="max-w-xl w-full space-y-6">
+            <div class="flex items-center justify-between">
+                <h4 class="font-syne text-white text-lg font-bold">Search the Syndicate Drops</h4>
+                <button id="close-search-btn" class="text-gray-400 hover:text-white text-lg">✕ Close</button>
+            </div>
+            
+            <div class="relative w-full">
+                <input type="text" id="search-input" placeholder="Type tee, hoodie, cargo..." class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-brand-pink focus:bg-white/15 transition-all text-sm font-outfit">
+                <span class="absolute right-6 top-4.5 text-gray-400">🔍</span>
+            </div>
+
+            <!-- Live Search Results Box -->
+            <div id="search-results" class="bg-brand-card rounded-custom-lg p-4 max-h-[50vh] overflow-y-auto space-y-2 shadow-2xl">
+                <!-- Dynamically populated matching results -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. FLOATING WHATSAPP STICKER (Colombo Support Contact) -->
+    <a href="https://wa.me/94771234567?text=Hi%20Rogue%20Wear,%20I%20am%20interested%20in%20your%20streetwear%20drops!" target="_blank" class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-35 text-2xl" aria-label="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.498 1.452 5.411 1.453 5.476 0 9.932-4.437 9.935-9.912.002-2.65-1.02-5.14-2.877-7.001C17.259 1.83 14.773.804 12.113.804c-5.483 0-9.94 4.439-9.943 9.914-.001 1.965.513 3.888 1.49 5.62l-.979 3.573 3.666-.957zm11.587-5.72c-.1-.166-.36-.266-.757-.465-.398-.2-.2.348-2.355-2.148-.396-.199-.693-.166-.928.099-.236.265-.928.099-1.144.132-.215-.264-.479-.464-.693-.695-.31-.3-.615-.658-.87-1.055-.256-.4-.539-.81-.616-1.077-.078-.266-.008-.41.09-.51.1-.1.216-.25.323-.376.108-.125.143-.215.215-.363.07-.15.035-.28-.018-.38-.052-.1-.479-1.157-.657-1.587-.173-.42-.349-.364-.479-.37-.123-.006-.264-.007-.406-.007-.143 0-.376.053-.572.266-.196.212-.751.734-.751 1.79 0 1.057.77 2.08.878 2.224.108.146 1.516 2.315 3.673 3.247.513.221.913.353 1.225.451.515.164.984.14 1.355.086.413-.062 1.27-.518 1.45-.992.181-.474.181-.88.127-.965l-.36-.266z"/>
+        </svg>
+    </a>
+
+    <!-- Embed JavaScript Code Inline -->
+    <script>
+        // Mock Products Database
+        const PRODUCTS = [
+            {
+                id: 'tee-yaksha',
+                name: 'Yaksha Cyberpunk Tee',
+                category: 'oversized-tees',
+                categoryLabel: 'Oversized Tee',
+                price: 3800,
+                image: 'assets/image/tee_yaksha.png',
+                badge: 'Best Seller',
+                rating: 4.9,
+                reviews: 42,
+                description: 'Heavyweight 260GSM 100% premium cotton oversized t-shirt. Features a vibrant cyber-neon neo-traditional Sri Lankan Yaksha mask graphic print on the back.'
+            },
+            {
+                id: 'tee-colombo',
+                name: 'Colombo Souls Type Tee',
+                category: 'oversized-tees',
+                categoryLabel: 'Oversized Tee',
+                price: 3200,
+                image: 'assets/image/tee_colombo.png',
+                badge: 'New Drop',
+                rating: 4.7,
+                reviews: 28,
+                description: '240GSM drop shoulder t-shirt. Minimalist front print with futuristic graphic layout and Colombo coordinates typography on the back.'
+            },
+            {
+                id: 'tee-cyber',
+                name: 'Neon Shadows Skull Tee',
+                category: 'oversized-tees',
+                categoryLabel: 'Oversized Tee',
+                price: 3500,
+                image: 'assets/image/tee_cyber.png',
+                badge: 'Hot Product',
+                rating: 4.8,
+                reviews: 35,
+                description: 'Futuristic streetwear oversized tee featuring an detailed glowing helmet skull graphic print, engineered for perfect boxy fit.'
+            },
+            {
+                id: 'tee-minimal',
+                name: 'Rogue Heavyweight Tee',
+                category: 'oversized-tees',
+                categoryLabel: 'Minimal Tee',
+                price: 2900,
+                image: 'assets/image/tee_minimal.png',
+                badge: 'Essentials',
+                rating: 4.6,
+                reviews: 19,
+                description: 'Pure organic combed heavyweight cotton t-shirt in concrete gray. Features clean, high-density black embroidered logo on the chest.'
+            },
+            {
+                id: 'tee-reaper',
+                name: 'Soul Reaper Graphic Tee',
+                category: 'oversized-tees',
+                categoryLabel: 'Oversized Tee',
+                price: 3400,
+                image: 'assets/image/tee_cyber.png',
+                badge: 'Trending',
+                rating: 4.8,
+                reviews: 17,
+                description: '260GSM drop shoulder t-shirt. Features a dark-art illustrative skeleton reaper design print in detailed retro-anime halftone style.'
+            },
+            {
+                id: 'hoodie-cyber',
+                name: 'Cybernetic Violet Hoodie',
+                category: 'graphic-hoodies',
+                categoryLabel: 'Street Hoodie',
+                price: 6500,
+                image: 'assets/image/hoodie.png',
+                badge: 'Limited Drop',
+                rating: 5.0,
+                reviews: 14,
+                description: 'Ultra-heavy 400GSM organic cotton hoodie in rich dark violet with neon magenta glowing embroidery accents. Double-layered hood.'
+            },
+            {
+                id: 'hoodie-classic',
+                name: 'Rogue Heavy Black Hoodie',
+                category: 'graphic-hoodies',
+                categoryLabel: 'Street Hoodie',
+                price: 6200,
+                image: 'assets/image/hoodie.png',
+                badge: 'Essentials',
+                rating: 4.9,
+                reviews: 29,
+                description: 'Super heavy 380GSM black fleece hoodie. Styled with custom embroidered branding on the sleeve and boxy oversized cut.'
+            },
+            {
+                id: 'cargo-pants',
+                name: 'Tech Utility Cargo Pants',
+                category: 'cargo-pants',
+                categoryLabel: 'Tech Cargo',
+                price: 5800,
+                image: 'assets/image/cargo.png',
+                badge: 'Utility',
+                rating: 4.8,
+                reviews: 22,
+                description: 'Water-resistant ripstop techwear cargo pants with multiple utility buckle pockets, adjustable strap details, and tailored streetwear cuffs.'
+            }
+        ];
+
+        // Safe localStorage wrapper to prevent SecurityError in sandboxed or file:// environments
+        const safeStorage = {
+            getItem(key) {
+                try {
+                    return localStorage.getItem(key);
+                } catch (e) {
+                    console.warn('localStorage.getItem blocked or unavailable:', e);
+                    return null;
+                }
+            },
+            setItem(key, value) {
+                try {
+                    localStorage.setItem(key, value);
+                } catch (e) {
+                    console.warn('localStorage.setItem blocked or unavailable:', e);
+                }
+            }
+        };
+
+        // App State Management (Safe initialization with Array validations)
+        let cart = [];
+        let wishlist = [];
+
+        try {
+            const savedCart = safeStorage.getItem('rogue_cart');
+            cart = savedCart ? JSON.parse(savedCart) : [];
+            if (!Array.isArray(cart)) {
+                cart = [];
+            }
+        } catch (e) {
+            console.error('Failed to parse cart:', e);
+            cart = [];
+        }
+
+        try {
+            const savedWishlist = safeStorage.getItem('rogue_wishlist');
+            wishlist = savedWishlist ? JSON.parse(savedWishlist) : [];
+            if (!Array.isArray(wishlist)) {
+                wishlist = [];
+            }
+        } catch (e) {
+            console.error('Failed to parse wishlist:', e);
+            wishlist = [];
+        }
+
+        // Initializer function with individual try-catch blocks
+        function initApp() {
+            console.log("Initializing Rogue Wear app...");
+            
+            const initializers = [
+                { name: 'Theme Toggle', fn: initThemeToggle },
+                { name: 'Reveal Animations', fn: initRevealAnimations },
+                { name: 'Countdown Timer', fn: initCountdownTimer },
+                { name: 'Products Rendering', fn: renderProducts },
+                { name: 'Side Drawers', fn: initSideDrawers },
+                { name: 'Counters', fn: () => { updateCartCounter(); updateWishlistCounter(); } },
+                { name: 'Coupon Copy', fn: initCouponCopy },
+                { name: 'Search Overlay', fn: initSearchOverlay },
+                { name: 'Mobile Menu', fn: initMobileMenu },
+                { name: 'Newsletter Form', fn: initNewsletterForm }
+            ];
+
+            initializers.forEach(init => {
+                try {
+                    init.fn();
+                } catch (e) {
+                    console.error(`Failed to initialize ${init.name}:`, e);
+                }
+            });
+        }
+
+        // Safe DOM Load execution
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            initApp();
+        } else {
+            document.addEventListener('DOMContentLoaded', initApp);
+        }
+
+        // Scroll Progress Bar calculation listener
+        window.addEventListener('scroll', () => {
+            const bar = document.getElementById('scroll-progress');
+            if (!bar) return;
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            bar.style.width = scrolled + '%';
+        });
+
+        // --- 1. REVEAL ON SCROLL ---
+        function initRevealAnimations() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.01,
+                rootMargin: '0px 0px 100px 0px'
+            });
+
+            reveals.forEach(el => observer.observe(el));
+            
+            // Failsafe: Force reveal after short delay
+            setTimeout(() => {
+                reveals.forEach(el => {
+                    el.classList.add('revealed');
+                });
+            }, 800);
+        }
+
+        // --- 2. COUNTDOWN TIMER ---
+        function initCountdownTimer() {
+            const hoursEl = document.getElementById('timer-hours');
+            const minsEl = document.getElementById('timer-mins');
+            const secsEl = document.getElementById('timer-secs');
+
+            if (!hoursEl || !minsEl || !secsEl) return;
+
+            let targetTime = safeStorage.getItem('rogue_timer_target');
+            if (!targetTime) {
+                targetTime = new Date().getTime() + (14 * 60 * 60 * 1000) + (32 * 60 * 1000) + (10 * 1000); // 14h 32m 10s
+                safeStorage.setItem('rogue_timer_target', targetTime);
+            } else {
+                targetTime = parseInt(targetTime);
+                if (isNaN(targetTime)) {
+                    targetTime = new Date().getTime() + (14 * 60 * 60 * 1000);
+                    safeStorage.setItem('rogue_timer_target', targetTime);
+                }
+            }
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                let diff = targetTime - now;
+
+                // Reset target if expired
+                if (diff <= 0) {
+                    targetTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+                    safeStorage.setItem('rogue_timer_target', targetTime);
+                    diff = targetTime - now;
+                }
+
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minsEl.textContent = String(mins).padStart(2, '0');
+                secsEl.textContent = String(secs).padStart(2, '0');
+            }
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        // --- 3. RENDER PRODUCTS ---
+        let activeCategory = 'all';
+        let renderRetryCount = 0;
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            if (!grid) {
+                if (renderRetryCount < 10) {
+                    renderRetryCount++;
+                    setTimeout(renderProducts, 150);
+                }
+                return;
+            }
+
+            if (!Array.isArray(wishlist)) wishlist = [];
+            if (!Array.isArray(cart)) cart = [];
+
+            const filtered = activeCategory === 'all' 
+                ? PRODUCTS 
+                : PRODUCTS.filter(p => p.category === activeCategory);
+
+            grid.innerHTML = '';
+
+            filtered.forEach((product) => {
+                const isWishlisted = wishlist.includes(product.id);
+                const card = document.createElement('div');
+                card.className = `reveal bg-brand-card rounded-custom-lg p-4 border border-brand-border shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between streetwear-card`;
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative aspect-square rounded-2xl overflow-hidden bg-brand-gray-bg group mb-4">
+                            ${product.badge ? `<span class="absolute top-3 left-3 bg-black text-white text-[9px] font-syne uppercase tracking-wider font-bold px-3 py-1 rounded-full z-10">${product.badge}</span>` : ''}
+                            <button onclick="toggleWishlist('${product.id}')" id="wishlist-btn-${product.id}" class="absolute top-3 right-3 w-9 h-9 bg-brand-card text-brand-dark hover:text-[#FF3B97] rounded-full flex items-center justify-center shadow-sm z-10 transition-colors cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5 ${isWishlisted ? 'fill-[#FF3B97] stroke-[#FF3B97]' : 'fill-none stroke-current'}" viewBox="0 0 24 24" stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                                </svg>
+                            </button>
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            
+                            <!-- Quick Add Hover Overlay -->
+                            <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex flex-col justify-end hidden sm:flex">
+                                <button onclick="addToCart('${product.id}')" class="w-full bg-white hover:bg-black hover:text-white text-black font-syne text-[11px] font-bold tracking-wider uppercase py-3 px-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                    </svg>
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="px-1">
+                            <span class="text-[10px] text-gray-400 font-outfit uppercase tracking-wider font-semibold">${product.categoryLabel}</span>
+                            <h4 class="font-syne text-md font-bold text-brand-dark mt-0.5 line-clamp-1 hover:text-[#FF3B97] cursor-pointer" onclick="openProductDetail('${product.id}')">${product.name}</h4>
+                            <div class="flex items-center gap-1.5 text-xs mt-1">
+                                <span class="text-[#FF3B97] font-bold">★ ${product.rating.toFixed(1)}</span>
+                                <span class="text-gray-400">(${product.reviews} reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-1 mt-4 flex items-center justify-between">
+                        <div class="font-outfit text-base font-bold text-brand-dark">LKR ${product.price.toLocaleString()}</div>
+                        <!-- Mobile Only Add Button -->
+                        <button onclick="addToCart('${product.id}')" class="sm:hidden w-8 h-8 bg-brand-dark text-brand-light rounded-full flex items-center justify-center shadow-md hover:bg-[#FF3B97] transition-all cursor-pointer">
+                            +
+                        </button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+
+            setTimeout(initRevealAnimations, 55);
+        }
+
+        // Category Filter Tabs
+        window.filterCategory = function(category, tabElement) {
+            activeCategory = category;
+            
+            const tabs = document.querySelectorAll('.category-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-brand-dark', 'text-brand-light');
+                tab.classList.add('bg-brand-card', 'text-brand-dark', 'border-brand-border');
+            });
+
+            tabElement.classList.remove('bg-brand-card', 'text-brand-dark', 'border-brand-border');
+            tabElement.classList.add('bg-brand-dark', 'text-brand-light');
+
+            renderProducts();
+        };
+
+        // --- 4. CART & WISHLIST DRAWERS ---
+        function initSideDrawers() {
+            const cartBtn = document.getElementById('nav-cart-btn');
+            const closeCartBtn = document.getElementById('close-cart-btn');
+            const cartDrawer = document.getElementById('cart-drawer');
+            const drawerOverlay = document.getElementById('drawer-overlay');
+
+            const wishlistBtn = document.getElementById('nav-wishlist-btn');
+            const closeWishlistBtn = document.getElementById('close-wishlist-btn');
+            const wishlistDrawer = document.getElementById('wishlist-drawer');
+
+            if (cartBtn && cartDrawer && drawerOverlay) {
+                cartBtn.addEventListener('click', () => {
+                    cartDrawer.classList.remove('translate-x-full');
+                    drawerOverlay.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden');
+                    renderCartItems();
+                });
+            }
+
+            if (closeCartBtn && cartDrawer && drawerOverlay) {
+                closeCartBtn.addEventListener('click', () => {
+                    cartDrawer.classList.add('translate-x-full');
+                    if (wishlistDrawer.classList.contains('translate-x-full')) {
+                        drawerOverlay.classList.add('hidden');
+                        document.body.classList.remove('overflow-hidden');
+                    }
+                });
+            }
+
+            if (wishlistBtn && wishlistDrawer && drawerOverlay) {
+                wishlistBtn.addEventListener('click', () => {
+                    wishlistDrawer.classList.remove('translate-x-full');
+                    drawerOverlay.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden');
+                    renderWishlistItems();
+                });
+            }
+
+            if (closeWishlistBtn && wishlistDrawer && drawerOverlay) {
+                closeWishlistBtn.addEventListener('click', () => {
+                    wishlistDrawer.classList.add('translate-x-full');
+                    if (cartDrawer.classList.contains('translate-x-full')) {
+                        drawerOverlay.classList.add('hidden');
+                        document.body.classList.remove('overflow-hidden');
+                    }
+                });
+            }
+
+            if (drawerOverlay) {
+                drawerOverlay.addEventListener('click', () => {
+                    if (cartDrawer) cartDrawer.classList.add('translate-x-full');
+                    if (wishlistDrawer) wishlistDrawer.classList.add('translate-x-full');
+                    drawerOverlay.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            }
+        }
+
+        // Render Cart items inside drawer
+        function renderCartItems() {
+            const listContainer = document.getElementById('cart-items-list');
+            const summaryContainer = document.getElementById('cart-summary-box');
+            
+            if (!listContainer || !summaryContainer) return;
+
+            if (!Array.isArray(cart) || cart.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-64 text-center p-6">
+                        <span class="text-3xl mb-3">🛍️</span>
+                        <h4 class="font-syne font-bold text-brand-dark text-lg">Your cart is empty</h4>
+                        <p class="text-xs text-gray-400 mt-1">Add items to get started on your streetwear style!</p>
+                    </div>
+                `;
+                summaryContainer.classList.add('hidden');
+                return;
+            }
+
+            summaryContainer.classList.remove('hidden');
+            listContainer.innerHTML = '';
+
+            let subtotal = 0;
+
+            cart.forEach((item, idx) => {
+                const prod = PRODUCTS.find(p => p.id === item.id);
+                if (!prod) return;
+
+                subtotal += prod.price * item.quantity;
+                const itemLi = document.createElement('div');
+                itemLi.className = 'flex items-center gap-4 py-4 border-b border-brand-border animate-item-fade';
+                itemLi.style.animationDelay = `${idx * 0.08}s`;
+                itemLi.innerHTML = `
+                    <img src="${prod.image}" alt="${prod.name}" class="w-16 h-16 rounded-xl object-cover bg-brand-gray-bg flex-shrink-0">
+                    <div class="flex-grow">
+                        <h5 class="font-syne text-sm font-bold text-brand-dark line-clamp-1">${prod.name}</h5>
+                        <span class="text-[10px] text-gray-400 font-outfit uppercase tracking-wider">${prod.categoryLabel} / ${item.size}</span>
+                        
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center border border-brand-border rounded-lg overflow-hidden bg-brand-card">
+                                <button onclick="changeCartQuantity('${item.id}', '${item.size}', -1)" class="px-2 py-0.5 text-xs text-gray-500 hover:bg-brand-gray-bg transition-colors">-</button>
+                                <span class="px-2 py-0.5 text-xs font-bold text-brand-dark font-outfit min-w-[20px] text-center">${item.quantity}</span>
+                                <button onclick="changeCartQuantity('${item.id}', '${item.size}', 1)" class="px-2 py-0.5 text-xs text-gray-500 hover:bg-brand-gray-bg transition-colors">+</button>
+                            </div>
+                            <span class="text-sm font-bold font-outfit text-brand-dark">LKR ${(prod.price * item.quantity).toLocaleString()}</span>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart('${item.id}', '${item.size}')" class="text-gray-300 hover:text-red-500 transition-colors p-1 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                    </button>
+                `;
+                listContainer.appendChild(itemLi);
+            });
+
+            document.getElementById('cart-subtotal').textContent = `LKR ${subtotal.toLocaleString()}`;
+            const shipping = subtotal > 15000 ? 'FREE' : 'LKR 350';
+            document.getElementById('cart-shipping').textContent = shipping;
+            
+            const finalTotal = subtotal + (subtotal > 15000 || subtotal === 0 ? 0 : 350);
+            document.getElementById('cart-total').textContent = `LKR ${finalTotal.toLocaleString()}`;
+        }
+
+        // Render Wishlist items inside drawer
+        function renderWishlistItems() {
+            const listContainer = document.getElementById('wishlist-items-list');
+            if (!listContainer) return;
+
+            if (!Array.isArray(wishlist) || wishlist.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-64 text-center p-6">
+                        <span class="text-3xl mb-3">🤍</span>
+                        <h4 class="font-syne font-bold text-brand-dark text-lg">Your wishlist is empty</h4>
+                        <p class="text-xs text-gray-400 mt-1">Save your favorite premium items here!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            listContainer.innerHTML = '';
+
+            wishlist.forEach((itemId, idx) => {
+                const prod = PRODUCTS.find(p => p.id === itemId);
+                if (!prod) return;
+
+                const itemLi = document.createElement('div');
+                itemLi.className = 'flex items-center gap-4 py-4 border-b border-brand-border animate-item-fade';
+                itemLi.style.animationDelay = `${idx * 0.08}s`;
+                itemLi.innerHTML = `
+                    <img src="${prod.image}" alt="${prod.name}" class="w-16 h-16 rounded-xl object-cover bg-brand-gray-bg flex-shrink-0">
+                    <div class="flex-grow">
+                        <h5 class="font-syne text-sm font-bold text-brand-dark line-clamp-1">${prod.name}</h5>
+                        <span class="text-[10px] text-gray-400 font-outfit uppercase tracking-wider">${prod.categoryLabel}</span>
+                        <div class="text-sm font-bold font-outfit text-brand-dark mt-1">LKR ${prod.price.toLocaleString()}</div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="moveWishlistToCart('${prod.id}')" class="bg-brand-dark hover:bg-[#FF3B97] text-brand-light text-[10px] font-syne font-semibold tracking-wider uppercase px-3 py-1.5 rounded-lg transition-colors cursor-pointer">
+                            Buy
+                        </button>
+                        <button onclick="toggleWishlist('${prod.id}'); renderWishlistItems();" class="text-xs text-gray-400 hover:text-red-500 text-center font-outfit cursor-pointer">
+                            Remove
+                        </button>
+                    </div>
+                `;
+                listContainer.appendChild(itemLi);
+            });
+        }
+
+        // --- CART ACTIONS ---
+        window.addToCart = function(productId, size = 'L') {
+            if (!Array.isArray(cart)) cart = [];
+            
+            const existing = cart.find(item => item.id === productId && item.size === size);
+            
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ id: productId, quantity: 1, size: size });
+            }
+
+            saveCart();
+            updateCartCounter();
+            showToast('Success', 'Item added to your shopping cart.');
+            
+            if (window.innerWidth > 768) {
+                document.getElementById('nav-cart-btn').click();
+            }
+        };
+
+        window.removeFromCart = function(productId, size) {
+            if (!Array.isArray(cart)) cart = [];
+            cart = cart.filter(item => !(item.id === productId && item.size === size));
+            saveCart();
+            updateCartCounter();
+            renderCartItems();
+            showToast('Removed', 'Item removed from your shopping cart.');
+        };
+
+        window.changeCartQuantity = function(productId, size, change) {
+            if (!Array.isArray(cart)) cart = [];
+            const existing = cart.find(item => item.id === productId && item.size === size);
+            if (!existing) return;
+
+            existing.quantity += change;
+            if (existing.quantity <= 0) {
+                removeFromCart(productId, size);
+            } else {
+                saveCart();
+                updateCartCounter();
+                renderCartItems();
+            }
+        };
+
+        window.moveWishlistToCart = function(productId) {
+            addToCart(productId, 'L');
+            toggleWishlist(productId);
+            renderWishlistItems();
+        };
+
+        function saveCart() {
+            safeStorage.setItem('rogue_cart', JSON.stringify(cart));
+        }
+
+        function updateCartCounter() {
+            const counters = document.querySelectorAll('.cart-count-badge');
+            const totalQty = Array.isArray(cart) ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0;
+            counters.forEach(badge => {
+                badge.textContent = totalQty;
+                if (totalQty > 0) {
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- WISHLIST ACTIONS ---
+        window.toggleWishlist = function(productId) {
+            if (!Array.isArray(wishlist)) wishlist = [];
+            const index = wishlist.indexOf(productId);
+            const btns = document.querySelectorAll(`[id^="wishlist-btn-${productId}"]`);
+            
+            let isAdded = false;
+
+            if (index > -1) {
+                wishlist.splice(index, 1);
+                isAdded = false;
+                showToast('Removed', 'Item removed from wishlist.');
+            } else {
+                wishlist.push(productId);
+                isAdded = true;
+                showToast('Added', 'Item saved to your wishlist.');
+            }
+
+            safeStorage.setItem('rogue_wishlist', JSON.stringify(wishlist));
+            updateWishlistCounter();
+
+            btns.forEach(btn => {
+                const svg = btn.querySelector('svg');
+                if (svg) {
+                    if (isAdded) {
+                        svg.classList.add('fill-[#FF3B97]', 'stroke-[#FF3B97]');
+                    } else {
+                        svg.classList.remove('fill-[#FF3B97]', 'stroke-[#FF3B97]');
+                    }
+                }
+            });
+        };
+
+        function updateWishlistCounter() {
+            const counters = document.querySelectorAll('.wishlist-count-badge');
+            const totalCount = Array.isArray(wishlist) ? wishlist.length : 0;
+            counters.forEach(badge => {
+                badge.textContent = totalCount;
+                if (totalCount > 0) {
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- 5. CLIPBOARD COUPON COPY ---
+        function initCouponCopy() {
+            const card = document.getElementById('coupon-code-box');
+            if (!card) return;
+
+            card.addEventListener('click', () => {
+                const text = "ROGUE10";
+                navigator.clipboard.writeText(text).then(() => {
+                    const label = card.querySelector('span');
+                    const check = card.querySelector('.check-icon');
+                    
+                    const originalText = label.textContent;
+                    label.textContent = "COPIED!";
+                    if (check) check.classList.remove('hidden');
+
+                    // Floating micro-animation text
+                    const floatTxt = document.createElement('span');
+                    floatTxt.textContent = 'COPIED! +10%';
+                    floatTxt.className = 'absolute text-[9px] font-syne font-bold text-brand-pink tracking-wider animate-float-up pointer-events-none';
+                    floatTxt.style.top = '-20px';
+                    floatTxt.style.left = '50%';
+                    floatTxt.style.transform = 'translateX(-50%)';
+                    card.appendChild(floatTxt);
+                    setTimeout(() => floatTxt.remove(), 1000);
+
+                    showToast('Voucher Copied', '10% discount code ROGUE10 saved to clipboard.');
+
+                    setTimeout(() => {
+                        label.textContent = originalText;
+                        if (check) check.classList.add('hidden');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy text: ', err);
+                });
+            });
+        }
+
+        // --- 6. SEARCH OVERLAY ---
+        function initSearchOverlay() {
+            const searchOpenBtn = document.getElementById('nav-search-btn');
+            const searchCloseBtn = document.getElementById('close-search-btn');
+            const searchOverlay = document.getElementById('search-overlay');
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+
+            if (!searchOpenBtn || !searchOverlay) return;
+
+            searchOpenBtn.addEventListener('click', () => {
+                searchOverlay.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+                setTimeout(() => searchInput.focus(), 100);
+            });
+
+            if (searchCloseBtn) {
+                searchCloseBtn.addEventListener('click', () => {
+                    searchOverlay.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                    searchInput.value = '';
+                    searchResults.innerHTML = '';
+                });
+            }
+
+            if (searchInput && searchResults) {
+                searchInput.addEventListener('input', () => {
+                    const query = searchInput.value.trim().toLowerCase();
+                    if (query.length < 2) {
+                        searchResults.innerHTML = '';
+                        return;
+                    }
+
+                    const matched = PRODUCTS.filter(p => 
+                        p.name.toLowerCase().includes(query) || 
+                        p.categoryLabel.toLowerCase().includes(query)
+                    );
+
+                    if (matched.length === 0) {
+                        searchResults.innerHTML = `
+                            <div class="text-center py-8 text-gray-400 text-sm">
+                                No streetwear pieces found for "${query}"
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    searchResults.innerHTML = '';
+                    matched.forEach(prod => {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'flex items-center gap-4 p-3 hover:bg-brand-gray-bg rounded-xl cursor-pointer transition-colors';
+                        itemDiv.onclick = () => {
+                            addToCart(prod.id);
+                            searchCloseBtn.click();
+                        };
+                        itemDiv.innerHTML = `
+                            <img src="${prod.image}" alt="${prod.name}" class="w-12 h-12 rounded-lg object-cover bg-brand-gray-bg">
+                            <div class="flex-grow">
+                                <h6 class="font-syne text-xs font-bold text-brand-dark">${prod.name}</h6>
+                                <span class="text-[9px] text-gray-400 font-outfit uppercase tracking-wider">${prod.categoryLabel}</span>
+                            </div>
+                            <span class="font-outfit text-xs font-bold text-brand-dark">LKR ${prod.price.toLocaleString()}</span>
+                        `;
+                        searchResults.appendChild(itemDiv);
+                    });
+                });
+            }
+        }
+
+        // --- 7. MOBILE MENU ---
+        function initMobileMenu() {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-mobile-menu');
+            const drawer = document.getElementById('mobile-menu-drawer');
+            const overlay = document.getElementById('mobile-menu-overlay');
+
+            if (!menuBtn || !drawer || !overlay) return;
+
+            menuBtn.addEventListener('click', () => {
+                drawer.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            });
+
+            const closeHandler = () => {
+                drawer.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            };
+
+            if (closeBtn) closeBtn.addEventListener('click', closeHandler);
+            overlay.addEventListener('click', closeHandler);
+
+            const mobileLinks = drawer.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeHandler);
+            });
+        }
+
+        // --- 8. NEWSLETTER FORM ---
+        function initNewsletterForm() {
+            const form = document.getElementById('newsletter-form');
+            if (!form) return;
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const input = form.querySelector('input[type="email"]');
+                if (!input || !input.value.trim()) return;
+
+                showToast('Subscribed', 'Thank you! You are now subscribed to the Rogue Syndicate.');
+                input.value = '';
+            });
+        }
+
+        // --- 9. LIGHT/DARK THEME TOGGLE ---
+        function initThemeToggle() {
+            const btn = document.getElementById('theme-toggle-btn');
+            const btnMobile = document.getElementById('theme-toggle-btn-mobile');
+            const sunIcon = document.getElementById('theme-sun-icon');
+            const moonIcon = document.getElementById('theme-moon-icon');
+            const toggleDotMobile = document.getElementById('toggle-dot-mobile');
+
+            function applyTheme(theme) {
+                // Add smooth transition helper class
+                document.documentElement.classList.add('theme-transitioning');
+                
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    if (sunIcon) sunIcon.classList.remove('hidden');
+                    if (moonIcon) moonIcon.classList.add('hidden');
+                    if (btnMobile) btnMobile.classList.add('bg-brand-pink');
+                    if (toggleDotMobile) toggleDotMobile.classList.add('translate-x-6');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    if (sunIcon) sunIcon.classList.add('hidden');
+                    if (moonIcon) moonIcon.classList.remove('hidden');
+                    if (btnMobile) btnMobile.classList.remove('bg-brand-pink');
+                    if (toggleDotMobile) toggleDotMobile.classList.remove('translate-x-6');
+                }
+                
+                safeStorage.setItem('rogue_theme', theme);
+                
+                // Remove smooth transition class after transition ends
+                setTimeout(() => {
+                    document.documentElement.classList.remove('theme-transitioning');
+                }, 350);
+            }
+
+            // Detect initial state
+            const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            applyTheme(currentTheme);
+
+            function toggleTheme() {
+                const nextTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+                applyTheme(nextTheme);
+            }
+
+            if (btn) btn.addEventListener('click', toggleTheme);
+            if (btnMobile) btnMobile.addEventListener('click', toggleTheme);
+        }
+
+        // --- TOAST NOTIFICATIONS ---
+        function showToast(title, message) {
+            let container = document.getElementById('toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toast-container';
+                container.className = 'fixed bottom-24 left-6 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none';
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            toast.className = 'bg-black text-white p-4 rounded-2xl shadow-2xl border border-white/10 flex flex-col pointer-events-auto transition-all duration-300 transform translate-y-10 opacity-0';
+            toast.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="font-syne text-xs font-bold tracking-wider uppercase text-[#FF3B97]">${title}</span>
+                    <button class="text-gray-400 hover:text-white text-[10px]" onclick="this.parentElement.parentElement.remove()">✕</button>
+                </div>
+                <p class="text-xs text-gray-300 mt-1 font-outfit leading-relaxed">${message}</p>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // --- PRODUCT DETAIL POPUP ---
+        window.openProductDetail = function(productId) {
+            const prod = PRODUCTS.find(p => p.id === productId);
+            if (!prod) return;
+
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm';
+            modal.id = `product-modal-${prod.id}`;
+            modal.innerHTML = `
+                <div class="bg-brand-card rounded-custom-xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl border border-brand-border flex flex-col md:flex-row gap-6 animate-float" style="animation-duration: 8s;">
+                    <button onclick="document.getElementById('product-modal-${prod.id}').remove()" class="absolute top-4 right-4 w-8 h-8 rounded-full border border-brand-border text-gray-500 hover:text-brand-pink flex items-center justify-center hover:bg-brand-gray-bg transition-colors">
+                        ✕
+                    </button>
+                    <div class="w-full md:w-1/2 aspect-square rounded-2xl overflow-hidden bg-brand-gray-bg">
+                        <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-full md:w-1/2 flex flex-col justify-between py-2">
+                        <div>
+                            <span class="text-[10px] text-gray-400 font-outfit uppercase tracking-wider font-semibold">${prod.categoryLabel}</span>
+                            <h3 class="font-syne text-xl font-bold text-brand-dark mt-1">${prod.name}</h3>
+                            <div class="flex items-center gap-1.5 text-xs mt-1.5">
+                                <span class="text-[#FF3B97] font-bold">★ ${prod.rating.toFixed(1)}</span>
+                                <span class="text-gray-400">(${prod.reviews} reviews)</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-4 font-outfit leading-relaxed">${prod.description}</p>
+                            
+                            <div class="mt-4">
+                                <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold font-outfit">Select Size</span>
+                                <div class="flex gap-2 mt-1.5" id="size-selector">
+                                    <button onclick="selectSize(this)" class="w-8 h-8 rounded-lg border border-brand-dark bg-brand-dark text-brand-light text-xs font-bold font-outfit transition-colors cursor-pointer">M</button>
+                                    <button onclick="selectSize(this)" class="w-8 h-8 rounded-lg border border-brand-border hover:border-brand-dark text-brand-dark text-xs font-bold font-outfit transition-colors cursor-pointer">L</button>
+                                    <button onclick="selectSize(this)" class="w-8 h-8 rounded-lg border border-brand-border hover:border-brand-dark text-brand-dark text-xs font-bold font-outfit transition-colors cursor-pointer">XL</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 flex items-center justify-between gap-4 pt-4 border-t border-brand-border">
+                            <div class="font-outfit text-lg font-bold text-brand-dark">LKR ${prod.price.toLocaleString()}</div>
+                            <button onclick="addSelectedToCart('${prod.id}'); document.getElementById('product-modal-${prod.id}').remove();" class="flex-grow bg-brand-dark hover:bg-[#FF3B97] text-brand-light text-xs font-syne font-bold uppercase tracking-wider py-3.5 px-6 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+            modal.querySelector('.bg-brand-card').addEventListener('click', (e) => e.stopPropagation());
+            modal.addEventListener('click', () => modal.remove());
+        };
+
+        window.selectSize = function(btn) {
+            const parent = btn.parentElement;
+            parent.querySelectorAll('button').forEach(b => {
+                b.classList.remove('bg-brand-dark', 'text-brand-light', 'border-brand-dark');
+                b.classList.add('border-brand-border');
+            });
+            btn.classList.remove('border-brand-border');
+            btn.classList.add('bg-brand-dark', 'text-brand-light', 'border-brand-dark');
+        };
+
+        window.addSelectedToCart = function(prodId) {
+            const selector = document.getElementById('size-selector');
+            let size = 'L';
+            if (selector) {
+                const active = Array.from(selector.querySelectorAll('button')).find(b => b.classList.contains('bg-brand-dark'));
+                if (active) size = active.textContent;
+            }
+            addToCart(prodId, size);
+        };
+
+        window.checkoutCart = function() {
+            if (cart.length === 0) return;
+            
+            showToast('Checking Out', 'Proceeding to secure checkout payment gateway...');
+            setTimeout(() => {
+                alert('Thank you for shopping with Rogue Wear! (This is a mock check-out integration).');
+                cart = [];
+                saveCart();
+                updateCartCounter();
+                const closeCartBtn = document.getElementById('close-cart-btn');
+                if (closeCartBtn) closeCartBtn.click();
+            }, 1500);
+        };
+    </script>
 </body>
-</html>
-
-    <script src="assets/js/main.js"></script>
-
-</body>
-
 </html>

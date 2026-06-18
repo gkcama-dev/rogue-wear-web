@@ -1,34 +1,252 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
 
+/* CSS Variables */
 :root {
-    --font-heading: 'Syne', sans-serif; --font-body: 'Plus Jakarta Sans', sans-serif;
-    --color-bg-light: #FAF9F6; --color-bg-dark: #0A0A0A; --color-pink: #FF3B97;
-    --color-card-bg: #FFFFFF; --color-card-border: rgba(10, 10, 10, 0.06); --color-gray-bg: #F9F9FB;
+    --font-heading: 'Syne', sans-serif;
+    --font-subheading: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    
+    --color-bg-light: #FAF9F6;
+    --color-bg-dark: #0A0A0A;
+    --color-purple: #240433; /* Rich dark violet from screenshot */
+    --color-pink: #FF3B97;   /* Vibrant magenta-pink from screenshot */
+    --color-gray-border: rgba(10, 10, 10, 0.08);
+    
+    /* Card & Modal specific colors */
+    --color-card-bg: #FFFFFF;
+    --color-card-border: rgba(10, 10, 10, 0.06);
+    --color-gray-bg: #F9F9FB;
 }
+
+/* Dark Mode Variables Override */
 .dark {
-    --color-bg-light: #0A0A0A; --color-bg-dark: #FAF9F6; --color-card-bg: #121212;
-    --color-card-border: rgba(255, 255, 255, 0.08); --color-gray-bg: #1A1A1A;
+    --color-bg-light: #0A0A0A;
+    --color-bg-dark: #FAF9F6;
+    --color-gray-border: rgba(250, 249, 246, 0.1);
+    
+    --color-card-bg: #121212;
+    --color-card-border: rgba(255, 255, 255, 0.08);
+    --color-gray-bg: #1A1A1A;
 }
-body { background-color: var(--color-bg-light); color: var(--color-bg-dark); font-family: var(--font-body); overflow-x: hidden; }
 
-.glass-nav { background: rgba(250, 249, 246, 0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(10, 10, 10, 0.08); }
-.dark .glass-nav { background: rgba(10, 10, 10, 0.75); }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-bg-light);
+}
+::-webkit-scrollbar-thumb {
+    background: #CCCCCC;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #999999;
+}
 
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-.reveal.revealed { opacity: 1; transform: translateY(0); }
+/* Base Styles */
+body {
+    background-color: var(--color-bg-light);
+    color: var(--color-bg-dark);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
 
-.text-outline { color: transparent; -webkit-text-stroke: 1.8px var(--color-bg-dark); opacity: 0.18; }
-.text-outline-pink { color: transparent; -webkit-text-stroke: 1px var(--color-pink); }
+/* Font Classes */
+.font-syne {
+    font-family: var(--font-heading);
+}
+.font-outfit {
+    font-family: var(--font-subheading);
+}
+.font-jakarta {
+    font-family: var(--font-body);
+}
 
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-.animate-float { animation: float 4s ease-in-out infinite; }
+/* Text Outline Effect (For background brand headers in footer) */
+.text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.8px var(--color-bg-dark);
+    opacity: 0.18;
+}
+.text-outline-pink {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color-pink);
+}
 
-@keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-.bg-purple-gradient-animated { background: linear-gradient(-45deg, #1A0226, #3B0952, #0D0014, #3B0952); background-size: 400% 400%; animation: gradientShift 18s ease infinite; }
+/* Custom Keyframe Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
 
-.sliding-underline { position: relative; }
-.sliding-underline::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: var(--color-pink); transition: width 0.35s ease; }
-.sliding-underline:hover::after { width: 100%; }
+@keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
-.rounded-custom-xl { border-radius: 2.5rem; }
-.rounded-custom-lg { border-radius: 2rem; }
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes wave {
+    0% { transform: translateX(0) translateZ(0) scaleY(1); }
+    50% { transform: translateX(-25%) translateZ(0) scaleY(0.85); }
+    100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+}
+
+/* Animation Utilities */
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+    animation: spin-slow 15s linear infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Reveal on Scroll styling */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Transition utility */
+.smooth-transition {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Interactive Card Effects */
+.streetwear-card {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.streetwear-card:hover {
+    transform: translateY(-6px);
+}
+
+/* Curved borders like the sample image */
+.rounded-custom-lg {
+    border-radius: 2rem;
+}
+.rounded-custom-xl {
+    border-radius: 2.5rem;
+}
+.rounded-pill {
+    border-radius: 9999px;
+}
+
+/* Custom CSS for Vercel deployment */
+.glass-nav {
+    background: rgba(250, 249, 246, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-gray-border);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .glass-nav {
+    background: rgba(10, 10, 10, 0.75);
+}
+
+/* Sticky Social Sticker */
+.social-badge {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Purple glowing background */
+.bg-purple-gradient {
+    background: radial-gradient(circle at top right, #3D0A54 0%, #15021F 100%);
+}
+
+/* Shifting animated gradient for Discount Section banner */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.bg-purple-gradient-animated {
+    background: linear-gradient(-45deg, #1A0226, #3B0952, #0D0014, #3B0952);
+    background-size: 400% 400%;
+    animation: gradientShift 18s ease infinite;
+}
+
+/* Sliding hover line for Navbar items */
+.sliding-underline {
+    position: relative;
+}
+.sliding-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--color-pink);
+    transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sliding-underline:hover::after {
+    width: 100%;
+}
+
+/* Dynamic slide-up fade-in delay for shopping drawers */
+@keyframes itemSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-item-fade {
+    opacity: 0;
+    animation: itemSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hero card scaling and neon fuchsia glowing on hover */
+.hero-card-glow-hover {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-card-glow-hover:hover {
+    transform: scale(1.025) translateY(-6px);
+    box-shadow: 0 30px 60px -10px rgba(255, 59, 151, 0.3);
+    border-color: rgba(255, 59, 151, 0.25);
+}
+
+/* Floating copy success text rises up and fades */
+@keyframes floatUpFade {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -25px);
+    }
+}
+.animate-float-up {
+    animation: floatUpFade 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Smooth theme transition */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *:before,
+html.theme-transitioning *:after {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, text-decoration-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease !important;
+    transition-delay: 0s !important;
+}
+
