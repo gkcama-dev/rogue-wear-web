@@ -84,6 +84,23 @@
         </div>
     </div>
 
+    <div id="wishlist-drawer" class="fixed top-0 bottom-0 right-0 max-w-md w-full bg-brand-light border-l border-brand-border z-50 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-brand-border"><h4 class="font-syne font-bold text-lg text-brand-dark">🤍 Saved Wishlist</h4><button id="close-wishlist-btn" class="text-gray-400 hover:text-brand-pink">✕</button></div>
+            <div id="wishlist-items-list" class="overflow-y-auto max-h-[75vh] mt-4 pr-1"></div>
+        </div>
+    </div>
+
+    <div id="search-overlay" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 flex flex-col items-center justify-start pt-28 px-6 hidden">
+        <div class="max-w-xl w-full space-y-6">
+            <div class="flex items-center justify-between"><h4 class="font-syne text-white text-lg font-bold">Search the Syndicate Drops</h4><button id="close-search-btn" class="text-gray-400 hover:text-white">✕ Close</button></div>
+            <div class="relative w-full">
+                <input type="text" id="search-input" placeholder="Type tee, hoodie, cargo..." class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-brand-pink text-sm font-outfit">
+            </div>
+            <div id="search-results" class="bg-brand-card rounded-custom-lg p-4 max-h-[50vh] overflow-y-auto space-y-2 shadow-2xl"></div>
+        </div>
+    </div>
+
     <section class="relative min-h-screen pt-28 pb-16 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto flex flex-col justify-center">
         <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-12">
             <div class="lg:col-span-7 space-y-8 z-10 reveal">
