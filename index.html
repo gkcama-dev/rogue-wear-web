@@ -146,6 +146,44 @@
         </div>
     </section>
 
+    <section id="discount-banner" class="px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto mb-24 reveal">
+        <div class="bg-purple-gradient-animated text-white rounded-custom-xl p-8 sm:p-12 lg:p-16 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl border border-white/5">
+            <div class="space-y-5 max-w-xl text-center lg:text-left z-10">
+                <span class="text-[10px] bg-brand-pink text-white font-bold font-syne px-4 py-1.5 rounded-full uppercase tracking-wider">% Special Drops Offer</span>
+                <h2 class="font-syne text-3xl sm:text-4xl lg:text-[48px] leading-[1.05] font-extrabold text-white">Unlock Premium Street Style. <br>Get 10% Discount.</h2>
+                <div class="flex justify-center lg:justify-start pt-2">
+                    <button id="coupon-code-box" class="relative group bg-white/10 hover:bg-white hover:text-black border border-white/10 rounded-2xl px-6 py-4 flex items-center gap-4 transition-all duration-300 cursor-pointer shadow-lg">
+                        <div class="text-left">
+                            <div class="text-[8px] uppercase tracking-wider text-brand-pink font-semibold">Voucher Coupon</div>
+                            <div class="font-mono text-lg font-bold tracking-widest">ROGUE10</div>
+                        </div>
+                        <span class="text-[10px] font-syne font-bold uppercase text-brand-pink"><span class="check-icon hidden">✓</span> COPY CODE</span>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col items-center gap-4 z-10 shrink-0">
+                <span class="text-[9px] uppercase tracking-widest text-gray-400 font-outfit">Voucher Code Expires In</span>
+                <div class="flex gap-4">
+                    <div class="flex flex-col items-center bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl w-16 h-20 justify-center"><span class="text-2xl font-bold font-mono text-white" id="timer-hours">14</span><span class="text-[8px] text-gray-400 uppercase mt-1">Hours</span></div>
+                    <div class="flex flex-col items-center bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl w-16 h-20 justify-center"><span class="text-2xl font-bold font-mono text-white" id="timer-mins">32</span><span class="text-[8px] text-gray-400 uppercase mt-1">Mins</span></div>
+                    <div class="flex flex-col items-center bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl w-16 h-20 justify-center"><span class="text-2xl font-bold font-mono text-brand-pink" id="timer-secs">10</span><span class="text-[8px] text-gray-400 uppercase mt-1">Secs</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop" class="py-12 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto mb-20">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+            <div class="space-y-2 max-w-md reveal">
+                <span class="text-[10px] text-brand-pink font-bold uppercase tracking-widest font-syne">Highly Demanded</span>
+                <h2 class="font-syne text-3xl sm:text-4xl font-extrabold text-brand-dark">Trending New Arrivals</h2>
+            </div>
+        </div>
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="col-span-full text-center py-16"><span class="font-syne text-sm text-gray-400 uppercase animate-pulse">Loading Drops Syndicate...</span></div>
+        </div>
+    </section>
+
     <script src="assets/js/main.js"></script>
 
 </body>
