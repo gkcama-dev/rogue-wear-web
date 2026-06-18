@@ -101,7 +101,7 @@
         </div>
     </div>
 
-    <section class="relative min-h-screen pt-28 pb-16 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto flex flex-col justify-center">
+<section class="relative min-h-screen pt-28 pb-16 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto flex flex-col justify-center">
         <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-12">
             <div class="lg:col-span-7 space-y-8 z-10 reveal">
                 <div class="flex flex-wrap gap-2.5">
@@ -111,15 +111,15 @@
                     Stay ahead of <br class="hidden sm:inline">the street curve. <br>
                     <span class="text-outline-pink font-light italic">rogue fashion</span>
                 </h1>
-                <p class="text-gray-500 text-sm max-w-lg font-light leading-relaxed">
-                    Heavyweight 260GSM tees printed with premium, crack-resistant sticker graphics and decals. Engineered in Sri Lanka.
+                <p class="text-gray-500 text-sm font-light leading-relaxed">
+                    Heavyweight 260GSM tees printed with premium, crack-resistant sticker graphics. Engineered in Sri Lanka.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#shop" class="px-8 py-3.5 bg-black hover:bg-brand-pink text-white font-syne font-bold text-xs uppercase tracking-wider rounded-full shadow-xl transition-all">Explore Drops &rarr;</a>
+                    <a href="#shop" class="group px-8 py-3.5 bg-black hover:bg-brand-pink text-white font-syne font-bold text-xs uppercase tracking-wider rounded-full shadow-xl transition-all flex items-center gap-3">Explore Drops <span class="flex items-center justify-center bg-white/20 rounded-full p-1.5 text-[10px]">&rarr;</span></a>
                 </div>
             </div>
             <div class="lg:col-span-5 relative flex justify-center lg:justify-end reveal">
-                <div class="relative w-full max-w-sm aspect-[4/5] rounded-custom-xl overflow-hidden shadow-2xl border border-gray-100 bg-gray-50 hero-card-glow-hover">
+                <div class="relative w-full max-w-sm aspect-[4/5] rounded-custom-xl overflow-hidden shadow-2xl border border-gray-100 animate-float hero-card-glow-hover bg-gray-50">
                     <img src="assets/images/hero.png" alt="Rogue Wear Model" class="w-full h-full object-cover">
                 </div>
             </div>
@@ -129,17 +129,20 @@
     <section id="categories" class="py-24 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto border-t border-brand-border">
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
             <div class="space-y-3 max-w-xl reveal">
-                <h2 class="font-syne text-3xl sm:text-4xl lg:text-[46px] leading-none font-extrabold text-brand-dark">Shop by Category</h2>
+                <span class="text-[10px] uppercase tracking-[0.25em] text-brand-pink font-bold bg-brand-pink/10 px-3 py-1 rounded-full">Curated Drops</span>
+                <h2 class="font-syne text-3xl sm:text-4xl lg:text-[46px] leading-none tracking-tight font-extrabold text-brand-dark">Shop by Category</h2>
             </div>
             <div class="flex flex-wrap gap-2 reveal font-syne text-xs uppercase font-bold tracking-wider">
                 <button onclick="filterCategory('all', this)" class="category-tab px-5 py-3.5 bg-brand-dark text-brand-light rounded-full transition-all">All Pieces</button>
                 <button onclick="filterCategory('oversized-tees', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Oversized Tees</button>
+                <button onclick="filterCategory('graphic-hoodies', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Street Hoodies</button>
+                <button onclick="filterCategory('cargo-pants', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Utility Cargo</button>
             </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div id="product-grid" class="col-span-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="col-span-full text-center py-16"><span class="font-syne text-sm text-gray-400 uppercase animate-pulse">Loading Drops Syndicate...</span></div>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border reveal bg-brand-gray-bg"><img src="assets/images/tee_yaksha.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div><div class="absolute bottom-0 inset-x-0 p-8"><h3 class="font-syne text-2xl text-white">Oversized Tees</h3></div></div>
+            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border reveal bg-brand-gray-bg"><img src="assets/images/hoodie.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div><div class="absolute bottom-0 inset-x-0 p-8"><h3 class="font-syne text-2xl text-white">Street Hoodies</h3></div></div>
+            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border reveal bg-brand-gray-bg"><img src="assets/images/cargo.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div><div class="absolute bottom-0 inset-x-0 p-8"><h3 class="font-syne text-2xl text-white">Utility Cargo</h3></div></div>
         </div>
     </section>
 
