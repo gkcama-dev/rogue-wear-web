@@ -39,6 +39,7 @@
 </head>
 
 <body class="bg-brand-light text-brand-dark font-jakarta antialiased selection:bg-brand-pink selection:text-white">
+
 <header class="fixed top-0 inset-x-0 h-20 glass-nav z-40 transition-all duration-300">
         <div class="max-w-[1536px] mx-auto px-6 h-full flex items-center justify-between gap-4">
             <button id="mobile-menu-btn" class="lg:hidden p-2 text-brand-dark hover:text-brand-pink transition-colors" aria-label="Open Mobile Menu">
@@ -82,6 +83,49 @@
             <button onclick="checkoutCart()" class="w-full bg-brand-dark hover:bg-brand-pink text-brand-light font-syne font-bold text-xs uppercase py-4 rounded-xl transition-all cursor-pointer">Proceed to Secure Checkout &rarr;</button>
         </div>
     </div>
+
+    <section class="relative min-h-screen pt-28 pb-16 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto flex flex-col justify-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-12">
+            <div class="lg:col-span-7 space-y-8 z-10 reveal">
+                <div class="flex flex-wrap gap-2.5">
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-brand-pink font-bold bg-brand-pink/10 px-4 py-1.5 rounded-full font-syne">/ Streetwear Syndicate Sri Lanka</span>
+                </div>
+                <h1 class="font-syne text-5xl sm:text-6xl lg:text-[76px] leading-[0.95] tracking-tighter text-brand-dark font-extrabold">
+                    Stay ahead of <br class="hidden sm:inline">the street curve. <br>
+                    <span class="text-outline-pink font-light italic">rogue fashion</span>
+                </h1>
+                <p class="text-gray-500 text-sm max-w-lg font-light leading-relaxed">
+                    Heavyweight 260GSM tees printed with premium, crack-resistant sticker graphics and decals. Engineered in Sri Lanka.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#shop" class="px-8 py-3.5 bg-black hover:bg-brand-pink text-white font-syne font-bold text-xs uppercase tracking-wider rounded-full shadow-xl transition-all">Explore Drops &rarr;</a>
+                </div>
+            </div>
+            <div class="lg:col-span-5 relative flex justify-center lg:justify-end reveal">
+                <div class="relative w-full max-w-sm aspect-[4/5] rounded-custom-xl overflow-hidden shadow-2xl border border-gray-100 bg-gray-50 hero-card-glow-hover">
+                    <img src="assets/images/hero.png" alt="Rogue Wear Model" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="categories" class="py-24 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto border-t border-brand-border">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
+            <div class="space-y-3 max-w-xl reveal">
+                <h2 class="font-syne text-3xl sm:text-4xl lg:text-[46px] leading-none font-extrabold text-brand-dark">Shop by Category</h2>
+            </div>
+            <div class="flex flex-wrap gap-2 reveal font-syne text-xs uppercase font-bold tracking-wider">
+                <button onclick="filterCategory('all', this)" class="category-tab px-5 py-3.5 bg-brand-dark text-brand-light rounded-full transition-all">All Pieces</button>
+                <button onclick="filterCategory('oversized-tees', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Oversized Tees</button>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div id="product-grid" class="col-span-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="col-span-full text-center py-16"><span class="font-syne text-sm text-gray-400 uppercase animate-pulse">Loading Drops Syndicate...</span></div>
+            </div>
+        </div>
+    </section>
+
 </body>
 
 </html>
