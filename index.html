@@ -76,7 +76,7 @@
 
     <!-- 1. NAVIGATION BAR (Glassmorphic & Sticky) -->
     <header class="fixed top-0 inset-x-0 h-20 glass-nav z-40 transition-all duration-300">
-        <div class="max-w-[1536px] mx-auto px-4 sm:px-6 h-full flex items-center justify-between gap-4">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20 h-full flex items-center justify-between gap-4">
             
             <!-- Mobile Menu Burger Button -->
             <button id="mobile-menu-btn" class="lg:hidden p-2 text-brand-dark hover:text-brand-pink transition-colors" aria-label="Open Mobile Menu">
@@ -188,15 +188,16 @@
     </div>
 
     <!-- 3. HERO SECTION (Asymmetrical layout like Olixtive Digital) -->
-    <section class="relative min-h-screen pt-28 pb-16 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto flex flex-col justify-center">
-        <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-8">
+    <section class="relative min-h-screen w-full flex flex-col justify-center">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20 w-full pt-28 pb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-8">
             
             <!-- Left Grid: Bold Typography & CTAs (7 Columns) -->
             <div class="lg:col-span-7 space-y-8 z-10 reveal">
                 <!-- Glowing Badges -->
                 <div class="flex flex-wrap gap-2.5">
                     <span class="text-[10px] uppercase tracking-[0.2em] text-brand-pink font-bold bg-brand-pink/10 px-4 py-1.5 rounded-full font-syne">
-                        / Streetwear Syndicate Sri Lanka
+                        Streetwear Syndicate Sri Lanka
                     </span>
                     <span class="text-[10px] uppercase tracking-[0.2em] text-gray-600 bg-gray-100 px-4 py-1.5 rounded-full font-outfit">
                         Durable Sticker Prints
@@ -262,11 +263,12 @@
                 </div>
             </div>
 
+            </div>
         </div>
     </section>
 
-    <!-- 4. CATEGORY SECTION (Showcase Grid) -->
-    <section id="categories" class="py-24 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto border-t border-brand-border">
+    <section id="categories" class="w-full border-t border-brand-border">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20 py-24">
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
             <div class="space-y-3 max-w-xl reveal">
                 <span class="text-[10px] uppercase tracking-[0.25em] text-brand-pink font-bold bg-brand-pink/10 px-3 py-1 rounded-full">Curated Drops</span>
@@ -320,11 +322,13 @@
             </div>
 
         </div>
+        </div>
     </section>
 
     <!-- 5. DISCOUNT & TIMER VOUCHER SECTION (Rich Deep Purple Banner like Olixtive screenshot) -->
-    <section id="discount-banner" class="px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto mb-16 sm:mb-24 reveal">
-        <div class="bg-purple-gradient-animated text-white rounded-custom-xl p-8 sm:p-12 lg:p-16 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl border border-white/5">
+    <section id="discount-banner" class="w-full mb-16 sm:mb-24 reveal">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20">
+            <div class="bg-purple-gradient-animated text-white rounded-custom-xl p-8 sm:p-12 lg:p-16 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl border border-white/5">
             
             <!-- Absolute background decorative wavy paths -->
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,59,151,0.15),transparent_40%)] pointer-events-none"></div>
@@ -387,11 +391,13 @@
                 </a>
             </div>
             
+            </div>
         </div>
     </section>
 
     <!-- 6. TRENDING NEW ARRIVALS SHOP GRID -->
-    <section id="shop" class="py-12 px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto mb-20">
+    <section id="shop" class="w-full mb-20">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20 py-12">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
             <div class="space-y-2 max-w-md reveal">
                 <span class="text-[10px] text-brand-pink font-bold uppercase tracking-widest font-syne">Highly Demanded</span>
@@ -412,13 +418,14 @@
                 <span class="font-syne text-sm text-gray-400 uppercase animate-pulse">Loading Drops Syndicate...</span>
             </div>
         </div>
+        </div>
     </section>
 
-    <!-- 7. SERVICES SECTION (Modern, clean, minimal 3-column layout) -->
-    <section id="services" class="px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto mb-16 sm:mb-24 reveal">
+    <section id="services" class="w-full mb-16 sm:mb-24 reveal">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20">
         <div class="text-center space-y-4 mb-10 sm:mb-16">
             <span class="text-[10px] uppercase tracking-[0.2em] text-brand-pink font-bold bg-brand-pink/10 px-4 py-1.5 rounded-full font-syne">
-                / Rogue Services & Perks
+                Rogue Services & Perks
             </span>
             <h2 class="font-syne text-3xl sm:text-4xl font-extrabold text-brand-dark">
                 Engineered For Your <span class="text-outline-pink font-light italic text-brand-pink">Street Style</span>
@@ -484,11 +491,12 @@
                 </div>
             </div>
         </div>
+        </div>
     </section>
 
-    <!-- 8. NEWSLETTER SECTION -->
-    <section class="px-6 sm:px-12 lg:px-20 max-w-[1536px] mx-auto mb-16 sm:mb-24 reveal">
-        <div class="bg-brand-card border border-brand-border rounded-custom-xl p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm">
+    <section class="w-full mb-16 sm:mb-24 reveal">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20">
+            <div class="bg-brand-card border border-brand-border rounded-custom-xl p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm">
             <div class="space-y-2 max-w-xl text-center lg:text-left">
                 <h3 class="font-syne text-2xl sm:text-3xl font-extrabold text-brand-dark">Join the Rogue Syndicate</h3>
                 <p class="text-xs sm:text-sm text-gray-400 font-light font-jakarta">Get early access alerts to exclusive graphic t-shirt drops, private discounts, and size restocks before everyone else.</p>
@@ -500,11 +508,11 @@
                 </button>
             </form>
         </div>
+        </div>
     </section>
 
-    <!-- 9. FOOTER SECTION (Modern design with outline title matching reference) -->
-    <footer id="footer" class="bg-brand-card border-t border-brand-border pt-20 pb-8 px-6 sm:px-12 lg:px-20 text-brand-dark relative overflow-hidden">
-        <div class="max-w-[1536px] mx-auto space-y-16">
+    <footer id="footer" class="bg-brand-card border-t border-brand-border relative overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20 pt-20 pb-8 space-y-16">
             
             <!-- Trust Signals Grid (Premium features) -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-16 border-b border-brand-border">
