@@ -190,7 +190,7 @@
     <!-- 3. HERO SECTION (Asymmetrical layout like Olixtive Digital) -->
     <section class="relative min-h-screen w-full flex flex-col justify-center overflow-hidden">
         <!-- Background Image (Right-aligned, fades to left) -->
-        <div class="absolute bottom-0 right-0 w-full lg:w-1/2 top-20 -z-10 overflow-hidden">
+        <div onclick="toggleHeroImage()" class="absolute bottom-0 right-0 w-full lg:w-1/2 top-20 z-0 overflow-hidden cursor-pointer group pointer-events-auto" title="Click to switch style">
             <!-- Image 1 (Primary Model) -->
             <img id="hero-img-1" src="assets/image/hero.png" alt="Rogue Wear Model Background" class="absolute inset-0 w-full h-full object-cover object-center lg:object-right transition-all duration-300">
             <!-- Image 2 (Secondary Model - morphs on scroll) -->
@@ -204,16 +204,17 @@
                 <div>
                     <span class="text-[8px] text-gray-500 font-outfit uppercase tracking-wider">Featured Drop</span>
                     <h4 class="font-syne text-sm font-bold text-brand-dark mt-0.5">Neo-Yaksha Heavy Tee</h4>
+                    <span class="text-[8px] text-brand-pink font-semibold uppercase tracking-wider mt-1 block animate-pulse">👆 Click image to switch style</span>
                 </div>
                 <span class="bg-brand-dark text-brand-light text-[10px] font-syne font-bold px-3 py-1.5 rounded-xl">LKR 3,800</span>
             </div>
         </div>
 
-        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20 w-full pt-24 pb-8 lg:pt-20 lg:pb-4">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20 w-full pt-24 pb-8 lg:pt-20 lg:pb-4 pointer-events-none">
             <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-8">
             
             <!-- Left Grid: Bold Typography & CTAs (7 Columns) -->
-            <div class="lg:col-span-7 space-y-5 xl:space-y-6 z-10 reveal">
+            <div class="lg:col-span-7 space-y-5 xl:space-y-6 z-10 reveal pointer-events-auto">
                 <!-- Glowing Badges -->
                 <div class="flex flex-wrap gap-2.5">
                     <span class="text-[10px] uppercase tracking-[0.2em] text-brand-pink font-bold bg-brand-pink/10 px-4 py-1.5 rounded-full font-syne">
@@ -883,25 +884,31 @@
                 const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
                 bar.style.width = scrolled + '%';
             }
-
-            // Hero image scroll morph transition
-            const heroImg1 = document.getElementById('hero-img-1');
-            const heroImg2 = document.getElementById('hero-img-2');
-            if (heroImg1 && heroImg2) {
-                const scrollTop = window.scrollY || document.documentElement.scrollTop;
-                // Transition over the first 500px of scrolling
-                const maxScroll = 500;
-                const progress = Math.min(scrollTop / maxScroll, 1);
-
-                // Morph Image 1: Fade out and scale down slightly
-                heroImg1.style.opacity = (1 - progress).toFixed(2);
-                heroImg1.style.transform = `scale(${1 - (progress * 0.05)})`;
-
-                // Morph Image 2: Fade in and scale down to normal
-                heroImg2.style.opacity = progress.toFixed(2);
-                heroImg2.style.transform = `scale(${1.05 - (progress * 0.05)})`;
-            }
         });
+
+        // Global function to toggle Hero Model images on Click
+        let activeHeroImage = 1;
+        function toggleHeroImage() {
+            const img1 = document.getElementById('hero-img-1');
+            const img2 = document.getElementById('hero-img-2');
+            if (!img1 || !img2) return;
+
+            if (activeHeroImage === 1) {
+                // Fade out Image 1, fade in Image 2
+                img1.style.opacity = '0';
+                img1.style.transform = 'scale(0.95)';
+                img2.style.opacity = '1';
+                img2.style.transform = 'scale(1)';
+                activeHeroImage = 2;
+            } else {
+                // Fade out Image 2, fade in Image 1
+                img1.style.opacity = '1';
+                img1.style.transform = 'scale(1)';
+                img2.style.opacity = '0';
+                img2.style.transform = 'scale(1.05)';
+                activeHeroImage = 1;
+            }
+        }
 
         // --- 1. REVEAL ON SCROLL ---
         function initRevealAnimations() {
