@@ -190,13 +190,17 @@
     <!-- 3. HERO SECTION (Asymmetrical layout like Olixtive Digital) -->
     <section class="relative min-h-screen w-full flex flex-col justify-center overflow-hidden">
         <!-- Background Image (Right-aligned, fades to left) -->
-        <div class="absolute inset-y-0 right-0 w-full lg:w-1/2 -z-10">
-            <img src="assets/image/hero.png" alt="Rogue Wear Model Background" class="w-full h-full object-cover object-center lg:object-right">
+        <div class="absolute bottom-0 right-0 w-full lg:w-1/2 top-20 -z-10 overflow-hidden">
+            <!-- Image 1 (Primary Model) -->
+            <img id="hero-img-1" src="assets/image/hero.png" alt="Rogue Wear Model Background" class="absolute inset-0 w-full h-full object-cover object-center lg:object-right transition-all duration-300">
+            <!-- Image 2 (Secondary Model - morphs on scroll) -->
+            <img id="hero-img-2" src="assets/image/tee_cyber.png" alt="Rogue Wear Model Alternate" class="absolute inset-0 w-full h-full object-cover object-center lg:object-right transition-all duration-300 opacity-0 scale-105">
+            
             <!-- Fade Overlay (Matches light/dark mode background color) -->
-            <div class="absolute inset-0 bg-brand-light/90 lg:bg-transparent lg:bg-gradient-to-r lg:from-brand-light lg:via-brand-light/65 lg:to-transparent"></div>
+            <div class="absolute inset-0 bg-brand-light/90 lg:bg-transparent lg:bg-gradient-to-r lg:from-brand-light lg:via-brand-light/65 lg:to-transparent z-10"></div>
             
             <!-- Floating Card Badges (Aligned to bottom-right of the image on desktop) -->
-            <div class="hidden lg:flex absolute bottom-12 right-12 p-4 bg-brand-card/75 backdrop-blur-md border border-brand-border rounded-2xl items-center justify-between gap-6 shadow-xl reveal">
+            <div class="hidden lg:flex absolute bottom-12 right-12 p-4 bg-brand-card/75 backdrop-blur-md border border-brand-border rounded-2xl items-center justify-between gap-6 shadow-xl reveal z-20">
                 <div>
                     <span class="text-[8px] text-gray-500 font-outfit uppercase tracking-wider">Featured Drop</span>
                     <h4 class="font-syne text-sm font-bold text-brand-dark mt-0.5">Neo-Yaksha Heavy Tee</h4>
@@ -873,11 +877,30 @@
         // Scroll Progress Bar calculation listener
         window.addEventListener('scroll', () => {
             const bar = document.getElementById('scroll-progress');
-            if (!bar) return;
-            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-            bar.style.width = scrolled + '%';
+            if (bar) {
+                const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+                bar.style.width = scrolled + '%';
+            }
+
+            // Hero image scroll morph transition
+            const heroImg1 = document.getElementById('hero-img-1');
+            const heroImg2 = document.getElementById('hero-img-2');
+            if (heroImg1 && heroImg2) {
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                // Transition over the first 500px of scrolling
+                const maxScroll = 500;
+                const progress = Math.min(scrollTop / maxScroll, 1);
+
+                // Morph Image 1: Fade out and scale down slightly
+                heroImg1.style.opacity = (1 - progress).toFixed(2);
+                heroImg1.style.transform = `scale(${1 - (progress * 0.05)})`;
+
+                // Morph Image 2: Fade in and scale down to normal
+                heroImg2.style.opacity = progress.toFixed(2);
+                heroImg2.style.transform = `scale(${1.05 - (progress * 0.05)})`;
+            }
         });
 
         // --- 1. REVEAL ON SCROLL ---
