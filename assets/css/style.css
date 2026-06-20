@@ -250,3 +250,79 @@ html.theme-transitioning *:after {
     transition-delay: 0s !important;
 }
 
+/* Technical Grid Pattern for Streetwear Aesthetics */
+.bg-grid-pattern {
+    background-size: 50px 50px;
+    background-image: 
+        linear-gradient(to right, rgba(10, 10, 10, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(10, 10, 10, 0.02) 1px, transparent 1px);
+}
+.dark .bg-grid-pattern {
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Enhanced hover style for streetwear cards with thematic pink glow shadow */
+.streetwear-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -5px rgba(255, 59, 151, 0.05);
+    border-color: rgba(255, 59, 151, 0.25) !important;
+}
+.dark .streetwear-card:hover {
+    box-shadow: 0 20px 40px -5px rgba(255, 59, 151, 0.15);
+}
+
+/* Force dark theme overrides on Footer in both Light and Dark mode */
+#footer {
+    background-color: #0A0A0A !important;
+    color: #FAF9F6 !important;
+}
+#footer .text-brand-dark {
+    color: #FAF9F6 !important;
+}
+#footer .text-gray-500, 
+#footer .text-gray-400,
+#footer ul.text-xs.text-gray-500 {
+    color: rgba(250, 249, 246, 0.5) !important;
+}
+#footer a {
+    color: rgba(250, 249, 246, 0.6) !important;
+    transition: color 0.2s ease;
+}
+#footer a:hover {
+    color: #FF3B97 !important;
+}
+#footer .text-outline {
+    -webkit-text-stroke: 1.8px rgba(255, 255, 255, 0.22) !important;
+    opacity: 1 !important;
+}
+#footer .border-brand-border, 
+#footer .border-t, 
+#footer .border-b {
+    border-color: rgba(250, 249, 246, 0.08) !important;
+}
+#footer .bg-gray-50 {
+    background-color: rgba(250, 249, 246, 0.04) !important;
+    border-color: rgba(250, 249, 246, 0.08) !important;
+    color: rgba(250, 249, 246, 0.8) !important;
+}
+
+/* Custom Hero Fade Overlay for Cross-Browser Support (Safari & Mobile) */
+.hero-fade-overlay {
+    display: none;
+}
+@media (min-width: 1024px) {
+    .hero-fade-overlay {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        pointer-events: none;
+        background-image: linear-gradient(to right, #FAF9F6 0%, rgba(250, 249, 246, 0.65) 60%, transparent 100%);
+    }
+    .dark .hero-fade-overlay {
+        background-image: linear-gradient(to right, #0A0A0A 0%, rgba(10, 10, 10, 0.65) 60%, transparent 100%);
+    }
+}
+
