@@ -314,18 +314,14 @@ html.theme-transitioning *:after {
     inset: 0;
     z-index: 10;
     pointer-events: none;
-    background-image: linear-gradient(to top, rgba(250, 249, 246, 0) 0%, rgba(250, 249, 246, 0.8) 60%, #FAF9F6 100%);
+    background-image: linear-gradient(to right, #FAF9F6 30%, rgba(250, 249, 246, 0.65) 70%, transparent 100%);
 }
 .dark .hero-fade-overlay {
-    background-image: linear-gradient(to top, rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.85) 60%, #0A0A0A 100%);
+    background-image: linear-gradient(to right, #0A0A0A 30%, rgba(10, 10, 10, 0.65) 70%, transparent 100%);
 }
 
-@media (min-width: 1024px) {
-    .hero-fade-overlay {
-        background-image: linear-gradient(to right, #FAF9F6 0%, rgba(250, 249, 246, 0.65) 60%, transparent 100%);
-    }
-    .dark .hero-fade-overlay {
-        background-image: linear-gradient(to right, #0A0A0A 0%, rgba(10, 10, 10, 0.65) 60%, transparent 100%);
-    }
+/* Custom Hero Image Alignment */
+.hero-image {
+    object-position: right center !important;
 }
 
