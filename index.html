@@ -55,6 +55,22 @@
     <!-- Custom Style Sheet -->
     <link rel="stylesheet" href="assets/css/style.css?v=1.3">
     
+    <!-- Hero Mask Custom Styles -->
+    <style>
+        .hero-fade-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            pointer-events: none;
+            background-image: linear-gradient(to right, #FAF9F6 30%, rgba(250, 249, 246, 0.65) 70%, transparent 100%) !important;
+        }
+        .dark .hero-fade-overlay {
+            background-image: linear-gradient(to right, #0A0A0A 30%, rgba(10, 10, 10, 0.65) 70%, transparent 100%) !important;
+        }
+        .hero-image {
+            object-position: right center !important;
+        }
+    </style>
 
     <!-- Custom Tailwind Configuration Styles -->
     <style type="text/tailwindcss">
@@ -210,20 +226,10 @@
             
             <!-- Fade Overlay (Controlled via style.css to prevent Safari/mobile bugs) -->
             <div class="hero-fade-overlay"></div>
-            
-            <!-- Floating Card Badges (Aligned to bottom-right of the image on desktop) -->
-            <a href="#custom-print" onclick="event.stopPropagation();" class="hidden lg:flex absolute bottom-12 right-12 p-4 bg-brand-card/85 hover:bg-brand-card border border-brand-border hover:border-brand-pink rounded-2xl items-center justify-between gap-6 shadow-xl transition-all duration-300 pointer-events-auto z-20 group/badge" title="Go to custom printing section">
-                <div>
-                    <span class="text-[8px] text-brand-pink font-bold font-syne uppercase tracking-wider">Custom Print Drops</span>
-                    <h4 class="font-syne text-sm font-bold text-brand-dark mt-0.5">Custom T-Shirt Request</h4>
-                    <span class="text-[8px] text-gray-500 font-medium uppercase tracking-wider mt-1 block group-hover/badge:text-brand-pink transition-colors">⚡ Click here to design yours &rarr;</span>
-                </div>
-                <span class="bg-brand-pink text-white text-[10px] font-syne font-bold px-3.5 py-2.5 rounded-xl animate-pulse">CUSTOM</span>
-            </a>
         </div>
 
         <!-- Text & Grid Container -->
-        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20 w-full pt-24 pb-12 lg:pt-20 lg:pb-4 pointer-events-none relative z-10">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20 w-full pt-24 pb-32 sm:pb-36 lg:pt-20 lg:pb-4 pointer-events-none relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-8">
             
             <!-- Left Grid: Bold Typography & CTAs (7 Columns) -->
@@ -279,6 +285,16 @@
 
             </div>
         </div>
+
+        <!-- Floating Card Badge (Aligned to bottom-left on mobile/tablet, bottom-right on desktop) -->
+        <a href="#custom-print" class="flex absolute bottom-6 left-6 right-auto sm:bottom-8 sm:left-12 lg:left-auto lg:right-12 lg:bottom-12 p-3 sm:p-4 bg-brand-card/85 hover:bg-brand-card border border-brand-border hover:border-brand-pink rounded-2xl items-center justify-between gap-4 sm:gap-6 shadow-xl transition-all duration-300 pointer-events-auto z-20 group/badge" title="Go to custom printing section">
+            <div>
+                <span class="text-[8px] text-brand-pink font-bold font-syne uppercase tracking-wider">Custom Print Drops</span>
+                <h4 class="font-syne text-xs sm:text-sm font-bold text-brand-dark mt-0.5">Custom T-Shirt Request</h4>
+                <span class="text-[7px] sm:text-[8px] text-gray-500 font-medium uppercase tracking-wider mt-1 block group-hover/badge:text-brand-pink transition-colors">⚡ Click here to design yours &rarr;</span>
+            </div>
+            <span class="bg-brand-pink text-white text-[8px] sm:text-[10px] font-syne font-bold px-2.5 py-2 sm:px-3.5 sm:py-2.5 rounded-xl animate-pulse">CUSTOM</span>
+        </a>
     </section>
 
     <!-- 3.5 STREETWEAR TAGS MARQUEE (Infinite loop banner separator) -->
@@ -518,7 +534,6 @@
                         <span class="text-[9px] font-jakarta font-medium bg-black/5 dark:bg-white/5 text-brand-dark px-2.5 py-1 rounded-full">Horana</span>
                         <span class="text-[9px] font-jakarta font-medium bg-black/5 dark:bg-white/5 text-brand-dark px-2.5 py-1 rounded-full">Kalutara</span>
                         <span class="text-[9px] font-jakarta font-medium bg-black/5 dark:bg-white/5 text-brand-dark px-2.5 py-1 rounded-full">Moratuwa</span>
-                        <span class="text-[9px] font-jakarta font-medium bg-black/5 dark:bg-white/5 text-brand-dark px-2.5 py-1 rounded-full">Ingiriya</span>
                     </div>
                 </div>
             </div>
