@@ -508,7 +508,7 @@
         </div>
 
         <!-- Product Grid (Populated dynamically by JavaScript) -->
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
             <!-- Loader fallback while JS finishes rendering -->
             <div class="col-span-full text-center py-16">
                 <span class="font-syne text-sm text-gray-400 uppercase animate-pulse">Loading Drops Syndicate...</span>
@@ -1193,14 +1193,14 @@
             filtered.forEach((product) => {
                 const isWishlisted = wishlist.includes(product.id);
                 const card = document.createElement('div');
-                card.className = `reveal bg-brand-card rounded-custom-lg p-4 border border-brand-border shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between streetwear-card`;
+                card.className = `reveal bg-brand-card rounded-xl sm:rounded-custom-lg p-2.5 sm:p-4 border border-brand-border shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between streetwear-card`;
                 
                 card.innerHTML = `
                     <div>
-                        <div class="relative aspect-square rounded-2xl overflow-hidden bg-brand-gray-bg group mb-4">
-                            ${product.badge ? `<span class="absolute top-3 left-3 bg-black text-white text-[9px] font-syne uppercase tracking-wider font-bold px-3 py-1 rounded-full z-10">${product.badge}</span>` : ''}
-                            <button onclick="toggleWishlist('${product.id}')" id="wishlist-btn-${product.id}" class="absolute top-3 right-3 w-9 h-9 bg-brand-card text-brand-dark hover:text-[#FF3B97] rounded-full flex items-center justify-center shadow-sm z-10 transition-colors cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5 ${isWishlisted ? 'fill-[#FF3B97] stroke-[#FF3B97]' : 'fill-none stroke-current'}" viewBox="0 0 24 24" stroke-width="1.8">
+                        <div class="relative aspect-square rounded-lg sm:rounded-2xl overflow-hidden bg-brand-gray-bg group mb-2 sm:mb-4">
+                            ${product.badge ? `<span class="absolute top-2 left-2 sm:top-3 sm:left-3 bg-black text-white text-[8px] sm:text-[9px] font-syne uppercase tracking-wider font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full z-10">${product.badge}</span>` : ''}
+                            <button onclick="toggleWishlist('${product.id}')" id="wishlist-btn-${product.id}" class="absolute top-2 right-2 sm:top-3 sm:right-3 w-7 h-7 sm:w-9 sm:h-9 bg-brand-card text-brand-dark hover:text-[#FF3B97] rounded-full flex items-center justify-center shadow-sm z-10 transition-colors cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5.5 sm:w-5.5 ${isWishlisted ? 'fill-[#FF3B97] stroke-[#FF3B97]' : 'fill-none stroke-current'}" viewBox="0 0 24 24" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
                                 </svg>
                             </button>
@@ -1218,19 +1218,19 @@
                         </div>
                         
                         <div class="px-1">
-                            <span class="text-[10px] text-gray-400 font-outfit uppercase tracking-wider font-semibold">${product.categoryLabel}</span>
-                            <h4 class="font-syne text-md font-bold text-brand-dark mt-0.5 line-clamp-1 hover:text-[#FF3B97] cursor-pointer" onclick="openProductDetail('${product.id}')">${product.name}</h4>
-                            <div class="flex items-center gap-1.5 text-xs mt-1">
+                            <span class="text-[8px] sm:text-[10px] text-gray-400 font-outfit uppercase tracking-wider font-semibold">${product.categoryLabel}</span>
+                            <h4 class="font-syne text-xs sm:text-sm font-bold text-brand-dark mt-0.5 sm:mt-1 line-clamp-2 h-8 sm:h-10 leading-tight hover:text-[#FF3B97] cursor-pointer" onclick="openProductDetail('${product.id}')">${product.name}</h4>
+                            <div class="flex items-center gap-1 text-[9px] sm:text-xs mt-0.5 sm:mt-1">
                                 <span class="text-[#FF3B97] font-bold">★ ${product.rating.toFixed(1)}</span>
-                                <span class="text-gray-400">(${product.reviews} reviews)</span>
+                                <span class="text-gray-400 hidden min-[360px]:inline">(${product.reviews})</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="px-1 mt-4 flex items-center justify-between">
-                        <div class="font-outfit text-base font-bold text-brand-dark">LKR ${product.price.toLocaleString()}</div>
+                    <div class="px-1 mt-2 sm:mt-4 flex items-center justify-between">
+                        <div class="font-outfit text-xs sm:text-base font-bold text-brand-dark">LKR ${product.price.toLocaleString()}</div>
                         <!-- Mobile Only Add Button -->
-                        <button onclick="addToCart('${product.id}')" class="sm:hidden w-8 h-8 bg-brand-dark text-brand-light rounded-full flex items-center justify-center shadow-md hover:bg-[#FF3B97] transition-all cursor-pointer">
+                        <button onclick="addToCart('${product.id}')" class="sm:hidden w-7 h-7 bg-brand-dark text-brand-light rounded-full flex items-center justify-center shadow-md hover:bg-[#FF3B97] transition-all cursor-pointer text-sm">
                             +
                         </button>
                     </div>

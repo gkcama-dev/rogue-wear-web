@@ -258,9 +258,16 @@
                     <p class="text-gray-500 text-xs sm:text-sm font-light mt-1 font-jakarta" id="shop-product-count">Displaying 8 of 8 premium pieces.</p>
                 </div>
                 
-                <!-- Sorting Dropdown -->
-                <div class="flex items-center gap-3">
-                    <label for="sort-by" class="text-xs font-syne font-bold uppercase tracking-wider text-gray-400">Sort By</label>
+                <!-- Filters Trigger & Sorting Dropdown -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button onclick="toggleMobileFilters()" class="lg:hidden flex items-center gap-1.5 px-4 py-2.5 bg-brand-card border border-brand-border text-brand-dark hover:text-brand-pink rounded-xl text-xs font-syne font-bold uppercase tracking-wider cursor-pointer shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                        Filters
+                    </button>
+                    
+                    <label for="sort-by" class="text-xs font-syne font-bold uppercase tracking-wider text-gray-400 hidden sm:inline-block">Sort By</label>
                     <div class="relative">
                         <select id="sort-by" onchange="handleSortChange(this.value)" class="appearance-none bg-brand-card border border-brand-border text-brand-dark px-4 py-2.5 pr-10 rounded-xl text-xs font-syne font-bold uppercase tracking-wider focus:outline-none focus:border-brand-pink cursor-pointer shadow-sm">
                             <option value="featured">Featured Options</option>
@@ -281,7 +288,10 @@
             <div class="flex flex-col lg:flex-row gap-10">
                 
                 <!-- Sidebar Filters (Left Column) -->
-                <aside class="w-full lg:w-64 shrink-0 space-y-8 bg-brand-card p-6 rounded-custom-lg border border-brand-border shadow-sm h-fit">
+                <!-- Filter Overlay Backdrop (Mobile only) -->
+                <div id="filter-overlay" class="fixed inset-0 bg-black/60 z-40 hidden backdrop-blur-sm lg:hidden"></div>
+                
+                <aside id="shop-filter-sidebar" class="fixed inset-y-0 left-0 z-50 w-80 max-w-[85vw] bg-brand-card p-6 border-r border-brand-border shadow-2xl overflow-y-auto transform -translate-x-full transition-transform duration-300 lg:static lg:w-64 lg:shrink-0 lg:translate-x-0 lg:z-0 lg:shadow-sm lg:border lg:rounded-custom-lg lg:h-fit lg:space-y-8 space-y-6">
                     <div class="flex items-center justify-between pb-4 border-b border-brand-border">
                         <h2 class="font-syne text-md font-bold uppercase tracking-wider text-brand-dark flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -289,9 +299,14 @@
                             </svg>
                             Filters
                         </h2>
-                        <button onclick="resetAllFilters()" class="text-[10px] font-syne font-bold uppercase tracking-wider text-brand-pink hover:opacity-85 transition-opacity cursor-pointer">
-                            Reset All
-                        </button>
+                        <div class="flex items-center gap-2">
+                            <button onclick="resetAllFilters()" class="text-[10px] font-syne font-bold uppercase tracking-wider text-brand-pink hover:opacity-85 transition-opacity cursor-pointer mr-1">
+                                Reset All
+                            </button>
+                            <button onclick="toggleMobileFilters()" class="text-gray-400 hover:text-brand-pink text-sm lg:hidden p-1" aria-label="Close Filters">
+                                ✕
+                            </button>
+                        </div>
                     </div>
                     
                     <!-- Category Filter -->
@@ -370,7 +385,7 @@
                 <!-- Products Column (Right Column) -->
                 <div class="flex-grow">
                     <!-- Products Grid -->
-                    <div id="shop-product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div id="shop-product-grid" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
                         <!-- Rendered dynamically by shop.js -->
                     </div>
                     
