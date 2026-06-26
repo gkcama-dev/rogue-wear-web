@@ -325,3 +325,8 @@ html.theme-transitioning *:after {
     object-position: right center !important;
 }
 
+/* Scroll offset for sticky navbar compatibility */
+section, footer {
+    scroll-margin-top: 80px;
+}
+

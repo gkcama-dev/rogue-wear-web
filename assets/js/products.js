@@ -1,0 +1,117 @@
+// Rogue Wear | products.js
+// Shared Mock Products Database
+
+const PRODUCTS = [
+    {
+        id: 'tee-yaksha',
+        name: 'Yaksha Cyberpunk Tee',
+        category: 'oversized-tees',
+        categoryLabel: 'Oversized Tee',
+        price: 3800,
+        image: 'assets/image/tee_yaksha.png',
+        badge: 'Best Seller',
+        rating: 4.9,
+        reviews: 42,
+        color: 'black',
+        sizes: ['M', 'L', 'XL'],
+        description: 'Heavyweight 260GSM 100% premium cotton oversized t-shirt. Features a vibrant cyber-neon neo-traditional Sri Lankan Yaksha mask graphic print on the back.'
+    },
+    {
+        id: 'tee-colombo',
+        name: 'Colombo Souls Type Tee',
+        category: 'oversized-tees',
+        categoryLabel: 'Oversized Tee',
+        price: 3200,
+        image: 'assets/image/tee_colombo.png',
+        badge: 'New Drop',
+        rating: 4.7,
+        reviews: 28,
+        color: 'white',
+        sizes: ['M', 'L', 'XL'],
+        description: '240GSM drop shoulder t-shirt. Minimalist front print with futuristic graphic layout and Colombo coordinates typography on the back.'
+    },
+    {
+        id: 'tee-cyber',
+        name: 'Neon Shadows Skull Tee',
+        category: 'oversized-tees',
+        categoryLabel: 'Oversized Tee',
+        price: 3500,
+        image: 'assets/image/tee_cyber.png',
+        badge: 'Hot Product',
+        rating: 4.8,
+        reviews: 35,
+        color: 'black',
+        sizes: ['M', 'L', 'XL'],
+        description: 'Futuristic streetwear oversized tee featuring an detailed glowing helmet skull graphic print, engineered for perfect boxy fit.'
+    },
+    {
+        id: 'tee-minimal',
+        name: 'Rogue Heavyweight Tee',
+        category: 'oversized-tees',
+        categoryLabel: 'Minimal Tee',
+        price: 2900,
+        image: 'assets/image/tee_minimal.png',
+        badge: 'Essentials',
+        rating: 4.6,
+        reviews: 19,
+        color: 'gray',
+        sizes: ['M', 'L', 'XL'],
+        description: 'Pure organic combed heavyweight cotton t-shirt in concrete gray. Features clean, high-density black embroidered logo on the chest.'
+    },
+    {
+        id: 'tee-reaper',
+        name: 'Soul Reaper Graphic Tee',
+        category: 'oversized-tees',
+        categoryLabel: 'Oversized Tee',
+        price: 3400,
+        image: 'assets/image/tee_cyber.png',
+        badge: 'Trending',
+        rating: 4.8,
+        reviews: 17,
+        color: 'black',
+        sizes: ['M', 'L', 'XL'],
+        description: '260GSM drop shoulder t-shirt. Features a dark-art illustrative skeleton reaper design print in detailed retro-anime halftone style.'
+    },
+    {
+        id: 'hoodie-cyber',
+        name: 'Cybernetic Violet Hoodie',
+        category: 'graphic-hoodies',
+        categoryLabel: 'Street Hoodie',
+        price: 6500,
+        image: 'assets/image/hoodie.png',
+        badge: 'Limited Drop',
+        rating: 5.0,
+        reviews: 14,
+        color: 'violet',
+        sizes: ['M', 'L', 'XL'],
+        description: 'Ultra-heavy 400GSM organic cotton hoodie in rich dark violet with neon magenta glowing embroidery accents. Double-layered hood.'
+    },
+    {
+        id: 'hoodie-classic',
+        name: 'Rogue Heavy Black Hoodie',
+        category: 'graphic-hoodies',
+        categoryLabel: 'Street Hoodie',
+        price: 6200,
+        image: 'assets/image/hoodie.png',
+        badge: 'Essentials',
+        rating: 4.9,
+        reviews: 29,
+        color: 'black',
+        sizes: ['M', 'L', 'XL'],
+        description: 'Super heavy 380GSM black fleece hoodie. Styled with custom embroidered branding on the sleeve and boxy oversized cut.'
+    },
+    {
+        id: 'cargo-pants',
+        name: 'Tech Utility Cargo Pants',
+        category: 'cargo-pants',
+        categoryLabel: 'Tech Cargo',
+        price: 5800,
+        image: 'assets/image/cargo.png',
+        badge: 'Utility',
+        rating: 4.8,
+        reviews: 22,
+        color: 'black',
+        sizes: ['M', 'L', 'XL'],
+        description: 'Water-resistant ripstop techwear cargo pants with multiple utility buckle pockets, adjustable strap details, and tailored streetwear cuffs.'
+    }
+];

@@ -101,7 +101,7 @@
 
     <!-- 1. NAVIGATION BAR (Glassmorphic & Sticky) -->
     <header class="fixed top-0 inset-x-0 h-20 glass-nav z-40 transition-all duration-300">
-        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20 h-full flex items-center justify-between gap-4">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-8 xl:px-20 h-full flex items-center justify-between gap-4">
             
             <!-- Mobile Menu Burger Button -->
             <button id="mobile-menu-btn" class="lg:hidden p-2 text-brand-dark hover:text-brand-pink transition-colors" aria-label="Open Mobile Menu">
@@ -117,13 +117,13 @@
             </a>
 
             <!-- Center Menu Links -->
-            <nav id="desktop-nav" class="hidden lg:flex items-center gap-2 text-sm font-outfit font-medium tracking-wide">
-                <a href="#" class="nav-link px-4 py-1.5 bg-black text-white dark:bg-white dark:text-black rounded-full transition-all">Home</a>
-                <a href="#categories" class="nav-link px-4 py-1.5 text-brand-dark hover:text-brand-pink rounded-full transition-all">Categories</a>
-                <a href="#shop" class="nav-link px-4 py-1.5 text-brand-dark hover:text-brand-pink rounded-full transition-all">Shop Drops</a>
-                <a href="#custom-print" class="nav-link px-4 py-1.5 text-brand-dark hover:text-brand-pink rounded-full transition-all">Custom Print</a>
-                <a href="#discount-banner" class="nav-link px-4 py-1.5 text-brand-dark hover:text-brand-pink rounded-full transition-all">Vouchers</a>
-                <a href="#footer" class="nav-link px-4 py-1.5 text-brand-dark hover:text-brand-pink rounded-full transition-all">Contact</a>
+            <nav id="desktop-nav" class="hidden lg:flex items-center gap-1 xl:gap-2 text-[11px] xl:text-xs min-[1400px]:text-sm font-outfit font-medium tracking-wide shrink-0">
+                <a href="#" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap bg-black text-white dark:bg-white dark:text-black rounded-full transition-all">Home</a>
+                <a href="#categories" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Categories</a>
+                <a href="#shop" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Shop Drops</a>
+                <a href="#custom-print" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Custom Print</a>
+                <a href="#discount-banner" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Vouchers</a>
+                <a href="#footer" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Contact</a>
             </nav>
 
             <!-- Action Icons & Pill CTA -->
@@ -164,7 +164,7 @@
                 </button>
 
                 <!-- CTA Action Button (matching the reference image's pill buttons) -->
-                <a href="#shop" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-black hover:bg-brand-pink text-white text-xs font-syne font-bold uppercase tracking-wider rounded-full transition-all duration-300 hover:shadow-lg shadow-sm">
+                <a href="shop.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-black hover:bg-brand-pink text-white text-xs font-syne font-bold uppercase tracking-wider rounded-full transition-all duration-300 hover:shadow-lg shadow-sm">
                     Shop Drops
                     <span class="flex items-center justify-center bg-white/20 rounded-full p-1 text-[8px]">&rarr;</span>
                 </a>
@@ -207,10 +207,42 @@
             </nav>
         </div>
 
-        <div class="border-t border-brand-border pt-6">
-            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-outfit">Support Colombo</span>
-            <div class="text-xs font-bold text-brand-dark mt-1">📞 +94 77 123 4567</div>
-            <div class="text-xs text-gray-400 mt-1">✉️ syndicate@roguewear.lk</div>
+        <div class="border-t border-brand-border pt-6 space-y-3.5">
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-outfit block">Syndicate Support</span>
+            <div class="space-y-2 font-jakarta">
+                <div class="text-xs font-bold text-brand-dark flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <a href="tel:+94771234567" class="hover:text-brand-pink transition-colors">+94 77 123 4567</a>
+                </div>
+                <div class="text-xs text-gray-400 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <a href="mailto:roguewear.tee@gmail.com" class="hover:text-brand-pink transition-colors font-medium">roguewear.tee@gmail.com</a>
+                </div>
+            </div>
+            
+            <div class="flex gap-3 pt-1 text-gray-400">
+                <a href="https://www.instagram.com/rogu_ewear?igsh=MWxwaXltOGticThiaw%3D%3D&utm_source=qr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-7.5 h-7.5 rounded-lg bg-black/5 dark:bg-white/5 border border-brand-border" title="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/share/1GuVpMpY3G/?mibextid=wwXIfr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-7.5 h-7.5 rounded-lg bg-black/5 dark:bg-white/5 border border-brand-border" title="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                    </svg>
+                </a>
+                <a href="https://www.tiktok.com/@_banu23?_r=1&_t=ZS-97NGAUq2Gil" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-7.5 h-7.5 rounded-lg bg-black/5 dark:bg-white/5 border border-brand-border" title="TikTok">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M12.525.02c1.31-.02 2.61.35 3.6 1.05a8.87 8.87 0 00-.5 2.1c-.1.6-.5 1.1-1.1 1.4a4.44 4.44 0 01-2.9-1.2v11.75a6.13 6.13 0 11-6.13-6.13c.35 0 .69.03 1.03.1v2.1a4.03 4.03 0 103.05 3.93V0h3z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -257,7 +289,7 @@
 
                 <!-- Actions (Pill buttons with circles inside) -->
                 <div class="flex flex-wrap gap-4 pt-2">
-                    <a href="#shop" class="group px-8 py-3.5 bg-black hover:bg-brand-pink hover:shadow-brand-pink/25 text-white font-syne font-bold text-xs uppercase tracking-wider rounded-full shadow-xl transition-all flex items-center gap-3">
+                    <a href="shop.html" class="group px-8 py-3.5 bg-black hover:bg-brand-pink hover:shadow-brand-pink/25 text-white font-syne font-bold text-xs uppercase tracking-wider rounded-full shadow-xl transition-all flex items-center gap-3">
                         Explore Drops 
                         <span class="flex items-center justify-center bg-white/20 rounded-full p-1.5 text-[10px] group-hover:translate-x-1 transition-transform">&rarr;</span>
                     </a>
@@ -450,7 +482,7 @@
                     </div>
                 </div>
 
-                <a href="#shop" class="mt-4 px-6 py-3 bg-brand-pink hover:bg-white hover:text-black text-white text-[11px] font-syne font-bold uppercase tracking-wider rounded-xl transition-all shadow-xl">
+                <a href="shop.html" class="mt-4 px-6 py-3 bg-brand-pink hover:bg-white hover:text-black text-white text-[11px] font-syne font-bold uppercase tracking-wider rounded-xl transition-all shadow-xl">
                     Claim Discount Now
                 </a>
             </div>
@@ -469,14 +501,14 @@
                 <p class="text-gray-500 text-xs font-light">Fresh drops selected from our latest catalog collections.</p>
             </div>
             <div class="reveal">
-                <a href="#categories" class="text-xs font-syne font-bold text-brand-dark tracking-wider uppercase hover:text-brand-pink transition-colors inline-flex items-center gap-1.5 group">
+                <a href="shop.html" class="text-xs font-syne font-bold text-brand-dark tracking-wider uppercase hover:text-brand-pink transition-colors inline-flex items-center gap-1.5 group">
                     View Entire Shop <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
                 </a>
             </div>
         </div>
 
         <!-- Product Grid (Populated dynamically by JavaScript) -->
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
             <!-- Loader fallback while JS finishes rendering -->
             <div class="col-span-full text-center py-16">
                 <span class="font-syne text-sm text-gray-400 uppercase animate-pulse">Loading Drops Syndicate...</span>
@@ -755,10 +787,10 @@
                 <div class="space-y-4">
                     <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Explore Collections</h5>
                     <ul class="text-xs text-gray-500 font-medium space-y-2.5 font-outfit">
-                        <li><a href="#shop" class="hover:text-black transition-colors">Oversized T-Shirts</a></li>
-                        <li><a href="#shop" class="hover:text-black transition-colors">Graphic Hoodies</a></li>
-                        <li><a href="#shop" class="hover:text-black transition-colors">Tech Cargo Pants</a></li>
-                        <li><a href="#shop" class="hover:text-black transition-colors">Limited Drop Series</a></li>
+                        <li><a href="shop.html?category=oversized-tees" class="hover:text-black transition-colors">Oversized T-Shirts</a></li>
+                        <li><a href="shop.html?category=graphic-hoodies" class="hover:text-black transition-colors">Graphic Hoodies</a></li>
+                        <li><a href="shop.html?category=cargo-pants" class="hover:text-black transition-colors">Tech Cargo Pants</a></li>
+                        <li><a href="shop.html?category=all" class="hover:text-black transition-colors">Limited Drop Series</a></li>
                     </ul>
                 </div>
                 
@@ -775,13 +807,44 @@
                 <div class="space-y-4">
                     <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Syndicate HQ</h5>
                     <ul class="text-xs text-gray-500 space-y-2.5 font-jakarta font-light">
-                        <li>📍 Colombo 07, Sri Lanka.</li>
-                        <li>📞 +94 77 123 4567</li>
-                        <li>✉️ syndicate@roguewear.lk</li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>Colombo 07, Sri Lanka.</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <a href="tel:+94771234567" class="hover:text-brand-pink transition-colors">+94 77 123 4567</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <a href="mailto:roguewear.tee@gmail.com" class="hover:text-brand-pink transition-colors">roguewear.tee@gmail.com</a>
+                        </li>
                     </ul>
-                    <div class="flex gap-3 text-sm pt-2 text-gray-400">
-                        <a href="https://instagram.com" target="_blank" class="hover:text-brand-pink transition-colors">📸 Instagram</a>
-                        <a href="https://facebook.com" target="_blank" class="hover:text-brand-pink transition-colors">🌐 Facebook</a>
+                    <div class="flex gap-4 pt-2 text-gray-400">
+                        <a href="https://www.instagram.com/rogu_ewear?igsh=MWxwaXltOGticThiaw%3D%3D&utm_source=qr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/share/1GuVpMpY3G/?mibextid=wwXIfr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@_banu23?_r=1&_t=ZS-97NGAUq2Gil" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="TikTok">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 fill-current" viewBox="0 0 24 24">
+                                <path d="M12.525.02c1.31-.02 2.61.35 3.6 1.05a8.87 8.87 0 00-.5 2.1c-.1.6-.5 1.1-1.1 1.4a4.44 4.44 0 01-2.9-1.2v11.75a6.13 6.13 0 11-6.13-6.13c.35 0 .69.03 1.03.1v2.1a4.03 4.03 0 103.05 3.93V0h3z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -904,106 +967,8 @@
     </a>
 
     <!-- Embed JavaScript Code Inline -->
+    <script src="assets/js/products.js"></script>
     <script>
-        // Mock Products Database
-        const PRODUCTS = [
-            {
-                id: 'tee-yaksha',
-                name: 'Yaksha Cyberpunk Tee',
-                category: 'oversized-tees',
-                categoryLabel: 'Oversized Tee',
-                price: 3800,
-                image: 'assets/image/tee_yaksha.png',
-                badge: 'Best Seller',
-                rating: 4.9,
-                reviews: 42,
-                description: 'Heavyweight 260GSM 100% premium cotton oversized t-shirt. Features a vibrant cyber-neon neo-traditional Sri Lankan Yaksha mask graphic print on the back.'
-            },
-            {
-                id: 'tee-colombo',
-                name: 'Colombo Souls Type Tee',
-                category: 'oversized-tees',
-                categoryLabel: 'Oversized Tee',
-                price: 3200,
-                image: 'assets/image/tee_colombo.png',
-                badge: 'New Drop',
-                rating: 4.7,
-                reviews: 28,
-                description: '240GSM drop shoulder t-shirt. Minimalist front print with futuristic graphic layout and Colombo coordinates typography on the back.'
-            },
-            {
-                id: 'tee-cyber',
-                name: 'Neon Shadows Skull Tee',
-                category: 'oversized-tees',
-                categoryLabel: 'Oversized Tee',
-                price: 3500,
-                image: 'assets/image/tee_cyber.png',
-                badge: 'Hot Product',
-                rating: 4.8,
-                reviews: 35,
-                description: 'Futuristic streetwear oversized tee featuring an detailed glowing helmet skull graphic print, engineered for perfect boxy fit.'
-            },
-            {
-                id: 'tee-minimal',
-                name: 'Rogue Heavyweight Tee',
-                category: 'oversized-tees',
-                categoryLabel: 'Minimal Tee',
-                price: 2900,
-                image: 'assets/image/tee_minimal.png',
-                badge: 'Essentials',
-                rating: 4.6,
-                reviews: 19,
-                description: 'Pure organic combed heavyweight cotton t-shirt in concrete gray. Features clean, high-density black embroidered logo on the chest.'
-            },
-            {
-                id: 'tee-reaper',
-                name: 'Soul Reaper Graphic Tee',
-                category: 'oversized-tees',
-                categoryLabel: 'Oversized Tee',
-                price: 3400,
-                image: 'assets/image/tee_cyber.png',
-                badge: 'Trending',
-                rating: 4.8,
-                reviews: 17,
-                description: '260GSM drop shoulder t-shirt. Features a dark-art illustrative skeleton reaper design print in detailed retro-anime halftone style.'
-            },
-            {
-                id: 'hoodie-cyber',
-                name: 'Cybernetic Violet Hoodie',
-                category: 'graphic-hoodies',
-                categoryLabel: 'Street Hoodie',
-                price: 6500,
-                image: 'assets/image/hoodie.png',
-                badge: 'Limited Drop',
-                rating: 5.0,
-                reviews: 14,
-                description: 'Ultra-heavy 400GSM organic cotton hoodie in rich dark violet with neon magenta glowing embroidery accents. Double-layered hood.'
-            },
-            {
-                id: 'hoodie-classic',
-                name: 'Rogue Heavy Black Hoodie',
-                category: 'graphic-hoodies',
-                categoryLabel: 'Street Hoodie',
-                price: 6200,
-                image: 'assets/image/hoodie.png',
-                badge: 'Essentials',
-                rating: 4.9,
-                reviews: 29,
-                description: 'Super heavy 380GSM black fleece hoodie. Styled with custom embroidered branding on the sleeve and boxy oversized cut.'
-            },
-            {
-                id: 'cargo-pants',
-                name: 'Tech Utility Cargo Pants',
-                category: 'cargo-pants',
-                categoryLabel: 'Tech Cargo',
-                price: 5800,
-                image: 'assets/image/cargo.png',
-                badge: 'Utility',
-                rating: 4.8,
-                reviews: 22,
-                description: 'Water-resistant ripstop techwear cargo pants with multiple utility buckle pockets, adjustable strap details, and tailored streetwear cuffs.'
-            }
-        ];
 
         // Safe localStorage wrapper to prevent SecurityError in sandboxed or file:// environments
         const safeStorage = {
@@ -1228,14 +1193,14 @@
             filtered.forEach((product) => {
                 const isWishlisted = wishlist.includes(product.id);
                 const card = document.createElement('div');
-                card.className = `reveal bg-brand-card rounded-custom-lg p-4 border border-brand-border shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between streetwear-card`;
+                card.className = `reveal bg-brand-card rounded-xl sm:rounded-custom-lg p-2.5 sm:p-4 border border-brand-border shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between streetwear-card`;
                 
                 card.innerHTML = `
                     <div>
-                        <div class="relative aspect-square rounded-2xl overflow-hidden bg-brand-gray-bg group mb-4">
-                            ${product.badge ? `<span class="absolute top-3 left-3 bg-black text-white text-[9px] font-syne uppercase tracking-wider font-bold px-3 py-1 rounded-full z-10">${product.badge}</span>` : ''}
-                            <button onclick="toggleWishlist('${product.id}')" id="wishlist-btn-${product.id}" class="absolute top-3 right-3 w-9 h-9 bg-brand-card text-brand-dark hover:text-[#FF3B97] rounded-full flex items-center justify-center shadow-sm z-10 transition-colors cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5 ${isWishlisted ? 'fill-[#FF3B97] stroke-[#FF3B97]' : 'fill-none stroke-current'}" viewBox="0 0 24 24" stroke-width="1.8">
+                        <div class="relative aspect-square rounded-lg sm:rounded-2xl overflow-hidden bg-brand-gray-bg group mb-2 sm:mb-4">
+                            ${product.badge ? `<span class="absolute top-2 left-2 sm:top-3 sm:left-3 bg-black text-white text-[8px] sm:text-[9px] font-syne uppercase tracking-wider font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full z-10">${product.badge}</span>` : ''}
+                            <button onclick="toggleWishlist('${product.id}')" id="wishlist-btn-${product.id}" class="absolute top-2 right-2 sm:top-3 sm:right-3 w-7 h-7 sm:w-9 sm:h-9 bg-brand-card text-brand-dark hover:text-[#FF3B97] rounded-full flex items-center justify-center shadow-sm z-10 transition-colors cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5.5 sm:w-5.5 ${isWishlisted ? 'fill-[#FF3B97] stroke-[#FF3B97]' : 'fill-none stroke-current'}" viewBox="0 0 24 24" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
                                 </svg>
                             </button>
@@ -1253,19 +1218,19 @@
                         </div>
                         
                         <div class="px-1">
-                            <span class="text-[10px] text-gray-400 font-outfit uppercase tracking-wider font-semibold">${product.categoryLabel}</span>
-                            <h4 class="font-syne text-md font-bold text-brand-dark mt-0.5 line-clamp-1 hover:text-[#FF3B97] cursor-pointer" onclick="openProductDetail('${product.id}')">${product.name}</h4>
-                            <div class="flex items-center gap-1.5 text-xs mt-1">
+                            <span class="text-[8px] sm:text-[10px] text-gray-400 font-outfit uppercase tracking-wider font-semibold">${product.categoryLabel}</span>
+                            <h4 class="font-syne text-xs sm:text-sm font-bold text-brand-dark mt-0.5 sm:mt-1 line-clamp-2 h-8 sm:h-10 leading-tight hover:text-[#FF3B97] cursor-pointer" onclick="openProductDetail('${product.id}')">${product.name}</h4>
+                            <div class="flex items-center gap-1 text-[9px] sm:text-xs mt-0.5 sm:mt-1">
                                 <span class="text-[#FF3B97] font-bold">★ ${product.rating.toFixed(1)}</span>
-                                <span class="text-gray-400">(${product.reviews} reviews)</span>
+                                <span class="text-gray-400 hidden min-[360px]:inline">(${product.reviews})</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="px-1 mt-4 flex items-center justify-between">
-                        <div class="font-outfit text-base font-bold text-brand-dark">LKR ${product.price.toLocaleString()}</div>
+                    <div class="px-1 mt-2 sm:mt-4 flex items-center justify-between">
+                        <div class="font-outfit text-xs sm:text-base font-bold text-brand-dark">LKR ${product.price.toLocaleString()}</div>
                         <!-- Mobile Only Add Button -->
-                        <button onclick="addToCart('${product.id}')" class="sm:hidden w-8 h-8 bg-brand-dark text-brand-light rounded-full flex items-center justify-center shadow-md hover:bg-[#FF3B97] transition-all cursor-pointer">
+                        <button onclick="addToCart('${product.id}')" class="sm:hidden w-7 h-7 bg-brand-dark text-brand-light rounded-full flex items-center justify-center shadow-md hover:bg-[#FF3B97] transition-all cursor-pointer text-sm">
                             +
                         </button>
                     </div>
@@ -1899,9 +1864,9 @@
             const sections = [
                 document.getElementById('home'),
                 document.getElementById('categories'),
+                document.getElementById('discount-banner'),
                 document.getElementById('shop'),
                 document.getElementById('custom-print'),
-                document.getElementById('discount-banner'),
                 document.getElementById('footer')
             ].filter(Boolean);
 
@@ -1909,12 +1874,13 @@
 
             function updateActiveLink() {
                 let currentActiveId = 'home';
-                const scrollPosition = window.scrollY + 160; // offset for nav height
+                
+                // Trigger highlight when a section's top crosses 100px from top of viewport
+                const triggerHeight = 100;
 
                 sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= triggerHeight) {
                         currentActiveId = section.id;
                     }
                 });
