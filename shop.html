@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Theme Toggle Setup (Prevent flash of light theme) -->
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('rogue_theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        } catch (e) {
+            console.warn('Theme read failed in head:', e);
+        }
+    </script>
+    
+    <!-- Remote Debug Script -->
+    <script>
+        window.addEventListener('error', function(e) {
+            console.error("Global Error Caught: ", e.message, "at", e.filename, ":", e.lineno);
+            const debugDiv = document.createElement('div');
+            debugDiv.style.position = 'fixed';
+            debugDiv.style.bottom = '20px';
+            debugDiv.style.left = '20px';
+            debugDiv.style.background = '#FF3B30';
+            debugDiv.style.color = '#FFFFFF';
+            debugDiv.style.padding = '12px 20px';
+            debugDiv.style.zIndex = '999999';
+            debugDiv.style.fontSize = '12px';
+            debugDiv.style.fontFamily = 'monospace';
+            debugDiv.style.borderRadius = '10px';
+            debugDiv.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+            debugDiv.innerHTML = "🚨 <strong>JS Error:</strong> " + e.message + " (" + (e.filename ? e.filename.split('/').pop() : 'inline') + ":" + e.lineno + ")";
+            document.body.appendChild(debugDiv);
+        });
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/image/favicon.png">
+    <link rel="apple-touch-icon" href="assets/image/favicon.png">
+
+    <!-- SEO Optimization -->
+    <title>Rogue Wear | Premium Streetwear & Graphic Tees Sri Lanka</title>
+    <meta name="description" content="Discover premium streetwear, heavyweight graphic tees, hoodies, and cargo pants by Rogue Wear Sri Lanka. Elevate your urban look with bold neo-cultural designs.">
+    <meta name="keywords" content="Streetwear Sri Lanka, Graphic Tees Sri Lanka, Oversized Tees Colombo, Rogue Wear, Heavyweight Cotton Tees, Techwear Sri Lanka">
+    <meta name="author" content="Rogue Wear Syndicate">
+    
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="assets/css/style.css?v=1.3">
+    
+    <!-- Hero Mask Custom Styles -->
+    <style>
+        .hero-fade-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            pointer-events: none;
+            background-image: linear-gradient(to right, #FAF9F6 30%, rgba(250, 249, 246, 0.65) 70%, transparent 100%) !important;
+        }
+        .dark .hero-fade-overlay {
+            background-image: linear-gradient(to right, #0A0A0A 30%, rgba(10, 10, 10, 0.65) 70%, transparent 100%) !important;
+        }
+        .hero-image {
+            object-position: right center !important;
+        }
+    </style>
+
+    <!-- Custom Tailwind Configuration Styles -->
+    <style type="text/tailwindcss">
+        @theme {
+            --font-syne: 'Syne', sans-serif;
+            --font-outfit: 'Outfit', sans-serif;
+            --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+            --color-brand-purple: #240433;
+            --color-brand-pink: #FF3B97;
+            --color-brand-dark: var(--color-bg-dark);
+            --color-brand-light: var(--color-bg-light);
+            --color-brand-card: var(--color-card-bg);
+            --color-brand-border: var(--color-card-border);
+            --color-brand-gray-bg: var(--color-gray-bg);
+        }
+        @utility animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 35s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body class="bg-brand-light text-brand-dark font-jakarta antialiased selection:bg-brand-pink selection:text-white">
+
+    <!-- 1. NAVIGATION BAR (Glassmorphic & Sticky) -->
+    <header class="fixed top-0 inset-x-0 h-20 glass-nav z-40 transition-all duration-300">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-8 xl:px-20 h-full flex items-center justify-between gap-4">
+            
+            <!-- Mobile Menu Burger Button -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-brand-dark hover:text-brand-pink transition-colors" aria-label="Open Mobile Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <!-- Brand Logo -->
+            <a href="#" class="font-syne text-2xl font-bold tracking-tight text-brand-dark hover:opacity-90 transition-opacity flex items-center gap-3">
+                <img src="assets/image/favicon.png" alt="Rogue Wear Logo" class="h-8 w-8 object-contain">
+                <span class="hidden min-[400px]:inline-block">ROGUE<span class="text-brand-pink font-light italic">WEAR</span></span>
+            </a>
+
+            <!-- Center Menu Links -->
+            <nav id="desktop-nav" class="hidden lg:flex items-center gap-1 xl:gap-2 text-[11px] xl:text-xs min-[1400px]:text-sm font-outfit font-medium tracking-wide shrink-0">
+                <a href="index.html" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Home</a>
+                <a href="index.html#categories" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Categories</a>
+                <a href="shop.html" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap bg-black text-white dark:bg-white dark:text-black rounded-full transition-all">Shop Drops</a>
+                <a href="index.html#custom-print" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Custom Print</a>
+                <a href="index.html#discount-banner" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Vouchers</a>
+                <a href="index.html#footer" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Contact</a>
+            </nav>
+
+            <!-- Action Icons & Pill CTA -->
+            <div class="flex items-center gap-1.5 sm:gap-3 lg:gap-6 shrink-0">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle-btn" class="p-1.5 sm:p-2 text-brand-dark hover:text-brand-pink transition-colors cursor-pointer" aria-label="Toggle Theme">
+                    <!-- Sun Icon (shown in dark mode) -->
+                    <svg id="theme-sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                    <!-- Moon Icon (shown in light mode) -->
+                    <svg id="theme-moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+
+                <!-- Search Button -->
+                <button id="nav-search-btn" class="p-1.5 sm:p-2 text-brand-dark hover:text-brand-pink transition-colors cursor-pointer" aria-label="Search Products">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+
+                <!-- Wishlist Button with badge -->
+                <button id="nav-wishlist-btn" class="p-1.5 sm:p-2 text-brand-dark hover:text-brand-pink relative transition-colors cursor-pointer" aria-label="Wishlist">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    <span class="wishlist-count-badge absolute -top-1 -right-1 bg-brand-pink text-white text-[9px] font-bold w-4.5 h-4.5 flex items-center justify-center rounded-full hidden">0</span>
+                </button>
+
+                <!-- Cart Button with badge -->
+                <button id="nav-cart-btn" class="p-1.5 sm:p-2 text-brand-dark hover:text-brand-pink relative transition-colors cursor-pointer" aria-label="Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-count-badge absolute -top-1 -right-1 bg-black text-white text-[9px] font-bold w-4.5 h-4.5 flex items-center justify-center rounded-full hidden">0</span>
+                </button>
+
+                <!-- CTA Action Button (matching the reference image's pill buttons) -->
+                <a href="shop.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-black hover:bg-brand-pink text-white text-xs font-syne font-bold uppercase tracking-wider rounded-full transition-all duration-300 hover:shadow-lg shadow-sm">
+                    Shop Drops
+                    <span class="flex items-center justify-center bg-white/20 rounded-full p-1 text-[8px]">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="fixed top-20 left-0 h-1 bg-brand-pink z-50 w-0 transition-all duration-75"></div>
+
+    <!-- 2. MOBILE MENU DRAWER -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden backdrop-blur-sm"></div>
+    <div id="mobile-menu-drawer" class="fixed top-0 bottom-0 left-0 max-w-xs w-full bg-brand-light border-r border-brand-border z-50 p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-300">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-brand-border">
+                <a href="#" class="font-syne text-xl font-bold tracking-tight text-brand-dark flex items-center gap-2.5">
+                    <img src="assets/image/favicon.png" alt="Rogue Wear Logo" class="h-7 w-7 object-contain">
+                    <span>ROGUE<span class="text-brand-pink font-light italic">WEAR</span></span>
+                </a>
+                <button id="close-mobile-menu" class="p-2 text-gray-400 hover:text-brand-pink transition-colors">
+                    ✕
+                </button>
+            </div>
+            
+            <!-- Theme Toggle Mobile -->
+            <div class="flex items-center justify-between mt-6 pb-4 border-b border-brand-border">
+                <span class="text-xs font-syne font-bold uppercase tracking-wider text-gray-400">Dark Mode</span>
+                <button id="theme-toggle-btn-mobile" class="w-12 h-6 bg-gray-200 dark:bg-brand-pink rounded-full p-0.5 transition-colors duration-200 focus:outline-none relative cursor-pointer">
+                    <span class="w-5 h-5 bg-white rounded-full shadow-md transform translate-x-0 dark:translate-x-6 transition-transform duration-200 block" id="toggle-dot-mobile"></span>
+                </button>
+            </div>
+            
+            <nav class="flex flex-col gap-5 mt-6 font-syne text-lg font-bold">
+                <a href="index.html" class="hover:text-brand-pink transition-colors">Home</a>
+                <a href="index.html#categories" class="hover:text-brand-pink transition-colors">Categories</a>
+                <a href="shop.html" class="hover:text-brand-pink transition-colors text-brand-pink">Shop Drops</a>
+                <a href="index.html#custom-print" class="hover:text-brand-pink transition-colors">Custom Print</a>
+                <a href="index.html#discount-banner" class="hover:text-brand-pink transition-colors">Vouchers</a>
+                <a href="index.html#footer" class="hover:text-brand-pink transition-colors">Contact</a>
+            </nav>
+        </div>
+
+        <div class="border-t border-brand-border pt-6 space-y-3.5">
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-outfit block">Syndicate Support</span>
+            <div class="space-y-2 font-jakarta">
+                <div class="text-xs font-bold text-brand-dark flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <a href="tel:+94771234567" class="hover:text-brand-pink transition-colors">+94 77 123 4567</a>
+                </div>
+                <div class="text-xs text-gray-400 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <a href="mailto:roguewear.tee@gmail.com" class="hover:text-brand-pink transition-colors font-medium">roguewear.tee@gmail.com</a>
+                </div>
+            </div>
+            
+            <div class="flex gap-3 pt-1 text-gray-400">
+                <a href="https://www.instagram.com/rogu_ewear?igsh=MWxwaXltOGticThiaw%3D%3D&utm_source=qr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-7.5 h-7.5 rounded-lg bg-black/5 dark:bg-white/5 border border-brand-border" title="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/share/1GuVpMpY3G/?mibextid=wwXIfr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-7.5 h-7.5 rounded-lg bg-black/5 dark:bg-white/5 border border-brand-border" title="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                    </svg>
+                </a>
+                <a href="https://www.tiktok.com/@_banu23?_r=1&_t=ZS-97NGAUq2Gil" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-7.5 h-7.5 rounded-lg bg-black/5 dark:bg-white/5 border border-brand-border" title="TikTok">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M12.525.02c1.31-.02 2.61.35 3.6 1.05a8.87 8.87 0 00-.5 2.1c-.1.6-.5 1.1-1.1 1.4a4.44 4.44 0 01-2.9-1.2v11.75a6.13 6.13 0 11-6.13-6.13c.35 0 .69.03 1.03.1v2.1a4.03 4.03 0 103.05 3.93V0h3z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+      <!-- 3. SHOP SECTIONS -->
+    <section class="pt-28 pb-20 w-full min-h-screen">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20">
+            
+            <!-- Title & Header Bar -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-brand-border/40">
+                <div>
+                    <span class="text-[10px] text-brand-pink font-bold uppercase tracking-widest font-syne">Rogue Catalog</span>
+                    <h1 class="font-syne text-4xl sm:text-5xl font-extrabold text-brand-dark mt-1">Explore Shop</h1>
+                    <p class="text-gray-500 text-xs sm:text-sm font-light mt-1 font-jakarta" id="shop-product-count">Displaying 8 of 8 premium pieces.</p>
+                </div>
+                
+                <!-- Sorting Dropdown -->
+                <div class="flex items-center gap-3">
+                    <label for="sort-by" class="text-xs font-syne font-bold uppercase tracking-wider text-gray-400">Sort By</label>
+                    <div class="relative">
+                        <select id="sort-by" onchange="handleSortChange(this.value)" class="appearance-none bg-brand-card border border-brand-border text-brand-dark px-4 py-2.5 pr-10 rounded-xl text-xs font-syne font-bold uppercase tracking-wider focus:outline-none focus:border-brand-pink cursor-pointer shadow-sm">
+                            <option value="featured">Featured Options</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="rating">Top Rated</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-Column Layout -->
+            <div class="flex flex-col lg:flex-row gap-10">
+                
+                <!-- Sidebar Filters (Left Column) -->
+                <aside class="w-full lg:w-64 shrink-0 space-y-8 bg-brand-card p-6 rounded-custom-lg border border-brand-border shadow-sm h-fit">
+                    <div class="flex items-center justify-between pb-4 border-b border-brand-border">
+                        <h2 class="font-syne text-md font-bold uppercase tracking-wider text-brand-dark flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                            </svg>
+                            Filters
+                        </h2>
+                        <button onclick="resetAllFilters()" class="text-[10px] font-syne font-bold uppercase tracking-wider text-brand-pink hover:opacity-85 transition-opacity cursor-pointer">
+                            Reset All
+                        </button>
+                    </div>
+                    
+                    <!-- Category Filter -->
+                    <div class="space-y-3">
+                        <h3 class="text-xs font-syne font-bold uppercase tracking-wider text-gray-400">Category</h3>
+                        <div class="flex flex-col gap-2 font-jakarta text-xs font-medium text-gray-500">
+                            <button onclick="setFilterCategory('all')" id="cat-btn-all" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors font-bold text-brand-pink">All</button>
+                            <button onclick="setFilterCategory('oversized-tees')" id="cat-btn-oversized-tees" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors">Oversized Tees</button>
+                            <button onclick="setFilterCategory('graphic-hoodies')" id="cat-btn-graphic-hoodies" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors">Graphic Hoodies</button>
+                            <button onclick="setFilterCategory('cargo-pants')" id="cat-btn-cargo-pants" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors">Cargo Pants</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Filter -->
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xs font-syne font-bold uppercase tracking-wider text-gray-400">Max Price</h3>
+                            <span id="price-value" class="text-xs font-bold text-brand-dark font-mono">LKR 7,000</span>
+                        </div>
+                        <div class="pt-2">
+                            <input type="range" id="price-range" min="2500" max="7000" step="100" value="7000" oninput="handlePriceFilter(this.value)" class="w-full h-1 bg-gray-200 dark:bg-brand-gray-bg rounded-lg appearance-none cursor-pointer accent-brand-pink">
+                            <div class="flex justify-between text-[10px] text-gray-400 font-mono mt-1.5">
+                                <span>LKR 2,500</span>
+                                <span>LKR 7,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sizes Filter -->
+                    <div class="space-y-3">
+                        <h3 class="text-xs font-syne font-bold uppercase tracking-wider text-gray-400">Sizes</h3>
+                        <div class="flex gap-2">
+                            <button onclick="toggleFilterSize('M')" id="size-btn-M" class="size-filter-btn w-8 h-8 rounded-lg border border-brand-border text-brand-dark text-xs font-bold font-outfit transition-colors hover:border-brand-dark cursor-pointer">M</button>
+                            <button onclick="toggleFilterSize('L')" id="size-btn-L" class="size-filter-btn w-8 h-8 rounded-lg border border-brand-border text-brand-dark text-xs font-bold font-outfit transition-colors hover:border-brand-dark cursor-pointer">L</button>
+                            <button onclick="toggleFilterSize('XL')" id="size-btn-XL" class="size-filter-btn w-8 h-8 rounded-lg border border-brand-border text-brand-dark text-xs font-bold font-outfit transition-colors hover:border-brand-dark cursor-pointer">XL</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Colors Filter -->
+                    <div class="space-y-3">
+                        <h3 class="text-xs font-syne font-bold uppercase tracking-wider text-gray-400">Colors</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <button onclick="toggleFilterColor('black')" id="color-btn-black" class="color-filter-btn w-6 h-6 rounded-full bg-black border border-brand-border hover:scale-110 transition-transform relative cursor-pointer" title="Black">
+                                <span class="absolute inset-0 flex items-center justify-center text-white text-[9px] hidden">✓</span>
+                            </button>
+                            <button onclick="toggleFilterColor('white')" id="color-btn-white" class="color-filter-btn w-6 h-6 rounded-full bg-white border border-brand-border hover:scale-110 transition-transform relative cursor-pointer" title="White">
+                                <span class="absolute inset-0 flex items-center justify-center text-black text-[9px] hidden">✓</span>
+                            </button>
+                            <button onclick="toggleFilterColor('gray')" id="color-btn-gray" class="color-filter-btn w-6 h-6 rounded-full bg-gray-500 border border-brand-border hover:scale-110 transition-transform relative cursor-pointer" title="Gray">
+                                <span class="absolute inset-0 flex items-center justify-center text-white text-[9px] hidden">✓</span>
+                            </button>
+                            <button onclick="toggleFilterColor('violet')" id="color-btn-violet" class="color-filter-btn w-6 h-6 rounded-full bg-[#8B5CF6] border border-brand-border hover:scale-110 transition-transform relative cursor-pointer" title="Violet">
+                                <span class="absolute inset-0 flex items-center justify-center text-white text-[9px] hidden">✓</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Minimum Rating Filter -->
+                    <div class="space-y-3">
+                        <h3 class="text-xs font-syne font-bold uppercase tracking-wider text-gray-400">Minimum Rating</h3>
+                        <div class="flex flex-col gap-1.5 font-jakarta text-xs text-gray-500">
+                            <button onclick="setFilterRating(0)" id="rating-btn-0" class="rating-filter-btn text-left py-0.5 hover:text-brand-pink transition-colors font-bold text-brand-pink">All Ratings</button>
+                            <button onclick="setFilterRating(5)" id="rating-btn-5" class="rating-filter-btn text-left py-0.5 hover:text-brand-pink transition-colors flex items-center gap-1">
+                                <span class="text-brand-pink">★★★★★</span> <span class="text-[10px] text-gray-400">5.0</span>
+                            </button>
+                            <button onclick="setFilterRating(4.8)" id="rating-btn-48" class="rating-filter-btn text-left py-0.5 hover:text-brand-pink transition-colors flex items-center gap-1">
+                                <span class="text-brand-pink">★★★★☆</span> <span class="text-[10px] text-gray-400">4.8+</span>
+                            </button>
+                            <button onclick="setFilterRating(4.6)" id="rating-btn-46" class="rating-filter-btn text-left py-0.5 hover:text-brand-pink transition-colors flex items-center gap-1">
+                                <span class="text-brand-pink">★★★★☆</span> <span class="text-[10px] text-gray-400">4.6+</span>
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Products Column (Right Column) -->
+                <div class="flex-grow">
+                    <!-- Products Grid -->
+                    <div id="shop-product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Rendered dynamically by shop.js -->
+                    </div>
+                    
+                    <!-- Empty State -->
+                    <div id="shop-empty-state" class="hidden flex flex-col items-center justify-center py-20 text-center space-y-4">
+                        <div class="text-brand-pink bg-brand-pink/5 w-20 h-20 rounded-3xl flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-syne text-xl font-bold text-brand-dark">No Products Found</h3>
+                        <p class="text-gray-500 text-xs sm:text-sm font-light max-w-xs font-jakarta">We couldn't find any premium pieces matching your filters. Try resetting them or searching for something else!</p>
+                        <button onclick="resetAllFilters()" class="px-6 py-3 bg-brand-dark hover:bg-brand-pink text-white text-xs font-syne font-bold uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer">
+                            Clear Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="w-full mb-16 sm:mb-24 reveal">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20">
+            <div class="bg-brand-card bg-gradient-to-br from-brand-card via-brand-card to-brand-pink/5 border border-brand-border rounded-custom-xl p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm">
+            <div class="space-y-2 max-w-xl text-center lg:text-left">
+                <h3 class="font-syne text-2xl sm:text-3xl font-extrabold text-brand-dark">Join the Rogue Syndicate</h3>
+                <p class="text-xs sm:text-sm text-gray-400 font-light font-jakarta">Get early access alerts to exclusive graphic t-shirt drops, private discounts, and size restocks before everyone else.</p>
+            </div>
+            <form id="newsletter-form" class="flex flex-col sm:flex-row w-full lg:max-w-md gap-3">
+                <input type="email" placeholder="Enter your email address" required class="w-full bg-brand-light border border-brand-border rounded-2xl px-5 py-3.5 text-xs text-brand-dark focus:outline-none focus:border-brand-pink font-outfit" aria-label="Email Address">
+                <button type="submit" class="bg-black hover:bg-brand-pink text-white font-syne font-bold text-xs tracking-wider uppercase px-8 py-3.5 rounded-2xl transition-colors cursor-pointer shadow-lg shrink-0">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="bg-[#0A0A0A] border-t border-brand-border/40 relative overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-20 pt-20 pb-8 space-y-16">
+            
+            <!-- Trust Signals Grid (Premium features) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-16 border-b border-brand-border">
+                <div class="flex gap-4 items-start reveal">
+                    <div class="text-brand-pink bg-brand-pink/5 w-14 h-14 rounded-2xl flex items-center justify-center shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h5 class="font-syne text-base font-bold text-brand-dark">Durable Decals & Prints</h5>
+                        <p class="text-xs text-gray-400 font-light pt-1 leading-relaxed">We use premium, high-density sticker vinyl graphics and screen decals that do not crack, peel, or fade, even after 100+ heavy machine washes.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start reveal" style="transition-delay: 100ms;">
+                    <div class="text-brand-pink bg-brand-pink/5 w-14 h-14 rounded-2xl flex items-center justify-center shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 20L17.5 6.5M17.5 6.5a1.5 1.5 0 112.12-2.12 1.5 1.5 0 01-2.12 2.12z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 5c0 3-4 6-8 6s-7-3-7-6" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h5 class="font-syne text-base font-bold text-brand-dark">Premium Street Fit</h5>
+                        <p class="text-xs text-gray-400 font-light pt-1 leading-relaxed">Every graphic decal is heat-pressed carefully on combed heavyweight organic cotton (260GSM) for that premium boxy fit and durable structure.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start reveal" style="transition-delay: 200ms;">
+                    <div class="text-brand-pink bg-brand-pink/5 w-14 h-14 rounded-2xl flex items-center justify-center shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h5 class="font-syne text-base font-bold text-brand-dark">Free Sticker Packs</h5>
+                        <p class="text-xs text-gray-400 font-light pt-1 leading-relaxed">Your orders are delivered in custom matte boxes. Every parcel includes a premium collectible die-cut streetwear sticker pack of our designs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Main Columns -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pt-4">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="assets/image/favicon.png" alt="Rogue Wear Logo" class="h-9 w-9 object-contain">
+                        <h3 class="font-syne text-2xl font-bold">ROGUE<span class="text-brand-pink font-light italic">WEAR</span></h3>
+                    </div>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed font-jakarta">Premium Sri Lankan Streetwear & Graphic Printed Tees. Engineered with bold, crack-resistant sticker graphics for rule-breaking minds.</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Explore Collections</h5>
+                    <ul class="text-xs text-gray-500 font-medium space-y-2.5 font-outfit">
+                        <li><a href="javascript:setFilterCategory('oversized-tees')" class="hover:text-black transition-colors">Oversized T-Shirts</a></li>
+                        <li><a href="javascript:setFilterCategory('graphic-hoodies')" class="hover:text-black transition-colors">Graphic Hoodies</a></li>
+                        <li><a href="javascript:setFilterCategory('cargo-pants')" class="hover:text-black transition-colors">Tech Cargo Pants</a></li>
+                        <li><a href="javascript:setFilterCategory('all')" class="hover:text-black transition-colors">Limited Drop Series</a></li>
+                    </ul>
+                </div>
+                
+                <div class="space-y-4">
+                    <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Syndicate Support</h5>
+                    <ul class="text-xs text-gray-500 font-medium space-y-2.5 font-outfit">
+                        <li><a href="#" class="hover:text-black transition-colors">Shipping & Exchanges</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Care Instructions</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Vouchers Policy</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Privacy Terms</a></li>
+                    </ul>
+                </div>
+                
+                <div class="space-y-4">
+                    <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Syndicate HQ</h5>
+                    <ul class="text-xs text-gray-500 space-y-2.5 font-jakarta font-light">
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>Colombo 07, Sri Lanka.</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <a href="tel:+94771234567" class="hover:text-brand-pink transition-colors">+94 77 123 4567</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <a href="mailto:roguewear.tee@gmail.com" class="hover:text-brand-pink transition-colors">roguewear.tee@gmail.com</a>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4 pt-2 text-gray-400">
+                        <a href="https://www.instagram.com/rogu_ewear?igsh=MWxwaXltOGticThiaw%3D%3D&utm_source=qr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/share/1GuVpMpY3G/?mibextid=wwXIfr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@_banu23?_r=1&_t=ZS-97NGAUq2Gil" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="TikTok">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 fill-current" viewBox="0 0 24 24">
+                                <path d="M12.525.02c1.31-.02 2.61.35 3.6 1.05a8.87 8.87 0 00-.5 2.1c-.1.6-.5 1.1-1.1 1.4a4.44 4.44 0 01-2.9-1.2v11.75a6.13 6.13 0 11-6.13-6.13c.35 0 .69.03 1.03.1v2.1a4.03 4.03 0 103.05 3.93V0h3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Massive Outline Decorative text matching Footer Branding in Olixtive screenshot -->
+            <div class="pt-8 text-center select-none pointer-events-none">
+                <div class="font-syne text-[8vw] font-black tracking-tighter leading-none text-outline uppercase">
+                    Rogue Wear
+                </div>
+            </div>
+
+            <!-- Copyright and Payment badges -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-brand-border/40 text-[10px] text-gray-400 font-outfit">
+                <span>© 2026 Rogue Wear Sri Lanka. All rights reserved.</span>
+                <div class="flex gap-2 font-mono text-[9px] font-bold">
+                    <span class="bg-white/5 border border-white/10 px-2.5 py-1 rounded text-white/80">VISA</span>
+                    <span class="bg-white/5 border border-white/10 px-2.5 py-1 rounded text-white/80">MASTERCARD</span>
+                    <span class="bg-white/5 border border-white/10 px-2.5 py-1 rounded text-white/80">KOKO PAY</span>
+                    <span class="bg-white/5 border border-white/10 px-2.5 py-1 rounded text-white/80">COD</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 9. INTERACTIVE SLIDE-OUT DRAWERS (Wishlist & Cart Panels) -->
+    <!-- Drawer Overlay Backdrop -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/60 z-40 hidden backdrop-blur-sm"></div>
+
+    <!-- A. Cart Drawer -->
+    <div id="cart-drawer" class="fixed top-0 bottom-0 right-0 max-w-md w-full bg-brand-light border-l border-brand-border z-50 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-brand-border">
+                <h4 class="font-syne font-bold text-lg text-brand-dark flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5.5 w-5.5 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span>Shopping Cart</span>
+                    <span class="cart-count-badge bg-brand-dark text-brand-light text-[10px] px-2 py-0.5 rounded-full">0</span>
+                </h4>
+                <button id="close-cart-btn" class="p-2 text-gray-400 hover:text-brand-pink transition-colors">
+                    ✕
+                </button>
+            </div>
+            <!-- Cart Items List Container -->
+            <div id="cart-items-list" class="overflow-y-auto max-h-[60vh] mt-4 pr-1">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <!-- Checkout / Summary Area -->
+        <div id="cart-summary-box" class="border-t border-brand-border pt-6 space-y-4 hidden">
+            <div class="space-y-1.5 text-xs text-gray-400 font-outfit">
+                <div class="flex justify-between">
+                    <span>Cart Subtotal</span>
+                    <span id="cart-subtotal" class="font-bold text-brand-dark">LKR 0</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Shipping Delivery</span>
+                    <span id="cart-shipping" class="font-bold text-brand-dark">LKR 350</span>
+                </div>
+                <div class="flex justify-between text-base font-bold text-brand-dark pt-1 border-t border-brand-border">
+                    <span class="font-syne">Total Amount</span>
+                    <span id="cart-total" class="font-outfit">LKR 0</span>
+                </div>
+            </div>
+            
+            <button onclick="checkoutCart()" class="w-full bg-brand-dark hover:bg-brand-pink text-brand-light font-syne font-bold text-xs uppercase tracking-wider py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer">
+                Proceed to Secure Checkout &rarr;
+            </button>
+        </div>
+    </div>
+
+    <!-- B. Wishlist Drawer -->
+    <div id="wishlist-drawer" class="fixed top-0 bottom-0 right-0 max-w-md w-full bg-brand-light border-l border-brand-border z-50 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-brand-border">
+                <h4 class="font-syne font-bold text-lg text-brand-dark flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    <span>Saved Wishlist</span>
+                    <span class="wishlist-count-badge bg-brand-dark text-brand-light text-[10px] px-2 py-0.5 rounded-full">0</span>
+                </h4>
+                <button id="close-wishlist-btn" class="p-2 text-gray-400 hover:text-brand-pink transition-colors">
+                    ✕
+                </button>
+            </div>
+            <!-- Wishlist Items List Container -->
+            <div id="wishlist-items-list" class="overflow-y-auto max-h-[75vh] mt-4 pr-1">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. INTERACTIVE SEARCH OVERLAY MODAL -->
+    <div id="search-overlay" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 flex flex-col items-center justify-start pt-28 px-6 hidden">
+        <div class="max-w-xl w-full space-y-6">
+            <div class="flex items-center justify-between">
+                <h4 class="font-syne text-white text-lg font-bold">Search the Syndicate Drops</h4>
+                <button id="close-search-btn" class="text-gray-400 hover:text-white text-lg">✕ Close</button>
+            </div>
+            
+            <div class="relative w-full">
+                <input type="text" id="search-input" placeholder="Type tee, hoodie, cargo..." class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-brand-pink focus:bg-white/15 transition-all text-sm font-outfit">
+                <span class="absolute right-6 top-4.5 text-gray-400">🔍</span>
+            </div>
+
+            <!-- Live Search Results Box -->
+            <div id="search-results" class="bg-brand-card rounded-custom-lg p-4 max-h-[50vh] overflow-y-auto space-y-2 shadow-2xl">
+                <!-- Dynamically populated matching results -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. FLOATING WHATSAPP STICKER (Colombo Support Contact) -->
+    <a href="https://wa.me/94771234567?text=Hi%20Rogue%20Wear,%20I%20am%20interested%20in%20your%20streetwear%20drops!" target="_blank" class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-35 text-2xl" aria-label="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.498 1.452 5.411 1.453 5.476 0 9.932-4.437 9.935-9.912.002-2.65-1.02-5.14-2.877-7.001C17.259 1.83 14.773.804 12.113.804c-5.483 0-9.94 4.439-9.943 9.914-.001 1.965.513 3.888 1.49 5.62l-.979 3.573 3.666-.957zm11.587-5.72c-.1-.166-.36-.266-.757-.465-.398-.2-.2.348-2.355-2.148-.396-.199-.693-.166-.928.099-.236.265-.928.099-1.144.132-.215-.264-.479-.464-.693-.695-.31-.3-.615-.658-.87-1.055-.256-.4-.539-.81-.616-1.077-.078-.266-.008-.41.09-.51.1-.1.216-.25.323-.376.108-.125.143-.215.215-.363.07-.15.035-.28-.018-.38-.052-.1-.479-1.157-.657-1.587-.173-.42-.349-.364-.479-.37-.123-.006-.264-.007-.406-.007-.143 0-.376.053-.572.266-.196.212-.751.734-.751 1.79 0 1.057.77 2.08.878 2.224.108.146 1.516 2.315 3.673 3.247.513.221.913.353 1.225.451.515.164.984.14 1.355.086.413-.062 1.27-.518 1.45-.992.181-.474.181-.88.127-.965l-.36-.266z"/>
+        </svg>
+    </a>
+
+    <!-- Embed JavaScript Code Inline -->
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/shop.js"></script>
+</body>
+</html>
