@@ -49,6 +49,11 @@
     <meta name="keywords" content="Streetwear Sri Lanka, Graphic Tees Sri Lanka, Oversized Tees Colombo, Rogue Wear, Heavyweight Cotton Tees, Techwear Sri Lanka">
     <meta name="author" content="Rogue Wear Syndicate">
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Tailwind CSS v4 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
@@ -111,9 +116,9 @@
             </button>
 
             <!-- Brand Logo -->
-            <a href="#" class="font-syne text-2xl font-bold tracking-tight text-brand-dark hover:opacity-90 transition-opacity flex items-center gap-3">
-                <img src="assets/image/favicon.png" alt="Rogue Wear Logo" class="h-8 w-8 object-contain">
-                <span class="hidden min-[400px]:inline-block">ROGUE<span class="text-brand-pink font-light italic">WEAR</span></span>
+            <a href="#" class="hover:opacity-90 transition-opacity flex items-center">
+                <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-7 sm:h-8 md:h-9 w-auto object-contain dark:hidden">
+                <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-7 sm:h-8 md:h-9 w-auto object-contain hidden dark:block">
             </a>
 
             <!-- Center Menu Links -->
@@ -180,9 +185,9 @@
     <div id="mobile-menu-drawer" class="fixed top-0 bottom-0 left-0 max-w-xs w-full bg-brand-light border-r border-brand-border z-50 p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-300">
         <div>
             <div class="flex items-center justify-between pb-6 border-b border-brand-border">
-                <a href="#" class="font-syne text-xl font-bold tracking-tight text-brand-dark flex items-center gap-2.5">
-                    <img src="assets/image/favicon.png" alt="Rogue Wear Logo" class="h-7 w-7 object-contain">
-                    <span>ROGUE<span class="text-brand-pink font-light italic">WEAR</span></span>
+                <a href="#" class="flex items-center">
+                    <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-6 sm:h-7 w-auto object-contain dark:hidden">
+                    <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-6 sm:h-7 w-auto object-contain hidden dark:block">
                 </a>
                 <button id="close-mobile-menu" class="p-2 text-gray-400 hover:text-brand-pink transition-colors">
                     ✕
@@ -313,10 +318,10 @@
                     <div class="space-y-3">
                         <h3 class="text-xs font-syne font-bold uppercase tracking-wider text-gray-400">Category</h3>
                         <div class="flex flex-col gap-2 font-jakarta text-xs font-medium text-gray-500">
-                            <button onclick="setFilterCategory('all')" id="cat-btn-all" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors font-bold text-brand-pink">All</button>
-                            <button onclick="setFilterCategory('oversized-tees')" id="cat-btn-oversized-tees" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors">Oversized Tees</button>
-                            <button onclick="setFilterCategory('graphic-hoodies')" id="cat-btn-graphic-hoodies" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors">Graphic Hoodies</button>
-                            <button onclick="setFilterCategory('cargo-pants')" id="cat-btn-cargo-pants" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors">Cargo Pants</button>
+                            <button onclick="setFilterCategory('all')" id="cat-btn-all" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors font-bold text-brand-pink">All Pieces</button>
+                            <button onclick="setFilterCategory('men-unisex')" id="cat-btn-men-unisex" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors">Men/Unisex</button>
+                            <button onclick="setFilterCategory('women-crop')" id="cat-btn-women-crop" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors">Women/Crop Drops</button>
+                            <button onclick="setFilterCategory('kids-syndicate')" id="cat-btn-kids-syndicate" class="cat-filter-btn text-left py-1 hover:text-brand-pink transition-colors">Kids Syndicate</button>
                         </div>
                     </div>
                     
@@ -469,9 +474,9 @@
             <!-- Footer Main Columns -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pt-4">
                 <div class="space-y-4">
-                    <div class="flex items-center gap-3">
-                        <img src="assets/image/favicon.png" alt="Rogue Wear Logo" class="h-9 w-9 object-contain">
-                        <h3 class="font-syne text-2xl font-bold">ROGUE<span class="text-brand-pink font-light italic">WEAR</span></h3>
+                    <div class="flex items-center">
+                        <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-9 sm:h-10 w-auto object-contain dark:hidden">
+                        <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-9 sm:h-10 w-auto object-contain hidden dark:block">
                     </div>
                     <p class="text-xs text-gray-400 font-light leading-relaxed font-jakarta">Premium Sri Lankan Streetwear & Graphic Printed Tees. Engineered with bold, crack-resistant sticker graphics for rule-breaking minds.</p>
                 </div>
@@ -479,20 +484,19 @@
                 <div class="space-y-4">
                     <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Explore Collections</h5>
                     <ul class="text-xs text-gray-500 font-medium space-y-2.5 font-outfit">
-                        <li><a href="javascript:setFilterCategory('oversized-tees')" class="hover:text-black transition-colors">Oversized T-Shirts</a></li>
-                        <li><a href="javascript:setFilterCategory('graphic-hoodies')" class="hover:text-black transition-colors">Graphic Hoodies</a></li>
-                        <li><a href="javascript:setFilterCategory('cargo-pants')" class="hover:text-black transition-colors">Tech Cargo Pants</a></li>
-                        <li><a href="javascript:setFilterCategory('all')" class="hover:text-black transition-colors">Limited Drop Series</a></li>
+                        <li><a href="javascript:setFilterCategory('men-unisex')" class="hover:text-brand-pink transition-colors">Men / Unisex Fit</a></li>
+                        <li><a href="javascript:setFilterCategory('women-crop')" class="hover:text-brand-pink transition-colors">Women's Crop Drops</a></li>
+                        <li><a href="javascript:setFilterCategory('kids-syndicate')" class="hover:text-brand-pink transition-colors">Kids Syndicate</a></li>
                     </ul>
                 </div>
                 
                 <div class="space-y-4">
                     <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Syndicate Support</h5>
                     <ul class="text-xs text-gray-500 font-medium space-y-2.5 font-outfit">
-                        <li><a href="#" class="hover:text-black transition-colors">Shipping & Exchanges</a></li>
-                        <li><a href="#" class="hover:text-black transition-colors">Care Instructions</a></li>
-                        <li><a href="#" class="hover:text-black transition-colors">Vouchers Policy</a></li>
-                        <li><a href="#" class="hover:text-black transition-colors">Privacy Terms</a></li>
+                        <li><a href="#" class="hover:text-brand-pink transition-colors">Shipping & Exchanges</a></li>
+                        <li><a href="#" class="hover:text-brand-pink transition-colors">Care Instructions</a></li>
+                        <li><a href="#" class="hover:text-brand-pink transition-colors">Vouchers Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-pink transition-colors">Privacy Terms</a></li>
                     </ul>
                 </div>
                 
@@ -520,19 +524,19 @@
                         </li>
                     </ul>
                     <div class="flex gap-4 pt-2 text-gray-400">
-                        <a href="https://www.instagram.com/rogu_ewear?igsh=MWxwaXltOGticThiaw%3D%3D&utm_source=qr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Instagram">
+                        <a href="https://www.instagram.com/rogu_ewear?igsh=MWxwaXltOGticThiaw%3D%3D&utm_source=qr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Instagram">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                             </svg>
                         </a>
-                        <a href="https://www.facebook.com/share/1GuVpMpY3G/?mibextid=wwXIfr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Facebook">
+                        <a href="https://www.facebook.com/share/1GuVpMpY3G/?mibextid=wwXIfr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Facebook">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
                             </svg>
                         </a>
-                        <a href="https://www.tiktok.com/@_banu23?_r=1&_t=ZS-97NGAUq2Gil" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="TikTok">
+                        <a href="https://www.tiktok.com/@_banu23?_r=1&_t=ZS-97NGAUq2Gil" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="TikTok">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 fill-current" viewBox="0 0 24 24">
                                 <path d="M12.525.02c1.31-.02 2.61.35 3.6 1.05a8.87 8.87 0 00-.5 2.1c-.1.6-.5 1.1-1.1 1.4a4.44 4.44 0 01-2.9-1.2v11.75a6.13 6.13 0 11-6.13-6.13c.35 0 .69.03 1.03.1v2.1a4.03 4.03 0 103.05 3.93V0h3z"/>
                             </svg>

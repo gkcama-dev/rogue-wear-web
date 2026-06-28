@@ -49,6 +49,11 @@
     <meta name="keywords" content="Streetwear Sri Lanka, Graphic Tees Sri Lanka, Oversized Tees Colombo, Rogue Wear, Heavyweight Cotton Tees, Techwear Sri Lanka">
     <meta name="author" content="Rogue Wear Syndicate">
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Tailwind CSS v4 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
@@ -69,6 +74,13 @@
         }
         .hero-image {
             object-position: right center !important;
+        }
+        .scrollbar-none::-webkit-scrollbar {
+            display: none !important;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
         }
     </style>
 
@@ -111,18 +123,18 @@
             </button>
 
             <!-- Brand Logo -->
-            <a href="#" class="font-syne text-2xl font-bold tracking-tight text-brand-dark hover:opacity-90 transition-opacity flex items-center gap-3">
-                <img src="assets/image/favicon.png" alt="Rogue Wear Logo" class="h-8 w-8 object-contain">
-                <span class="hidden min-[400px]:inline-block">ROGUE<span class="text-brand-pink font-light italic">WEAR</span></span>
+            <a href="#" class="hover:opacity-90 transition-opacity flex items-center">
+                <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-7 sm:h-8 md:h-9 w-auto object-contain dark:hidden">
+                <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-7 sm:h-8 md:h-9 w-auto object-contain hidden dark:block">
             </a>
 
             <!-- Center Menu Links -->
             <nav id="desktop-nav" class="hidden lg:flex items-center gap-1 xl:gap-2 text-[11px] xl:text-xs min-[1400px]:text-sm font-outfit font-medium tracking-wide shrink-0">
                 <a href="#" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap bg-black text-white dark:bg-white dark:text-black rounded-full transition-all">Home</a>
                 <a href="#categories" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Categories</a>
+                <a href="#discount-banner" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Vouchers</a>
                 <a href="#shop" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Shop Drops</a>
                 <a href="#custom-print" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Custom Print</a>
-                <a href="#discount-banner" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Vouchers</a>
                 <a href="#footer" class="nav-link px-2.5 xl:px-4 py-1.5 whitespace-nowrap text-brand-dark hover:text-brand-pink rounded-full transition-all">Contact</a>
             </nav>
 
@@ -180,9 +192,9 @@
     <div id="mobile-menu-drawer" class="fixed top-0 bottom-0 left-0 max-w-xs w-full bg-brand-light border-r border-brand-border z-50 p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-300">
         <div>
             <div class="flex items-center justify-between pb-6 border-b border-brand-border">
-                <a href="#" class="font-syne text-xl font-bold tracking-tight text-brand-dark flex items-center gap-2.5">
-                    <img src="assets/image/favicon.png" alt="Rogue Wear Logo" class="h-7 w-7 object-contain">
-                    <span>ROGUE<span class="text-brand-pink font-light italic">WEAR</span></span>
+                <a href="#" class="flex items-center">
+                    <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-6 sm:h-7 w-auto object-contain dark:hidden">
+                    <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-6 sm:h-7 w-auto object-contain hidden dark:block">
                 </a>
                 <button id="close-mobile-menu" class="p-2 text-gray-400 hover:text-brand-pink transition-colors">
                     ✕
@@ -269,10 +281,10 @@
                 <!-- Glowing Badges -->
                 <div class="flex flex-wrap gap-2.5">
                     <span class="text-[10px] uppercase tracking-[0.2em] text-brand-pink font-bold bg-brand-pink/10 px-4 py-1.5 rounded-full font-syne">
-                        Streetwear Syndicate Sri Lanka
+                        Fluid Streetwear for All Identities
                     </span>
                     <span class="text-[10px] uppercase tracking-[0.2em] text-gray-600 bg-gray-100 dark:bg-white/5 dark:text-gray-400 px-4 py-1.5 rounded-full font-outfit">
-                        Durable Sticker Prints
+                        Premium Men, Women & Kids Syndicate
                     </span>
                 </div>
 
@@ -284,7 +296,7 @@
 
                 <!-- Body Copy (Jakarta Sans) -->
                 <p class="text-gray-500 text-sm sm:text-base max-w-lg font-light leading-relaxed font-jakarta">
-                    Heavyweight 260GSM tees printed with premium, crack-resistant sticker graphics and decals. Engineered in Sri Lanka, combining rich cultural elements with high-end cyberpunk street style.
+                    Fluid streetwear silhouettes engineered for all identities. Premium heavyweight organic cotton printed with crack-resistant decals. Designed in Sri Lanka for Men, Women, and Kids.
                 </p>
 
                 <!-- Actions (Pill buttons with circles inside) -->
@@ -301,7 +313,7 @@
                 <!-- Trust signals/Metrics flat list (flexible wrap) -->
                 <div class="flex flex-wrap gap-y-4 gap-x-8 pt-6 border-t border-brand-border/40 max-w-md">
                     <div>
-                        <div class="font-syne text-2xl font-bold text-brand-dark">260+</div>
+                        <div class="font-syne text-2xl font-bold text-brand-dark">220+</div>
                         <div class="text-[9px] text-gray-400 uppercase tracking-widest font-outfit mt-0.5">Heavyweight GSM</div>
                     </div>
                     <div>
@@ -336,7 +348,7 @@
             <span>High-Density Graphic</span> <span class="text-brand-pink/60 select-none">•</span>
             <span>Heavyweight Oversyze</span> <span class="text-brand-pink/60 select-none">•</span>
             <span>Anti-Ordinary</span> <span class="text-brand-pink/60 select-none">•</span>
-            <span>Unisex Cut</span> <span class="text-brand-pink/60 select-none">•</span>
+            <span>Men • Women • Kids Fits</span> <span class="text-brand-pink/60 select-none">•</span>
             <span>Premium DTF Fusion</span> <span class="text-brand-pink/60 select-none">•</span>
             <span>Crack-Resistant Ink</span> <span class="text-brand-pink/60 select-none">•</span>
             <span>240 GSM Heavyweight</span> <span class="text-brand-pink/60 select-none">•</span>
@@ -351,7 +363,7 @@
             <span>High-Density Graphic</span> <span class="text-brand-pink/60 select-none">•</span>
             <span>Heavyweight Oversyze</span> <span class="text-brand-pink/60 select-none">•</span>
             <span>Anti-Ordinary</span> <span class="text-brand-pink/60 select-none">•</span>
-            <span>Unisex Cut</span> <span class="text-brand-pink/60 select-none">•</span>
+            <span>Men • Women • Kids Fits</span> <span class="text-brand-pink/60 select-none">•</span>
             <span>Premium DTF Fusion</span> <span class="text-brand-pink/60 select-none">•</span>
             <span>Crack-Resistant Ink</span> <span class="text-brand-pink/60 select-none">•</span>
             <span>240 GSM Heavyweight</span> <span class="text-brand-pink/60 select-none">•</span>
@@ -369,51 +381,51 @@
             <div class="space-y-3 max-w-xl reveal">
                 <span class="text-[10px] uppercase tracking-[0.25em] text-brand-pink font-bold bg-brand-pink/10 px-3 py-1 rounded-full">Curated Drops</span>
                 <h2 class="font-syne text-3xl sm:text-4xl lg:text-[46px] leading-none tracking-tight font-extrabold text-brand-dark">Shop by Category</h2>
-                <p class="text-gray-500 text-xs sm:text-sm font-light">Choose your style path. From oversized graphic silhouettes to high-utility tech trousers.</p>
+                <p class="text-gray-500 text-xs sm:text-sm font-light">Choose your style path. Inclusive collections engineered for all identities.</p>
             </div>
             
             <!-- Category Tabs (Interactive category filters) -->
             <div class="flex flex-wrap gap-2 reveal font-syne text-xs uppercase font-bold tracking-wider">
                 <button onclick="filterCategory('all', this)" class="category-tab px-5 py-3.5 bg-brand-dark text-brand-light rounded-full transition-all">All Pieces</button>
-                <button onclick="filterCategory('oversized-tees', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Oversized Tees</button>
-                <button onclick="filterCategory('graphic-hoodies', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Street Hoodies</button>
-                <button onclick="filterCategory('cargo-pants', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Utility Cargo</button>
+                <button onclick="filterCategory('men-unisex', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Men/Unisex</button>
+                <button onclick="filterCategory('women-crop', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Women/Crop Drops</button>
+                <button onclick="filterCategory('kids-syndicate', this)" class="category-tab px-5 py-3.5 bg-brand-card text-brand-dark border border-brand-border rounded-full hover:border-brand-dark transition-all">Kids Syndicate</button>
             </div>
         </div>
 
-        <!-- 3-Column Card Layout for Showcase Previews -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 3-Column Card Layout for Showcase Previews (Horizontal scroll on mobile, 3-column grid on desktop) -->
+        <div class="flex md:grid md:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-x-visible pb-4 md:pb-0 scrollbar-none snap-x snap-mandatory scroll-smooth px-6 -mx-6 md:px-0 md:mx-0">
             
-            <!-- Showcase 1: Oversized Tees -->
-            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border transition-all duration-500 hover:shadow-xl reveal bg-brand-gray-bg streetwear-card">
-                <img src="assets/image/tee_yaksha.png" alt="Oversized Tees" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <!-- Showcase 1: Men/Unisex Collection -->
+            <div onclick="filterCategory('men-unisex', document.querySelectorAll('.category-tab')[1]); document.getElementById('categories').scrollIntoView({behavior: 'smooth'})" class="group relative aspect-[4/3] md:aspect-[3/2] rounded-3xl overflow-hidden cursor-pointer shadow-sm border border-brand-border transition-all duration-500 hover:shadow-xl reveal bg-brand-gray-bg streetwear-card w-[280px] md:w-full shrink-0 snap-start">
+                <img src="assets/image/tee_yaksha.png" alt="Men/Unisex Collection" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
-                <div class="absolute bottom-0 inset-x-0 p-8 space-y-2">
-                    <span class="text-[9px] text-gray-300 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-wider">260 GSM Heavyweight</span>
-                    <h3 class="font-syne text-2xl text-white pt-2 flex items-center justify-between">Oversized Tees <span class="text-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">&nearr;</span></h3>
-                    <p class="text-xs text-gray-400 font-light font-jakarta">Durable screen & vinyl sticker graphics</p>
+                <div class="absolute bottom-0 inset-x-0 p-5 md:p-8 space-y-1.5 md:space-y-2">
+                    <span class="text-[9px] text-gray-300 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-wider font-syne font-bold">Heavyweight 260GSM</span>
+                    <h3 class="font-syne text-xl md:text-2xl font-bold text-white pt-1 md:pt-2 flex items-center justify-between">Men/Unisex <span class="text-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">&nearr;</span></h3>
+                    <p class="text-[10px] md:text-xs text-gray-400 font-light font-jakarta">Heavyweight 260GSM oversized graphic silhouettes.</p>
                 </div>
             </div>
 
-            <!-- Showcase 2: Graphic Hoodies -->
-            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border transition-all duration-500 hover:shadow-xl reveal bg-brand-gray-bg streetwear-card">
-                <img src="assets/image/hoodie.png" alt="Street Hoodies" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <!-- Showcase 2: Women/Crop Drops -->
+            <div onclick="filterCategory('women-crop', document.querySelectorAll('.category-tab')[2]); document.getElementById('categories').scrollIntoView({behavior: 'smooth'})" class="group relative aspect-[4/3] md:aspect-[3/2] rounded-3xl overflow-hidden cursor-pointer shadow-sm border border-brand-border transition-all duration-500 hover:shadow-xl reveal bg-brand-gray-bg streetwear-card w-[280px] md:w-full shrink-0 snap-start">
+                <img src="assets/image/showcase_women.png" alt="Women/Crop Drops" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
-                <div class="absolute bottom-0 inset-x-0 p-8 space-y-2">
-                    <span class="text-[9px] text-gray-300 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-wider">400 GSM Fleece</span>
-                    <h3 class="font-syne text-2xl text-white pt-2 flex items-center justify-between">Street Hoodies <span class="text-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">&nearr;</span></h3>
-                    <p class="text-xs text-gray-400 font-light font-jakarta">Thick fleece with premium vinyl prints</p>
+                <div class="absolute bottom-0 inset-x-0 p-5 md:p-8 space-y-1.5 md:space-y-2">
+                    <span class="text-[9px] text-gray-300 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-wider font-syne font-bold">Crop Aesthetics</span>
+                    <h3 class="font-syne text-xl md:text-2xl font-bold text-white pt-1 md:pt-2 flex items-center justify-between">Women/Crop Drops <span class="text-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">&nearr;</span></h3>
+                    <p class="text-[10px] md:text-xs text-gray-400 font-light font-jakarta">Premium cropped streetwear aesthetics and street utility cuts.</p>
                 </div>
             </div>
 
-            <!-- Showcase 3: Cargo Pants -->
-            <div class="group relative aspect-[4/5] rounded-custom-xl overflow-hidden cursor-pointer shadow-sm border border-brand-border transition-all duration-500 hover:shadow-xl reveal bg-brand-gray-bg streetwear-card">
-                <img src="assets/image/cargo.png" alt="Utility Cargo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <!-- Showcase 3: Kids Syndicate -->
+            <div onclick="filterCategory('kids-syndicate', document.querySelectorAll('.category-tab')[3]); document.getElementById('categories').scrollIntoView({behavior: 'smooth'})" class="group relative aspect-[4/3] md:aspect-[3/2] rounded-3xl overflow-hidden cursor-pointer shadow-sm border border-brand-border transition-all duration-500 hover:shadow-xl reveal bg-brand-gray-bg streetwear-card w-[280px] md:w-full shrink-0 snap-start">
+                <img src="assets/image/showcase_kids.png" alt="Kids Syndicate" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
-                <div class="absolute bottom-0 inset-x-0 p-8 space-y-2">
-                    <span class="text-[9px] text-gray-300 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-wider">Ripstop Techwear</span>
-                    <h3 class="font-syne text-2xl text-white pt-2 flex items-center justify-between">Utility Cargo <span class="text-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">&nearr;</span></h3>
-                    <p class="text-xs text-gray-400 font-light font-jakarta">Utility functional streetwear details</p>
+                <div class="absolute bottom-0 inset-x-0 p-5 md:p-8 space-y-1.5 md:space-y-2">
+                    <span class="text-[9px] text-gray-300 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-wider font-syne font-bold">Next-Gen Streetwear</span>
+                    <h3 class="font-syne text-xl md:text-2xl font-bold text-white pt-1 md:pt-2 flex items-center justify-between">Kids Syndicate <span class="text-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">&nearr;</span></h3>
+                    <p class="text-[10px] md:text-xs text-gray-400 font-light font-jakarta">Durable streetwear blends for the next-gen rule breakers (Boys/Girls).</p>
                 </div>
             </div>
 
@@ -610,7 +622,7 @@
                         Design Your Own <span class="text-outline-pink font-light italic text-brand-pink">Custom Tee</span>
                     </h2>
                     <p class="text-gray-500 text-xs sm:text-sm font-light font-jakarta">
-                        Bring your streetwear concepts to life. Select your fit, quantity, and print placements, and submit a direct design request to our print crew.
+                        Bring your streetwear concepts to life. We print custom tees and hoodies for <strong>Men, Women, and Kids (Boys & Girls)</strong>. Select your fit, quantity, and print placements, and submit a direct request to our print crew.
                     </p>
                 </div>
             </div>
@@ -631,7 +643,7 @@
                                 </div>
                                 <div>
                                     <h5 class="text-xs font-bold text-brand-dark uppercase tracking-wider font-syne font-semibold">Fit Options</h5>
-                                    <p class="text-xs text-gray-400 font-light mt-0.5">Heavyweight boxy drop shoulder (260GSM) or street classic fit (240GSM).</p>
+                                    <p class="text-xs text-gray-400 font-light mt-0.5">Heavyweight boxy drop shoulder (260GSM) or street classic fit (240GSM). Customized cuts available for Men, Women, and Kids.</p>
                                 </div>
                             </div>
                             <div class="flex gap-4 items-start">
@@ -683,7 +695,15 @@
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <div class="space-y-2">
+                                <label for="cust-segment" class="text-[10px] uppercase font-bold tracking-wider text-brand-dark font-syne">Select Segment</label>
+                                <select id="cust-segment" class="w-full bg-brand-light border border-brand-border rounded-2xl px-5 py-3.5 text-xs text-brand-dark focus:outline-none focus:border-brand-pink font-outfit">
+                                    <option value="Men / Unisex">Men / Unisex Fit</option>
+                                    <option value="Women">Women's Fitted</option>
+                                    <option value="Kids (Boys / Girls)">Kids (Boys & Girls)</option>
+                                </select>
+                            </div>
                             <div class="space-y-2">
                                 <label for="cust-fit" class="text-[10px] uppercase font-bold tracking-wider text-brand-dark font-syne">Select Canvas Fit</label>
                                 <select id="cust-fit" class="w-full bg-brand-light border border-brand-border rounded-2xl px-5 py-3.5 text-xs text-brand-dark focus:outline-none focus:border-brand-pink font-outfit">
@@ -777,9 +797,9 @@
             <!-- Footer Main Columns -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pt-4">
                 <div class="space-y-4">
-                    <div class="flex items-center gap-3">
-                        <img src="assets/image/favicon.png" alt="Rogue Wear Logo" class="h-9 w-9 object-contain">
-                        <h3 class="font-syne text-2xl font-bold">ROGUE<span class="text-brand-pink font-light italic">WEAR</span></h3>
+                    <div class="flex items-center">
+                        <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-9 sm:h-10 w-auto object-contain dark:hidden">
+                        <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-9 sm:h-10 w-auto object-contain hidden dark:block">
                     </div>
                     <p class="text-xs text-gray-400 font-light leading-relaxed font-jakarta">Premium Sri Lankan Streetwear & Graphic Printed Tees. Engineered with bold, crack-resistant sticker graphics for rule-breaking minds.</p>
                 </div>
@@ -787,20 +807,19 @@
                 <div class="space-y-4">
                     <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Explore Collections</h5>
                     <ul class="text-xs text-gray-500 font-medium space-y-2.5 font-outfit">
-                        <li><a href="shop.html?category=oversized-tees" class="hover:text-black transition-colors">Oversized T-Shirts</a></li>
-                        <li><a href="shop.html?category=graphic-hoodies" class="hover:text-black transition-colors">Graphic Hoodies</a></li>
-                        <li><a href="shop.html?category=cargo-pants" class="hover:text-black transition-colors">Tech Cargo Pants</a></li>
-                        <li><a href="shop.html?category=all" class="hover:text-black transition-colors">Limited Drop Series</a></li>
+                        <li><a href="shop.html?category=men-unisex" class="hover:text-brand-pink transition-colors">Men / Unisex Fit</a></li>
+                        <li><a href="shop.html?category=women-crop" class="hover:text-brand-pink transition-colors">Women's Crop Drops</a></li>
+                        <li><a href="shop.html?category=kids-syndicate" class="hover:text-brand-pink transition-colors">Kids Syndicate</a></li>
                     </ul>
                 </div>
                 
                 <div class="space-y-4">
                     <h5 class="text-xs font-syne font-bold uppercase tracking-wider text-brand-pink">Syndicate Support</h5>
                     <ul class="text-xs text-gray-500 font-medium space-y-2.5 font-outfit">
-                        <li><a href="#" class="hover:text-black transition-colors">Shipping & Exchanges</a></li>
-                        <li><a href="#" class="hover:text-black transition-colors">Care Instructions</a></li>
-                        <li><a href="#" class="hover:text-black transition-colors">Vouchers Policy</a></li>
-                        <li><a href="#" class="hover:text-black transition-colors">Privacy Terms</a></li>
+                        <li><a href="#" class="hover:text-brand-pink transition-colors">Shipping & Exchanges</a></li>
+                        <li><a href="#" class="hover:text-brand-pink transition-colors">Care Instructions</a></li>
+                        <li><a href="#" class="hover:text-brand-pink transition-colors">Vouchers Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-pink transition-colors">Privacy Terms</a></li>
                     </ul>
                 </div>
                 
@@ -828,19 +847,19 @@
                         </li>
                     </ul>
                     <div class="flex gap-4 pt-2 text-gray-400">
-                        <a href="https://www.instagram.com/rogu_ewear?igsh=MWxwaXltOGticThiaw%3D%3D&utm_source=qr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Instagram">
+                        <a href="https://www.instagram.com/rogu_ewear?igsh=MWxwaXltOGticThiaw%3D%3D&utm_source=qr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Instagram">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                             </svg>
                         </a>
-                        <a href="https://www.facebook.com/share/1GuVpMpY3G/?mibextid=wwXIfr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Facebook">
+                        <a href="https://www.facebook.com/share/1GuVpMpY3G/?mibextid=wwXIfr" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="Facebook">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
                             </svg>
                         </a>
-                        <a href="https://www.tiktok.com/@_banu23?_r=1&_t=ZS-97NGAUq2Gil" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="TikTok">
+                        <a href="https://www.tiktok.com/@_banu23?_r=1&_t=ZS-97NGAUq2Gil" target="_blank" class="hover:text-brand-pink transition-all flex items-center justify-center w-8 h-8 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-brand-pink/50 hover:bg-brand-pink/5" title="TikTok">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 fill-current" viewBox="0 0 24 24">
                                 <path d="M12.525.02c1.31-.02 2.61.35 3.6 1.05a8.87 8.87 0 00-.5 2.1c-.1.6-.5 1.1-1.1 1.4a4.44 4.44 0 01-2.9-1.2v11.75a6.13 6.13 0 11-6.13-6.13c.35 0 .69.03 1.03.1v2.1a4.03 4.03 0 103.05 3.93V0h3z"/>
                             </svg>
@@ -1088,11 +1107,12 @@
             event.preventDefault();
             const name = document.getElementById('cust-name').value;
             const phone = document.getElementById('cust-phone').value;
+            const segment = document.getElementById('cust-segment').value;
             const fit = document.getElementById('cust-fit').value;
             const qty = document.getElementById('cust-qty').value;
             const notes = document.getElementById('cust-notes').value;
 
-            const text = `Hi Rogue Wear Syndicate, I'd like to request a custom t-shirt print:\n\n*Name:* ${name}\n*WhatsApp/Phone:* ${phone}\n*Canvas Fit:* ${fit}\n*Quantity:* ${qty}\n*Design details:* ${notes}`;
+            const text = `Hi Rogue Wear Syndicate, I'd like to request a custom t-shirt print:\n\n*Name:* ${name}\n*WhatsApp/Phone:* ${phone}\n*Segment:* ${segment}\n*Canvas Fit:* ${fit}\n*Quantity:* ${qty}\n*Design details:* ${notes}`;
             const encodedText = encodeURIComponent(text);
             const waUrl = `https://wa.me/94771234567?text=${encodedText}`;
             window.open(waUrl, '_blank');
@@ -1218,7 +1238,7 @@
                         </div>
                         
                         <div class="px-1">
-                            <span class="text-[8px] sm:text-[10px] text-gray-400 font-outfit uppercase tracking-wider font-semibold">${product.categoryLabel}</span>
+                            <span class="text-[8px] sm:text-[10px] text-gray-400 font-outfit uppercase tracking-wider font-semibold">${product.genderFit || product.categoryLabel}</span>
                             <h4 class="font-syne text-xs sm:text-sm font-bold text-brand-dark mt-0.5 sm:mt-1 line-clamp-2 h-8 sm:h-10 leading-tight hover:text-[#FF3B97] cursor-pointer" onclick="openProductDetail('${product.id}')">${product.name}</h4>
                             <div class="flex items-center gap-1 text-[9px] sm:text-xs mt-0.5 sm:mt-1">
                                 <span class="text-[#FF3B97] font-bold">★ ${product.rating.toFixed(1)}</span>

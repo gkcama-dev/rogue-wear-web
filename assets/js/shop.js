@@ -177,7 +177,7 @@ function renderShopProducts() {
                 </div>
                 
                 <div class="px-1">
-                    <span class="text-[8px] sm:text-[10px] text-gray-400 font-outfit uppercase tracking-wider font-semibold">${product.categoryLabel}</span>
+                    <span class="text-[8px] sm:text-[10px] text-gray-400 font-outfit uppercase tracking-wider font-semibold">${product.genderFit || product.categoryLabel}</span>
                     <h4 class="font-syne text-xs sm:text-sm font-bold text-brand-dark mt-0.5 sm:mt-1 line-clamp-2 h-8 sm:h-10 leading-tight hover:text-[#FF3B97] cursor-pointer" onclick="openProductDetail('${product.id}')">${product.name}</h4>
                     <div class="flex items-center gap-1 text-[9px] sm:text-xs mt-0.5 sm:mt-1">
                         <span class="text-[#FF3B97] font-bold">★ ${product.rating.toFixed(1)}</span>
