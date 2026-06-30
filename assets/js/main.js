@@ -594,9 +594,11 @@ window.toggleWishlist = function(productId) {
         const svg = btn.querySelector('svg');
         if (svg) {
             if (isAdded) {
+                svg.classList.remove('fill-none', 'stroke-current');
                 svg.classList.add('fill-[#FF3B97]', 'stroke-[#FF3B97]');
             } else {
                 svg.classList.remove('fill-[#FF3B97]', 'stroke-[#FF3B97]');
+                svg.classList.add('fill-none', 'stroke-current');
             }
         }
     });
@@ -866,17 +868,51 @@ window.addSelectedToCart = function(prodId) {
     addToCart(prodId, size);
 };
 
-// Check Out Button Functionality
+// Check Out Button Functionality - Send Order to WhatsApp
 window.checkoutCart = function() {
     if (cart.length === 0) return;
     
-    showToast('Checking Out', 'Proceeding to secure checkout payment gateway...');
-    setTimeout(() => {
-        alert('Thank you for shopping with Rogue Wear! (This is a mock check-out integration).');
-        cart = [];
-        saveCart();
-        updateCartCounter();
-        const closeCartBtn = document.getElementById('close-cart-btn');
-        if (closeCartBtn) closeCartBtn.click();
-    }, 1500);
+    // Compile order message
+    let message = `*ROGUE WEAR - NEW ORDER* 📦\n`;
+    message += `=========================\n\n`;
+    
+    let subtotal = 0;
+    cart.forEach((item, index) => {
+        const prod = PRODUCTS.find(p => p.id === item.id);
+        if (prod) {
+            const itemTotal = prod.price * item.quantity;
+            subtotal += itemTotal;
+            message += `${index + 1}. *${prod.name}*\n`;
+            message += `   Size: ${item.size}\n`;
+            message += `   Qty: ${item.quantity} x LKR ${prod.price.toLocaleString()}\n`;
+            message += `   Subtotal: LKR ${itemTotal.toLocaleString()}\n\n`;
+        }
+    });
+    
+    const shipping = 350;
+    const total = subtotal + shipping;
+    
+    message += `=========================\n`;
+    message += `*Subtotal:* LKR ${subtotal.toLocaleString()}\n`;
+    message += `*Shipping:* LKR ${shipping.toLocaleString()}\n`;
+    message += `*Total Amount:* LKR ${total.toLocaleString()}\n`;
+    message += `=========================\n\n`;
+    message += `Hi Rogue Wear, I would like to place this order. Please confirm delivery details and payment options!`;
+    
+    const encodedText = encodeURIComponent(message);
+    const waUrl = `https://wa.me/94775756751?text=${encodedText}`;
+    
+    showToast('Redirecting', 'Opening WhatsApp to complete your checkout...');
+    
+    // Open WhatsApp in a new tab
+    window.open(waUrl, '_blank');
+    
+    // Clear cart and update
+    cart = [];
+    saveCart();
+    updateCartCounter();
+    
+    // Close cart drawer
+    const closeCartBtn = document.getElementById('close-cart-btn');
+    if (closeCartBtn) closeCartBtn.click();
 };
