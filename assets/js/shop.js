@@ -56,7 +56,8 @@ function initApp() {
         { name: 'Mobile Menu', fn: initMobileMenu },
         { name: 'Mobile Filters', fn: initMobileFilters },
         { name: 'Newsletter Form', fn: initNewsletterForm },
-        { name: 'Theme Toggle', fn: initThemeToggle }
+        { name: 'Theme Toggle', fn: initThemeToggle },
+        { name: 'Custom Cursor', fn: initCustomCursor }
     ];
 
     initializers.forEach(init => {
@@ -933,16 +934,100 @@ window.addSelectedToCart = function(prodId) {
     addToCart(prodId, size);
 };
 
-// Checkout function
+// Reusable Global Loader Functions
+window.showLoader = function(customMessage) {
+    const preloader = document.getElementById('site-preloader');
+    const bar = document.getElementById('preloader-bar');
+    const percentText = document.getElementById('preloader-percent');
+    
+    if (!preloader) return;
+    
+    // Reset state
+    preloader.style.transition = 'none';
+    preloader.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-full');
+    preloader.style.display = 'flex';
+    
+    if (customMessage) {
+        if (bar) {
+            bar.style.width = '100%';
+            bar.classList.add('animate-pulse');
+        }
+        if (percentText) {
+            percentText.textContent = customMessage;
+        }
+    } else {
+        if (bar) {
+            bar.style.width = '0%';
+            bar.classList.remove('animate-pulse');
+        }
+        if (percentText) {
+            percentText.textContent = '00%';
+        }
+    }
+};
+
+window.hideLoader = function() {
+    const preloader = document.getElementById('site-preloader');
+    if (!preloader) return;
+    
+    preloader.style.transition = 'opacity 0.6s ease-in-out, transform 0.6s cubic-bezier(0.85, 0, 0.15, 1)';
+    preloader.classList.add('opacity-0', 'pointer-events-none', '-translate-y-full');
+    
+    setTimeout(() => {
+        preloader.style.display = 'none';
+    }, 600);
+};
+
+// Checkout function - Send Order to WhatsApp
 window.checkoutCart = function() {
     if (cart.length === 0) return;
     
-    showToast('Checking Out', 'Proceeding to secure checkout payment gateway...');
+    // Show premium order processing loading screen
+    window.showLoader("PROCESSING ORDER...");
+    
     setTimeout(() => {
-        alert('Thank you for shopping with Rogue Wear! (This is a mock check-out integration).');
+        // Compile order message
+        let message = `*ROGUE WEAR - NEW ORDER* 📦\n`;
+        message += `=========================\n\n`;
+        
+        let subtotal = 0;
+        cart.forEach((item, index) => {
+            const prod = PRODUCTS.find(p => p.id === item.id);
+            if (prod) {
+                const itemTotal = prod.price * item.quantity;
+                subtotal += itemTotal;
+                message += `${index + 1}. *${prod.name}*\n`;
+                message += `   Size: ${item.size}\n`;
+                message += `   Qty: ${item.quantity} x LKR ${prod.price.toLocaleString()}\n`;
+                message += `   Subtotal: LKR ${itemTotal.toLocaleString()}\n\n`;
+            }
+        });
+        
+        const shipping = 350;
+        const total = subtotal + shipping;
+        
+        message += `=========================\n`;
+        message += `*Subtotal:* LKR ${subtotal.toLocaleString()}\n`;
+        message += `*Shipping:* LKR ${shipping.toLocaleString()}\n`;
+        message += `*Total Amount:* LKR ${total.toLocaleString()}\n`;
+        message += `=========================\n\n`;
+        message += `Hi Rogue Wear, I would like to place this order. Please confirm delivery details and payment options!`;
+        
+        const encodedText = encodeURIComponent(message);
+        const waUrl = `https://wa.me/94775756751?text=${encodedText}`;
+        
+        // Hide loader
+        window.hideLoader();
+        
+        // Open WhatsApp in a new tab
+        window.open(waUrl, '_blank');
+        
+        // Clear cart and update
         cart = [];
         saveCart();
         updateCartCounter();
+        
+        // Close cart drawer
         const closeCartBtn = document.getElementById('close-cart-btn');
         if (closeCartBtn) closeCartBtn.click();
     }, 1500);
@@ -966,3 +1051,59 @@ const safeStorage = {
         }
     }
 };
+
+// Custom Streetwear Cursor Logic
+function initCustomCursor() {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    
+    const dot = document.createElement('div');
+    dot.className = 'custom-cursor-dot';
+    const ring = document.createElement('div');
+    ring.className = 'custom-cursor-ring';
+    
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    let ringX = 0;
+    let ringY = 0;
+    
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        dot.style.left = `${mouseX}px`;
+        dot.style.top = `${mouseY}px`;
+    });
+    
+    function animateRing() {
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+        
+        ring.style.left = `${ringX}px`;
+        ring.style.top = `${ringY}px`;
+        
+        requestAnimationFrame(animateRing);
+    }
+    animateRing();
+    
+    const interactiveSelector = 'a, button, select, input, textarea, [role="button"], .cursor-pointer, .streetwear-card';
+    
+    document.addEventListener('mouseover', (e) => {
+        if (e.target.closest(interactiveSelector)) {
+            dot.classList.add('hovered');
+            ring.classList.add('hovered');
+        }
+    });
+    
+    document.addEventListener('mouseout', (e) => {
+        if (e.target.closest(interactiveSelector)) {
+            const relatedTarget = e.relatedTarget;
+            if (!relatedTarget || !relatedTarget.closest(interactiveSelector)) {
+                dot.classList.remove('hovered');
+                ring.classList.remove('hovered');
+            }
+        }
+    });
+}

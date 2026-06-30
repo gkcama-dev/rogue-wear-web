@@ -104,6 +104,40 @@
 </head>
 <body class="bg-brand-light text-brand-dark font-jakarta antialiased selection:bg-brand-pink selection:text-white">
 
+    <!-- 0. PRELOADER -->
+    <div id="site-preloader" class="fixed inset-0 bg-[#0A0A0A] z-[999999] flex flex-col items-center justify-center transition-all duration-700 ease-in-out">
+        <div class="flex flex-col items-center space-y-6">
+            <!-- Circular rotating spinner wrapper -->
+            <div class="relative flex items-center justify-center w-40 h-40 sm:w-48 sm:h-48">
+                <!-- Outer dashed slow ring -->
+                <div class="absolute inset-0 rounded-full loader-outer-ring"></div>
+                <!-- Inner solid fast ring -->
+                <div class="absolute inset-2 rounded-full loader-inner-ring"></div>
+                <!-- Center Logo -->
+                <div class="relative w-24 sm:w-28 flex items-center justify-center z-10 loader-center-logo">
+                    <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="w-full h-auto object-contain">
+                </div>
+            </div>
+            <!-- Status message -->
+            <div id="preloader-percent" class="font-outfit font-bold text-[9px] uppercase tracking-[0.3em] text-[#FF3B97] select-none pt-1">CONNECTING...</div>
+        </div>
+        <script>
+            // Self-executing page load listener with minimum duration
+            (function() {
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        const preloader = document.getElementById('site-preloader');
+                        if (preloader) {
+                            preloader.style.transition = 'opacity 0.6s ease-in-out, transform 0.6s cubic-bezier(0.85, 0, 0.15, 1)';
+                            preloader.classList.add('opacity-0', 'pointer-events-none', '-translate-y-full');
+                            setTimeout(() => { preloader.style.display = 'none'; }, 600);
+                        }
+                    }, 1200); // 1.2s minimum display for pacing
+                });
+            })();
+        </script>
+    </div>
+
     <!-- 1. NAVIGATION BAR (Glassmorphic & Sticky) -->
     <header class="fixed top-0 inset-x-0 h-20 glass-nav z-40 transition-all duration-300">
         <div class="max-w-screen-2xl mx-auto px-6 sm:px-12 lg:px-8 xl:px-20 h-full flex items-center justify-between gap-4">
@@ -117,8 +151,8 @@
 
             <!-- Brand Logo -->
             <a href="#" class="hover:opacity-90 transition-opacity flex items-center">
-                <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-7 sm:h-8 md:h-9 w-auto object-contain dark:hidden">
-                <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-7 sm:h-8 md:h-9 w-auto object-contain hidden dark:block">
+                <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-7 sm:h-8 md:h-9 w-auto object-contain logo-light-theme">
+                <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-7 sm:h-8 md:h-9 w-auto object-contain logo-dark-theme">
             </a>
 
             <!-- Center Menu Links -->
@@ -186,8 +220,8 @@
         <div>
             <div class="flex items-center justify-between pb-6 border-b border-brand-border">
                 <a href="#" class="flex items-center">
-                    <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-6 sm:h-7 w-auto object-contain dark:hidden">
-                    <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-6 sm:h-7 w-auto object-contain hidden dark:block">
+                    <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-6 sm:h-7 w-auto object-contain logo-light-theme">
+                    <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-6 sm:h-7 w-auto object-contain logo-dark-theme">
                 </a>
                 <button id="close-mobile-menu" class="p-2 text-gray-400 hover:text-brand-pink transition-colors">
                     ✕
@@ -219,7 +253,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
-                    <a href="tel:+94771234567" class="hover:text-brand-pink transition-colors">+94 77 123 4567</a>
+                    <a href="tel:+94775756751" class="hover:text-brand-pink transition-colors">+94 77 575 6751</a>
                 </div>
                 <div class="text-xs text-gray-400 flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -475,8 +509,8 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pt-4">
                 <div class="space-y-4">
                     <div class="flex items-center">
-                        <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-9 sm:h-10 w-auto object-contain dark:hidden">
-                        <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-9 sm:h-10 w-auto object-contain hidden dark:block">
+                        <img src="assets/image/logo_brush_dark.png" alt="Rogue Wear" class="h-9 sm:h-10 w-auto object-contain logo-light-theme">
+                        <img src="assets/image/logo_brush.png" alt="Rogue Wear" class="h-9 sm:h-10 w-auto object-contain logo-dark-theme">
                     </div>
                     <p class="text-xs text-gray-400 font-light leading-relaxed font-jakarta">Premium Sri Lankan Streetwear & Graphic Printed Tees. Engineered with bold, crack-resistant sticker graphics for rule-breaking minds.</p>
                 </div>
@@ -514,7 +548,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
-                            <a href="tel:+94771234567" class="hover:text-brand-pink transition-colors">+94 77 123 4567</a>
+                            <a href="tel:+94775756751" class="hover:text-brand-pink transition-colors">+94 77 575 6751</a>
                         </li>
                         <li class="flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -656,7 +690,7 @@
     </div>
 
     <!-- 11. FLOATING WHATSAPP STICKER (Colombo Support Contact) -->
-    <a href="https://wa.me/94771234567?text=Hi%20Rogue%20Wear,%20I%20am%20interested%20in%20your%20streetwear%20drops!" target="_blank" class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-35 text-2xl" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/94775756751?text=Hi%20Rogue%20Wear,%20I%20am%20interested%20in%20your%20streetwear%20drops!" target="_blank" class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-35 text-2xl" aria-label="Chat on WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.498 1.452 5.411 1.453 5.476 0 9.932-4.437 9.935-9.912.002-2.65-1.02-5.14-2.877-7.001C17.259 1.83 14.773.804 12.113.804c-5.483 0-9.94 4.439-9.943 9.914-.001 1.965.513 3.888 1.49 5.62l-.979 3.573 3.666-.957zm11.587-5.72c-.1-.166-.36-.266-.757-.465-.398-.2-.2.348-2.355-2.148-.396-.199-.693-.166-.928.099-.236.265-.928.099-1.144.132-.215-.264-.479-.464-.693-.695-.31-.3-.615-.658-.87-1.055-.256-.4-.539-.81-.616-1.077-.078-.266-.008-.41.09-.51.1-.1.216-.25.323-.376.108-.125.143-.215.215-.363.07-.15.035-.28-.018-.38-.052-.1-.479-1.157-.657-1.587-.173-.42-.349-.364-.479-.37-.123-.006-.264-.007-.406-.007-.143 0-.376.053-.572.266-.196.212-.751.734-.751 1.79 0 1.057.77 2.08.878 2.224.108.146 1.516 2.315 3.673 3.247.513.221.913.353 1.225.451.515.164.984.14 1.355.086.413-.062 1.27-.518 1.45-.992.181-.474.181-.88.127-.965l-.36-.266z"/>
         </svg>
