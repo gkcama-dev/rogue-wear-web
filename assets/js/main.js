@@ -267,8 +267,8 @@ function renderProducts() {
                     <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                     
                     <!-- Quick Add Hover Overlay -->
-                    <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex flex-col justify-end hidden sm:flex">
-                        <button onclick="addToCart('${product.id}')" class="w-full bg-white hover:bg-black hover:text-white text-black font-syne text-[11px] font-bold tracking-wider uppercase py-3 px-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+                    <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex flex-col justify-end hidden lg:flex">
+                        <button onclick="openProductDetail('${product.id}')" class="w-full bg-white hover:bg-black hover:text-white text-black font-syne text-[11px] font-bold tracking-wider uppercase py-3 px-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                             </svg>
@@ -290,8 +290,10 @@ function renderProducts() {
             <div class="px-1 mt-4 flex items-center justify-between">
                 <div class="font-outfit text-base font-bold text-[#0A0A0A]">LKR ${product.price.toLocaleString()}</div>
                 <!-- Mobile Only Add Button -->
-                <button onclick="addToCart('${product.id}')" class="sm:hidden w-8 h-8 bg-black text-white rounded-full flex items-center justify-center shadow-md hover:bg-[#FF3B97] transition-all cursor-pointer">
-                    +
+                <button onclick="openProductDetail('${product.id}')" class="lg:hidden w-8 h-8 bg-brand-dark text-brand-light rounded-full flex items-center justify-center shadow-md hover:bg-[#FF3B97] transition-all cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>
                 </button>
             </div>
         `;
@@ -402,10 +404,14 @@ function renderCartItems() {
             </div>
         `;
         summaryContainer.classList.add('hidden');
+        const deliveryContainer = document.getElementById('cart-delivery-box');
+        if (deliveryContainer) deliveryContainer.classList.add('hidden');
         return;
     }
 
     summaryContainer.classList.remove('hidden');
+    const deliveryContainer = document.getElementById('cart-delivery-box');
+    if (deliveryContainer) deliveryContainer.classList.remove('hidden');
     listContainer.innerHTML = '';
 
     let subtotal = 0;
@@ -442,11 +448,35 @@ function renderCartItems() {
     });
 
     // Update Subtotal/Totals
+    if (cart.length === 0) {
+        appliedPromo = null;
+        const input = document.getElementById('promo-code-input');
+        const msg = document.getElementById('promo-status-msg');
+        if (input) input.value = '';
+        if (msg) msg.classList.add('hidden');
+    }
+
     document.getElementById('cart-subtotal').textContent = `LKR ${subtotal.toLocaleString()}`;
-    const shipping = subtotal > 15000 ? 'FREE' : 'LKR 350';
-    document.getElementById('cart-shipping').textContent = shipping;
     
-    const finalTotal = subtotal + (subtotal > 15000 || subtotal === 0 ? 0 : 350);
+    // Calculate and render promo discount
+    let discount = 0;
+    const discountRow = document.getElementById('cart-discount-row');
+    const discountEl = document.getElementById('cart-discount');
+    
+    if (appliedPromo && subtotal > 0) {
+        discount = Math.round(subtotal * appliedPromo.rate);
+        if (discountRow && discountEl) {
+            discountEl.textContent = `-LKR ${discount.toLocaleString()}`;
+            discountRow.classList.remove('hidden');
+        }
+    } else {
+        if (discountRow) discountRow.classList.add('hidden');
+    }
+    
+    const shippingVal = (subtotal - discount) > 15000 || subtotal === 0 ? 0 : 350;
+    document.getElementById('cart-shipping').textContent = shippingVal === 0 ? (subtotal === 0 ? 'LKR 0' : 'FREE') : 'LKR 350';
+    
+    const finalTotal = subtotal - discount + shippingVal;
     document.getElementById('cart-total').textContent = `LKR ${finalTotal.toLocaleString()}`;
 }
 
@@ -470,31 +500,37 @@ function renderWishlistItems() {
 
     listContainer.innerHTML = '';
 
-    wishlist.forEach(itemId => {
+    wishlist.forEach((itemId, idx) => {
         const prod = PRODUCTS.find(p => p.id === itemId);
         if (!prod) return;
 
         const itemLi = document.createElement('div');
-        itemLi.className = 'flex items-center gap-4 py-4 border-b border-gray-100';
+        itemLi.className = 'flex gap-4 p-4 border border-brand-border bg-brand-card rounded-2xl animate-item-fade';
+        itemLi.style.animationDelay = `${idx * 0.08}s`;
         itemLi.innerHTML = `
-            <img src="${prod.image}" alt="${prod.name}" class="w-16 h-16 rounded-xl object-cover bg-gray-50 flex-shrink-0">
-            <div class="flex-grow">
-                <h5 class="font-syne text-sm font-bold text-[#0A0A0A] line-clamp-1">${prod.name}</h5>
-                <span class="text-[10px] text-gray-400 font-outfit uppercase tracking-wider">${prod.categoryLabel}</span>
-                <div class="text-sm font-bold font-outfit text-[#0A0A0A] mt-1">LKR ${prod.price.toLocaleString()}</div>
+            <div class="w-16 h-16 bg-brand-gray-bg rounded-xl overflow-hidden shrink-0">
+                <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover">
             </div>
-            <div class="flex flex-col gap-2">
-                <button onclick="moveWishlistToCart('${prod.id}')" class="bg-black hover:bg-[#FF3B97] text-white text-[10px] font-syne font-semibold tracking-wider uppercase px-3 py-1.5 rounded-lg transition-colors cursor-pointer">
-                    Buy
-                </button>
-                <button onclick="toggleWishlist('${prod.id}'); renderWishlistItems();" class="text-xs text-gray-400 hover:text-red-500 text-center font-outfit cursor-pointer">
-                    Remove
-                </button>
+            <div class="flex-grow flex flex-col justify-between">
+                <div class="flex justify-between items-start gap-1">
+                    <div>
+                        <h5 class="font-syne text-xs font-bold text-brand-dark line-clamp-1">${prod.name}</h5>
+                        <span class="font-outfit text-[11px] font-bold text-brand-dark mt-0.5 block">LKR ${prod.price.toLocaleString()}</span>
+                    </div>
+                    <button onclick="toggleWishlist('${prod.id}'); renderWishlistItems();" class="text-gray-400 hover:text-brand-pink text-[11px] transition-colors cursor-pointer">✕</button>
+                </div>
+                <div class="mt-2">
+                    <button onclick="moveWishlistToCart('${prod.id}')" class="w-full bg-brand-dark hover:bg-brand-pink text-brand-light text-[9px] font-syne font-bold uppercase tracking-wider py-1.5 rounded-lg transition-all flex items-center justify-center gap-1 cursor-pointer">
+                        Move to Cart
+                    </button>
+                </div>
             </div>
         `;
         listContainer.appendChild(itemLi);
     });
 }
+
+
 
 // --- CART ACTIONS ---
 window.addToCart = function(productId, size = 'L') {
@@ -868,51 +904,166 @@ window.addSelectedToCart = function(prodId) {
     addToCart(prodId, size);
 };
 
+// Promo / Voucher Code System
+let appliedPromo = null;
+const PROMO_CODES = {
+    'ROGUE10': 0.10, // 10% Off Coupon
+    'ROGUE20': 0.20  // 20% Off Coupon
+};
+
+window.applyPromoCode = function() {
+    const input = document.getElementById('promo-code-input');
+    const msg = document.getElementById('promo-status-msg');
+    if (!input || !msg) return;
+    
+    const code = input.value.trim().toUpperCase();
+    
+    if (code === '') {
+        appliedPromo = null;
+        msg.classList.add('hidden');
+        renderCartItems();
+        return;
+    }
+    
+    if (PROMO_CODES.hasOwnProperty(code)) {
+        appliedPromo = { code: code, rate: PROMO_CODES[code] };
+        const pct = Math.round(PROMO_CODES[code] * 100);
+        msg.textContent = `Promo code "${code}" applied (${pct}% off)!`;
+        msg.className = 'text-[10px] text-emerald-500 font-outfit font-medium mt-1 block';
+        msg.classList.remove('hidden');
+        showToast('Promo Code Applied', `Discount code "${code}" successfully applied.`);
+    } else {
+        appliedPromo = null;
+        msg.textContent = 'Invalid promo code. Please try again.';
+        msg.className = 'text-[10px] text-red-500 font-outfit font-medium mt-1 block';
+        msg.classList.remove('hidden');
+    }
+    renderCartItems();
+};
+
 // Check Out Button Functionality - Send Order to WhatsApp
 window.checkoutCart = function() {
     if (cart.length === 0) return;
     
-    // Compile order message
-    let message = `*ROGUE WEAR - NEW ORDER* 📦\n`;
-    message += `=========================\n\n`;
+    // Validate Delivery Details
+    const nameInput = document.getElementById('checkout-name');
+    const addrInput = document.getElementById('checkout-address');
+    const phoneInput = document.getElementById('checkout-phone');
     
-    let subtotal = 0;
-    cart.forEach((item, index) => {
-        const prod = PRODUCTS.find(p => p.id === item.id);
-        if (prod) {
-            const itemTotal = prod.price * item.quantity;
-            subtotal += itemTotal;
-            message += `${index + 1}. *${prod.name}*\n`;
-            message += `   Size: ${item.size}\n`;
-            message += `   Qty: ${item.quantity} x LKR ${prod.price.toLocaleString()}\n`;
-            message += `   Subtotal: LKR ${itemTotal.toLocaleString()}\n\n`;
+    const name = nameInput ? nameInput.value.trim() : '';
+    const address = addrInput ? addrInput.value.trim() : '';
+    const phone = phoneInput ? phoneInput.value.trim() : '';
+    
+    if (!name || !address) {
+        showToast('Info Required', 'Please fill in your Name and Delivery Address to continue.');
+        if (!name && nameInput) nameInput.focus();
+        else if (addrInput) addrInput.focus();
+        return;
+    }
+    
+    // Save to localStorage for convenience next time
+    safeStorage.setItem('rogue_checkout_name', name);
+    safeStorage.setItem('rogue_checkout_address', address);
+    safeStorage.setItem('rogue_checkout_phone', phone);
+    
+    // Show premium order processing loading screen
+    if (typeof window.showLoader === 'function') {
+        window.showLoader("PROCESSING ORDER...");
+    }
+    
+    setTimeout(() => {
+        // Compile order message
+        let message = `*ROGUE WEAR - NEW ORDER* \u{1F4E6}\n`;
+        message += `=========================\n\n`;
+        
+        message += `*DELIVERY DETAILS* \u{1F69A}\n`;
+        message += `• *Name:* ${name}\n`;
+        message += `• *Address:* ${address}\n`;
+        if (phone) {
+            message += `• *Phone:* ${phone}\n`;
         }
-    });
+        message += `\n=========================\n\n`;
+        
+        let subtotal = 0;
+        cart.forEach((item, index) => {
+            const prod = PRODUCTS.find(p => p.id === item.id);
+            if (prod) {
+                const itemTotal = prod.price * item.quantity;
+                subtotal += itemTotal;
+                message += `${index + 1}. *${prod.name}*\n`;
+                message += `   Size: ${item.size}\n`;
+                message += `   Qty: ${item.quantity} x LKR ${prod.price.toLocaleString()}\n`;
+                message += `   Subtotal: LKR ${itemTotal.toLocaleString()}\n\n`;
+            }
+        });
+        
+        // Calculate discount
+        let discount = 0;
+        if (appliedPromo && subtotal > 0) {
+            discount = Math.round(subtotal * appliedPromo.rate);
+        }
+        
+        const shipping = (subtotal - discount) > 15000 || subtotal === 0 ? 0 : 350;
+        const total = subtotal - discount + shipping;
+        
+        message += `=========================\n`;
+        message += `*Subtotal:* LKR ${subtotal.toLocaleString()}\n`;
+        if (discount > 0) {
+            message += `*Discount (${appliedPromo.code}):* -LKR ${discount.toLocaleString()}\n`;
+        }
+        message += `*Shipping:* LKR ${shipping.toLocaleString()}\n`;
+        message += `*Total Amount:* LKR ${total.toLocaleString()}\n`;
+        message += `=========================\n\n`;
+        message += `Hi Rogue Wear, I would like to place this order. Please confirm delivery details and payment options!`;
+        
+        const encodedText = encodeURIComponent(message);
+        const waUrl = `https://wa.me/94775756751?text=${encodedText}`;
+        
+        // Hide loader
+        if (typeof window.hideLoader === 'function') {
+            window.hideLoader();
+        }
+        
+        // Open WhatsApp in a new tab
+        window.open(waUrl, '_blank');
+        
+        // Open Order Sent Confirmation Modal
+        const confirmModal = document.getElementById('order-confirm-modal');
+        const confirmCard = document.getElementById('order-confirm-card');
+        if (confirmModal && confirmCard) {
+            confirmModal.classList.remove('hidden');
+            setTimeout(() => {
+                confirmModal.classList.remove('opacity-0');
+                confirmCard.classList.remove('scale-95');
+            }, 10);
+        }
+    }, 1500);
+};
+
+window.confirmClearCart = function(shouldClear) {
+    const confirmModal = document.getElementById('order-confirm-modal');
+    const confirmCard = document.getElementById('order-confirm-card');
     
-    const shipping = 350;
-    const total = subtotal + shipping;
+    if (confirmModal && confirmCard) {
+        confirmModal.classList.add('opacity-0');
+        confirmCard.classList.add('scale-95');
+        setTimeout(() => {
+            confirmModal.classList.add('hidden');
+        }, 300);
+    }
     
-    message += `=========================\n`;
-    message += `*Subtotal:* LKR ${subtotal.toLocaleString()}\n`;
-    message += `*Shipping:* LKR ${shipping.toLocaleString()}\n`;
-    message += `*Total Amount:* LKR ${total.toLocaleString()}\n`;
-    message += `=========================\n\n`;
-    message += `Hi Rogue Wear, I would like to place this order. Please confirm delivery details and payment options!`;
-    
-    const encodedText = encodeURIComponent(message);
-    const waUrl = `https://wa.me/94775756751?text=${encodedText}`;
-    
-    showToast('Redirecting', 'Opening WhatsApp to complete your checkout...');
-    
-    // Open WhatsApp in a new tab
-    window.open(waUrl, '_blank');
-    
-    // Clear cart and update
-    cart = [];
-    saveCart();
-    updateCartCounter();
-    
-    // Close cart drawer
-    const closeCartBtn = document.getElementById('close-cart-btn');
-    if (closeCartBtn) closeCartBtn.click();
+    if (shouldClear) {
+        cart = [];
+        appliedPromo = null; // Clear applied promo
+        saveCart();
+        updateCartCounter();
+        if (typeof renderCartItems === 'function') renderCartItems();
+        
+        // Close cart drawer
+        const closeCartBtn = document.getElementById('close-cart-btn');
+        if (closeCartBtn) closeCartBtn.click();
+        showToast('Cart Cleared', 'Your shopping cart has been cleared.');
+    } else {
+        showToast('Bag Preserved', 'Your shopping bag items were kept safe.');
+    }
 };
